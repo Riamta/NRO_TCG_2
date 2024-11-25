@@ -1753,12 +1753,14 @@ public class NPoint {
             this.hp = 0;
         }
     }
+
     public void subHP(long sub) {
         this.hp -= sub;
         if (this.hp < 0) {
             this.hp = 0;
         }
     }
+
     public void setFullHpMp() {
         this.hp = this.hpMax;
         this.mp = this.mpMax;
@@ -1850,15 +1852,11 @@ public class NPoint {
         } else if (power >= 80_000_000_000L) {
             tiemNang -= (tiemNang * 85 / 100); // Giảm nhẹ
         } else if (power >= 60_000_000_000L) {
-            tiemNang -= (tiemNang * 70 / 100); // Giảm nhẹ
-        } else if (power >= 40_000_000_000L) {
-            tiemNang -= (tiemNang * 40 / 100); // Giảm phạt lớn
-        } else if (power >= 30_000_000_000L) {
-            tiemNang -= (tiemNang * 40 / 100); // Giảm phạt lớn
+            tiemNang /= 10;
         } else if (power >= 20_000_000_000L) {
-            tiemNang -= (tiemNang * 30 / 100); // Nhẹ hơn
+            tiemNang *= 2;
         } else if (power >= 10_000_000_000L) {
-            tiemNang -= (tiemNang * 20 / 100); // Giảm nhẹ
+            tiemNang *= 3; // Tăng 100%
         }
         return tiemNang;
     }
