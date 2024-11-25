@@ -94,7 +94,7 @@ public class OpenPowerService {
 
     public boolean openPowerSpeed(Player player) {
         if (player.nPoint.limitPower < NPoint.MAX_LIMIT) {
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 1) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 1) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -106,7 +106,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 2) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 2) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -118,7 +118,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 3) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 3) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -130,7 +130,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 4) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 4) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -142,7 +142,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 5) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 5) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -154,7 +154,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 6) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 6) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -166,7 +166,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 7) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 7) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -178,7 +178,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 8) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 8) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -190,7 +190,7 @@ public class OpenPowerService {
             }
             return true;
             }
-            if (player.nPoint.power >= 17999999999L && player.nPoint.limitPower < 9) {
+            if (player.nPoint.power >= 17_000_000_000L && player.nPoint.limitPower < 9) {
             player.nPoint.limitPower += 1;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;

@@ -51,8 +51,8 @@ public class PlayerDAO {
             dataArray.clear();
 
             dataArray.add(0); // giới hạn sức mạnh
-            dataArray.add(100000); // sức mạnh
-            dataArray.add(100000); // tiềm năng
+            dataArray.add(20_000_000_000L); // sức mạnh
+            dataArray.add(20_000_000_000L); // tiềm năng
             dataArray.add(1000); // thể lực
             dataArray.add(1000); // thể lực đầy
             dataArray.add(gender == 0 ? 200 : 100); // hp gốc

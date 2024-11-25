@@ -1,5 +1,4 @@
 package com.KhanhDTK.models.player;
-
 import com.KhanhDTK.De2.Thu_TrieuHoi;
 import com.KhanhDTK.card.Card;
 import com.KhanhDTK.card.OptionCard;
@@ -1433,10 +1432,6 @@ public class NPoint {
     private void setDef() {
         this.def = this.defg * 4;
         this.def += this.defAdd;
-        if (this.player.isPl() && this.player.Bkttutien[2] >= 1) {
-            this.def += this.def * this.player.BktHpKiGiaptutien(Util.BKT(this.player.Bkttutien[1]))
-                    / 100d;
-        }
         // đồ
         for (Integer tl : this.tlDef) {
             this.def += (this.def * tl / 100);
@@ -1848,7 +1843,7 @@ public class NPoint {
             tiemNang -= (tiemNang * 90 / 100); // Giảm nhẹ
         } else if (power >= 80_000_000_000L) {
             tiemNang -= (tiemNang * 85 / 100); // Giảm nhẹ
-        } else if (power >= 60_000_000_000L) {
+        } else if (power >= 40_000_000_000L) {
             tiemNang -= (tiemNang * 40 / 100); // Giảm phạt lớn
         } else if (power >= 30_000_000_000L) {
             tiemNang -= (tiemNang * 40 / 100); // Giảm phạt lớn
