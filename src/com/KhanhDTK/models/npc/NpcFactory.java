@@ -2445,8 +2445,8 @@ public class NpcFactory {
                                     this.createOtherMenu(player, ConstNpc.QUY_DOI,
                                             "|7|Bạn còn : " + player.inventory.gold + "\n"
                                                     + "Muốn quy đổi không",
-                                            "Quy Đổi\n750.000.000\n 1 Thỏi Vàng",
-                                            "Quy Đổi\n7_300.000.000\n 10 Thỏi Vàng");
+                                            "Quy Đổi\n750m\n 1 Thỏi Vàng",
+                                            "Quy Đổi\n7tỷ300m\n 10 Thỏi Vàng");
                                     break;
                             }
 
