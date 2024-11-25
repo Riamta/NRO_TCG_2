@@ -43,7 +43,7 @@ public class ServerNotify extends Thread {
                     sendThongBaoBenDuoi(notifies.remove(0));
                 }
                 if (Util.canDoWithTime(this.lastTimeGK, 500000)) {
-                    sendThongBaoBenDuoi("Test");
+                    sendThongBaoBenDuoi("Juston.gay.com.vn");
                     this.lastTimeGK = System.currentTimeMillis();
                 }
             } catch (Exception e) {

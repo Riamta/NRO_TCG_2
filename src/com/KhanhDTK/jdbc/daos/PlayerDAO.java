@@ -350,11 +350,10 @@ public class PlayerDAO {
                 dataArray.add(player.inventory.gold > Inventory.LIMIT_GOLD
                         ? Inventory.LIMIT_GOLD
                         : player.inventory.gold);
-                dataArray.add((int)player.inventory.gem);
-                dataArray.add((int)player.inventory.ruby);
+                dataArray.add(player.inventory.gem);
+                dataArray.add(player.inventory.ruby);
                 dataArray.add(player.inventory.coupon);
                 dataArray.add(player.inventory.event);
-
                 String inventory = dataArray.toJSONString();
                 dataArray.clear();
 

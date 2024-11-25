@@ -509,8 +509,8 @@ public class Service {
             } else {
                 msg.writer().writeInt((int) pl.inventory.ruby);
             }
-            msg.writer().writeLong(pl.inventory.gem);
-            msg.writer().writeLong(pl.inventory.ruby);
+            msg.writer().writeInt(pl.inventory.gem);
+            msg.writer().writeInt(pl.inventory.ruby);
             pl.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
@@ -1245,8 +1245,8 @@ public class Service {
             } else {
                 msg.writer().writeInt((int) pl.inventory.gold);
             }
-            msg.writer().writeLong(pl.inventory.ruby);
-            msg.writer().writeLong(pl.inventory.gem);
+            msg.writer().writeInt(pl.inventory.ruby);
+            msg.writer().writeInt(pl.inventory.gem);
 
             // --------itemBody---------
             ArrayList<Item> itemsBody = (ArrayList<Item>) pl.inventory.itemsBody;
@@ -2175,8 +2175,8 @@ public class Service {
             } else {
                 msg.writer().writeInt((int) pl.inventory.gold);
             }
-            msg.writer().writeLong(pl.inventory.gem);
-            msg.writer().writeLong(pl.inventory.ruby);
+            msg.writer().writeInt(pl.inventory.gem);
+            msg.writer().writeInt(pl.inventory.ruby);
             pl.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
