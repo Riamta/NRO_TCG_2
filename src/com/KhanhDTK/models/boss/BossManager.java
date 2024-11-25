@@ -195,6 +195,9 @@ public class BossManager implements Runnable {
 
     public Boss createBoss(int bossID) {
         try {
+            if (bossID <= BossID.BROLY + 5 && bossID >= BossID.BROLY) {
+                return new Broly(MapService.gI().getZone(Util.randomMapBossBroly()), 500, 5000);
+            }
             switch (bossID) {
                 case BossID.ANDROID_13:
                     return new Android13();

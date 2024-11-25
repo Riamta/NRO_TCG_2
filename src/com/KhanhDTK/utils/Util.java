@@ -20,6 +20,7 @@ import com.girlkun.network.io.Message;
 import com.KhanhDTK.server.Client;
 import com.KhanhDTK.server.Manager;
 import com.KhanhDTK.services.ItemService;
+import com.KhanhDTK.services.MapService;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
@@ -770,7 +771,14 @@ public class Util {
                 break;
         }
     }
-
+    public static int randomMapBossBroly() {
+        int[] listMap = new int[]{6, 10, 11, 12, 13, 19, 20, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38};
+        int mapId = Util.nextInt(listMap.length);
+        while (!MapService.gI().getZone(mapId).getBosses().isEmpty()) {
+            mapId = Util.nextInt(listMap.length);
+        }
+        return listMap[mapId];
+    }
     public static String phanthuong(int i) {
         switch (i) {
             case 1:

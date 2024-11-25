@@ -3,7 +3,6 @@ package com.KhanhDTK.models.boss;
 import lombok.Builder;
 import lombok.Data;
 
-
 @Data
 public class BossData {
 
@@ -82,12 +81,11 @@ public class BossData {
         this.typeAppear = typeAppear;
     }
 
-
     @Builder
     public BossData(String name, byte gender, int dame, int[] hp,
-                    short[] outfit, int[] mapJoin, int[][] skillTemp,
-                    int secondsRest, String[] textS, String[] textM,
-                    String[] textE) {
+            short[] outfit, int[] mapJoin, int[][] skillTemp,
+            int secondsRest, String[] textS, String[] textM,
+            String[] textE) {
         this.name = name;
         this.gender = gender;
         this.dame = dame;
@@ -96,10 +94,11 @@ public class BossData {
         this.mapJoin = mapJoin;
         this.skillTemp = skillTemp;
         this.secondsRest = secondsRest;
-        this.textS = new String[]{};
-        this.textM = new String[]{};
-        this.textE = new String[]{};
+        this.textS = new String[] {};
+        this.textM = new String[] {};
+        this.textE = new String[] {};
     }
+
 }
 
 /**

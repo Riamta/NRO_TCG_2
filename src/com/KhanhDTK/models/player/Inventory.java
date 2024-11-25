@@ -23,8 +23,8 @@ public class Inventory {
     public List<Item> itemsBoxCrackBall;
 
     public long gold;
-    public int gem;
-    public int ruby;
+    public long gem;
+    public long ruby;
     public int tien;
     public int coupon;
     public int event;
@@ -37,7 +37,7 @@ public class Inventory {
         giftCode = new ArrayList<>();
     }
 
-    public int getGemAndRubyAndTien() {
+    public long getGemAndRubyAndTien() {
         return this.gem + this.ruby + this.tien;
     }
 

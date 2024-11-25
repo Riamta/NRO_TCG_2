@@ -141,10 +141,10 @@ public class PlayerService {
             } catch (Exception e) {
                 msg.writer().writeInt((int) player.inventory.gold);
             }
-            msg.writer().writeInt(player.inventory.gem);//luong
+            msg.writer().writeLong(player.inventory.gem);//luong
             msg.writer().writeInt(player.nPoint.hp);//chp
             msg.writer().writeInt(player.nPoint.mp);//cmp
-            msg.writer().writeInt(player.inventory.ruby);//ruby
+            msg.writer().writeLong(player.inventory.ruby);//ruby
             player.sendMessage(msg);
         } catch (Exception e) {
             Logger.logException(PlayerService.class, e);
