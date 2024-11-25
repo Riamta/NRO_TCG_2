@@ -122,7 +122,7 @@ public class NpcFactory {
                                     "Hướng dẫn\nthêm", "Tham gia", "Từ chối");
                         } else {
                             this.createOtherMenu(player, ConstNpc.MENU_NOT_OPEN_SANTA,
-                                    "Ta có thể giúp gì cho ngươi?", "Hướng dẫn", "Nhận Trứng\nVip Nhất Server",
+                                    "Ta có thể giúp gì cho ngươi?", "Hướng dẫn",
                                     "Từ chối");
                         }
                     }
