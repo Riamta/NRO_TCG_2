@@ -978,10 +978,6 @@ public class TaskService {
                 case ConstTask.TASK_20_5:
                     break;
                 case ConstTask.TASK_20_6:
-                    npcSay(player, ConstNpc.CUI,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //--------------------------------------------------------------
                 case ConstTask.TASK_21_0:
@@ -993,17 +989,9 @@ public class TaskService {
                 case ConstTask.TASK_21_3:
                     break;
                 case ConstTask.TASK_21_4:
-                    npcSay(player, ConstNpc.CUI,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //--------------------------------------------------------------
                 case ConstTask.TASK_22_0:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 case ConstTask.TASK_22_1:
                     break;
@@ -1012,10 +1000,7 @@ public class TaskService {
                 case ConstTask.TASK_22_3:
                     break;
                 case ConstTask.TASK_22_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
+                    break;
                 //--------------------------------------------------------------
                 case ConstTask.TASK_23_0:
                     break;
@@ -1026,10 +1011,6 @@ public class TaskService {
                 case ConstTask.TASK_23_3:
                     break;
                 case ConstTask.TASK_23_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //--------------------------------------------------------------
                 case ConstTask.TASK_24_0:
@@ -1041,10 +1022,6 @@ public class TaskService {
                 case ConstTask.TASK_24_3:
                     break;
                 case ConstTask.TASK_24_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //---------------------------   
                 case ConstTask.TASK_25_0:
@@ -1058,10 +1035,6 @@ public class TaskService {
                 case ConstTask.TASK_25_4:
                     break;
                 case ConstTask.TASK_25_5:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //-----------------
                 case ConstTask.TASK_26_0:
@@ -1073,10 +1046,6 @@ public class TaskService {
                 case ConstTask.TASK_26_3:
                     break;
                 case ConstTask.TASK_26_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //---------------------------------
                 case ConstTask.TASK_27_0:
@@ -1088,10 +1057,6 @@ public class TaskService {
                 case ConstTask.TASK_27_3:
                     break;
                 case ConstTask.TASK_27_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //----
                 case ConstTask.TASK_28_0:
@@ -1105,10 +1070,6 @@ public class TaskService {
                 case ConstTask.TASK_28_4:
                     break;
                 case ConstTask.TASK_28_5:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //-------------------------------
                 case ConstTask.TASK_29_0:
@@ -1120,10 +1081,6 @@ public class TaskService {
                 case ConstTask.TASK_29_3:
                     break;
                 case ConstTask.TASK_29_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 case ConstTask.TASK_30_0:
                     break;
@@ -1136,10 +1093,6 @@ public class TaskService {
                 case ConstTask.TASK_30_4:
                     break;
                 case ConstTask.TASK_30_5:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
                 //-----------------
                 case ConstTask.TASK_31_0:
@@ -1151,10 +1104,6 @@ public class TaskService {
                 case ConstTask.TASK_31_3:
                     break;
                 case ConstTask.TASK_31_4:
-                    npcSay(player, ConstNpc.BUNMA_TL,
-                            "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít\n"
-                            + "Độc Quyền Bởi User Thâm Đít");
                     break;
             }
             InventoryServiceNew.gI().sendItemBags(player);

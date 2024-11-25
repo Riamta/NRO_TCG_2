@@ -865,8 +865,7 @@ public class Controller implements IMessageHandler {
             player.timeoff = 0;
         }
         if (player.vip >= 1 && player.vip < 4) {
-            ServerNotify.gI().notify("Người chơi: " + player.name + ", VIP: "
-                    + player.vip + " Đã vào game");
+            ServerNotify.gI().notify("Người chơi: " + player.name + player.vip + " Đã vào game");
         } else if (player.vip >= 4) {
             ServerNotify.gI().notify("Người chơi: " + player.name + ", SVIP"
                     + " Đã vào game");

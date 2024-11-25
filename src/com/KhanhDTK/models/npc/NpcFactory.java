@@ -2563,7 +2563,7 @@ public class NpcFactory {
                                     break;
                                 case 2:
                                     this.createOtherMenu(player, ConstNpc.NpcThanThu,
-                                            "|4|Thông Tin Đệ Tử 2\n By Nông Viết Thành\n"
+                                            "|4|Thông Tin Đệ Tử 2\n"
                                                     + "|1|Name: " + player.TenThuTrieuHoi
                                                     + "\n|2|Level: " + player.TrieuHoiLevel + " ("
                                                     + (player.TrieuHoiExpThanThu * 100
@@ -9395,7 +9395,7 @@ public class NpcFactory {
                         switch (select) {
                             case 0:
                                 this.createMenuConMeo(player, 20102002, 22630,
-                                        "|7| Admin Ngọc Rồng Alone\b|2| Nông Viết Thành\b|4| Người Đang Chơi: "
+                                        "|7| Admin Ngọc Rồng Alone\b|4| Người Đang Chơi: "
                                                 + Client.gI().getPlayers().size() + "\n" + "|8|Current thread: "
                                                 + (Thread.activeCount() - ServerManager.gI().threadMap) + "\n",
                                         "Ngọc Rồng", "Đệ Tử", "Bảo Trì", "Tìm Kiếm\nPlayer", "Chat All", "Cấp Key",
@@ -9423,7 +9423,7 @@ public class NpcFactory {
                             case 5:
                                 this.createOtherMenu(player, ConstNpc.GOIBOT,
                                         "Menu Buff Bot Server Alone"
-                                                + "\nBy Nông Viết Thành",
+                                                + "\n",
                                         "Bot\nPem Quái", "Bot\nBán Đồ", "Bot\nPem Quái");
 
                                 break;

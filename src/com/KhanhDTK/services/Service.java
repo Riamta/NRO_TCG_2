@@ -1092,7 +1092,7 @@ public class Service {
     public void showthanthu(Player player) {
         if (player.TrieuHoiCapBac != -1) {
             NpcService.gI().createMenuConMeo(player, ConstNpc.NpcThanThu, 22630,
-                    "|4|Thông Tin Đệ Tử 2\n By Nông Viết Thành\n"
+                    "|4|Thông Tin Đệ Tử 2\n"
                             + "|1|Name: " + player.TenThuTrieuHoi
                             + "\n|2|Level: " + player.TrieuHoiLevel + " ("
                             + (player.TrieuHoiExpThanThu * 100 / (3000000L + player.TrieuHoiLevel * 1500000L)) + "%)"

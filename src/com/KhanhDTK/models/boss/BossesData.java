@@ -274,7 +274,7 @@ public class BossesData {
             ConstPlayer.XAYDA, //gender
             new short[]{186, 187, 188, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             13087, //dame
-            new int[]{2509392}, //hp
+            new int[]{5109392}, //hp
             new int[]{80}, //map join
             (int[][]) Util.addArray(FULL_ANTOMIC, FULL_LIENHOAN), //skill
             new String[]{"|-1|Hê hê, cẩn thận đi",
@@ -300,7 +300,7 @@ public class BossesData {
             ConstPlayer.XAYDA, //gender
             new short[]{189, 190, 191, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             14093, //dame
-            new int[]{3076070}, //hp
+            new int[]{10076070}, //hp
             new int[]{80}, //map join
             (int[][]) Util.addArray(FULL_MASENKO, FULL_LIENHOAN), //skill
             new String[]{"|-1|Ta sẽ cho các ngươi thấy đâu mới là sức mạnh của ta!!"}, //text chat 1
@@ -323,7 +323,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{255, 256, 257, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             12087, //dame
-            new int[]{2508907}, //hp
+            new int[]{8508907}, //hp
             new int[]{96, 94, 93}, //map join
             new int[][]{
                 {Skill.THOI_MIEN, 3, 10000},
@@ -357,7 +357,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{249, 250, 251, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             12098, //dame
-            new int[]{2096532}, //hp
+            new int[]{8096532}, //hp
             new int[]{96, 94, 93}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 1000},
@@ -431,8 +431,8 @@ public class BossesData {
             "Android 13", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{252, 253, 254, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            12323, //dame
-            new int[]{13099872}, //hp
+            15323, //dame
+            new int[]{15099872}, //hp
             new int[]{84, 104}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 10000},
@@ -460,8 +460,8 @@ public class BossesData {
             "Android 14", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{246, 247, 248, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            10982, //dame
-            new int[]{12098799}, //hp
+            13982, //dame
+            new int[]{16098799}, //hp
             new int[]{84, 104}, //map jo2in
             new int[][]{
                 {Skill.KAMEJOKO, 7, 10000},
@@ -480,8 +480,8 @@ public class BossesData {
             "Android 15", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{261, 262, 263, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            11292, //dame
-            new int[]{15083922}, //hp
+            14292, //dame
+            new int[]{20083922}, //hp
             new int[]{84, 104}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 10000},
@@ -497,8 +497,8 @@ public class BossesData {
             "Số 17 Pic", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{237, 238, 239, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            10928, //dame
-            new int[]{25083933}, //hp
+            12928, //dame
+            new int[]{30083933}, //hp
             new int[]{97, 98, 99}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Chào! Có Gôku ở đây không?",
@@ -530,7 +530,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{240, 241, 242, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             13984, //dame
-            new int[]{30892828}, //hp
+            new int[]{34892828}, //hp
             new int[]{97, 98, 99}, //map join
             (int[][]) Util.addArray(FULL_KAMEJOKO), //skill
             new String[]{}, //text chat 1
@@ -567,7 +567,7 @@ public class BossesData {
             "Xên bọ hung",
             ConstPlayer.XAYDA,
             new short[]{228, 229, 230, -1, -1, -1},
-            17083,
+            25083,
             new int[]{67806678},
             new int[]{100},
             new int[][]{
@@ -605,7 +605,7 @@ public class BossesData {
             "Xên bọ hung 2",
             ConstPlayer.XAYDA,
             new short[]{231, 232, 233, -1, -1, -1},
-            17999,
+            28999,
             new int[]{80607600},
             new int[]{100},
             new int[][]{
@@ -633,7 +633,7 @@ public class BossesData {
             "Xên hoàn thiện",
             ConstPlayer.XAYDA,
             new short[]{234, 235, 236, -1, -1, -1},
-            18067,
+            38067,
             new int[]{120777600},
             new int[]{100},
             new int[][]{
@@ -668,7 +668,7 @@ public class BossesData {
             "Xên Hoàn Thiện",
             ConstPlayer.XAYDA,
             new short[]{234, 235, 236, -1, -1, -1},
-            21076,
+            40076,
             new int[]{500000000},
             new int[]{103},
             new int[][]{
@@ -702,7 +702,7 @@ public class BossesData {
             "Xên Hoàn Thiện",
             ConstPlayer.XAYDA,
             new short[]{234, 235, 236, -1, -1, -1},
-            23088,
+            43088,
             new int[]{800000000},
             new int[]{103},
             new int[][]{
@@ -733,7 +733,7 @@ public class BossesData {
             "Siêu Xên Hoàn Thiện",
             ConstPlayer.XAYDA,
             new short[]{234, 235, 236, -1, -1, -1},
-            25098,
+            50098,
             new int[]{1000000000},
             new int[]{103},
             new int[][]{

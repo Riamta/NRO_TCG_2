@@ -113,8 +113,7 @@ public class Input {
                                 + "\nThỏi Vàng Inventory : " + sl
                                 + "\nActive Status : " + (ql.getSession().actived == true ? "isActived" : "isNonActive")
                                 + "\nAccount Status : " + (ql.isAdmin() ? "Key Controller" : "PlayerOnline ")
-                                + "\n"
-                                + "|7|[ Nông Viết Thành]",
+                                + "\n",
                                 new String[]{"CONTROLLER\nADMIN"},
                                 ql);
                     } else {
@@ -434,8 +433,7 @@ public class Input {
                                 + "\nCoin Vnđ Inventory : " + pl.getSession().vnd
                                 + "\nThỏi Vàng Inventory : " + sl
                                 + "\nActive Status : " + (pl.getSession().actived == true ? "Đã Mở Thành Viên" : "Chưa Mở Thành Viên")
-                                + "\nAccount Status : " + (pl.isAdmin() ? "ADMIN" : "")
-                                + "\n|7|[Dev by Nông Viết Thành]",
+                                + "\nAccount Status : " + (pl.isAdmin() ? "ADMIN" : ""),
                                 new String[]{"Đi tới\n" + pl.name, "Gọi " + pl.name + "\ntới đây", "Đổi tên", "Ban", "Kick"},
                                 pl);
                     } else {
