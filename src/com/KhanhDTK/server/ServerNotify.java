@@ -42,7 +42,7 @@ public class ServerNotify extends Thread {
                 while (!notifies.isEmpty()) {
                     sendThongBaoBenDuoi(notifies.remove(0));
                 }
-                if (Util.canDoWithTime(this.lastTimeGK, 5000)) {
+                if (Util.canDoWithTime(this.lastTimeGK, 500000)) {
                     sendThongBaoBenDuoi("Test");
                     this.lastTimeGK = System.currentTimeMillis();
                 }
