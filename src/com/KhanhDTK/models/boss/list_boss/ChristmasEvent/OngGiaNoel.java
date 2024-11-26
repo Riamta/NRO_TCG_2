@@ -28,7 +28,7 @@ public class OngGiaNoel extends Boss {
     private long lastTimeDrop;
     private long st;
     private int timeLeave;
-
+    
     public OngGiaNoel() throws Exception {
         super(BossID.ONG_GIA_NOEL, BossesData.ONG_GIA_NOEL);
     }

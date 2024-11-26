@@ -2103,19 +2103,19 @@ public class BossesData {
     public static final BossData ONG_GIA_NOEL = new BossData(
             "Ông già Noel", //name
             ConstPlayer.XAYDA, //gender
-            new short[]{1707, 1708, 1709, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            new short[]{1707,1708,1709, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             5000000, //dame
             new int[]{500}, //hp
-            new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, //map join
+            new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 92, 93, 94, 96, 97, 98, 99, 100, 102, 103, 104, 105, 106, 107, 108, 109, 110}, //map join
             new int[][]{
                 {Skill.TAI_TAO_NANG_LUONG, 7, Util.nextInt(5000, 10000)}},
             new String[]{}, //text chat 1
-            new String[]{"|-1|Mé ri chịch mệt",
+            new String[]{"|-1|Mé ri chít mớt",
                 "|-1|Hô hô hô",
                 "|-1|Giáng sinh vui vẻ!",
-                "|-1|Ngọc Rồng Lính Thủy Đánh Bạc"}, //text chat 2
+                "|-1|Giáng sinh an lành!"}, //text chat 2
             new String[]{"|-1|Giáng sinh vui vẻ!",
-                "|-1|Ngọc Rồng Lính Thủy Đánh Bạc"}, //text chat 3
+                "|-1|Ngọc rồng TCG"}, //text chat 3
             REST_1_M //type appear
     );
     public static final BossData KAIDO_1 = new BossData(
