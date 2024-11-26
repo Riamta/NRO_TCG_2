@@ -11,10 +11,14 @@ import com.KhanhDTK.models.boss.BossStatus;
 import com.KhanhDTK.models.boss.BossesData;
 import com.KhanhDTK.models.boss.BossManager;
 import static com.KhanhDTK.models.boss.BossType.CHRISTMAS_EVENT;
+
+import java.util.Random;
+
 import com.KhanhDTK.models.boss.Boss;
 import com.KhanhDTK.models.map.ItemMap;
 import com.KhanhDTK.models.player.Player;
 import com.KhanhDTK.services.Service;
+import com.KhanhDTK.services.TaskService;
 import com.KhanhDTK.services.func.ChangeMapService;
 import com.KhanhDTK.utils.Logger;
 import com.KhanhDTK.utils.Util;
@@ -26,9 +30,8 @@ public class OngGiaNoel extends Boss {
     private int timeLeave;
 
     public OngGiaNoel() throws Exception {
-        super(CHRISTMAS_EVENT, BossID.ONG_GIA_NOEL, BossesData.ONG_GIA_NOEL);
+        super(BossID.ONG_GIA_NOEL, BossesData.ONG_GIA_NOEL);
     }
-
     @Override
     public void joinMap() {
         if (zoneFinal != null) {
@@ -126,7 +129,6 @@ public class OngGiaNoel extends Boss {
 
     @Override
     public void active() {
-        Logger.log(Logger.RED_BOLD, "ong gia no ellllllllllll");
         this.attack();
     }
 
@@ -186,4 +188,39 @@ public class OngGiaNoel extends Boss {
     @Override
     public void reward(Player plKill) {
     }
-}
+//     @Override
+//     public void reward(Player plKill) {
+//         int[] itemDos = new int[]{16, 16, 559, 556, 558, 560, 562, 564, 566,16, 16, 559, 556, 558, 560, 562, 564, 566, 1389, 563, 16, 16};
+//         int[] NRs = new int[]{16,18};
+//         int randomDo = new Random().nextInt(itemDos.length);
+//         int randomNR = new Random().nextInt(NRs.length);
+//         if (Util.isTrue(7, 100)) {
+//             if (Util.isTrue(3, 50)) {
+//                 Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, 1391, 1, this.location.x, this.location.y, plKill.id));
+//                 return;
+//             }
+//             Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
+//         } else  if (Util.isTrue(50, 100)){
+//             Service.gI().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+//         }
+//         TaskService.gI().checkDoneTaskKillBoss(plKill, this);
+//     }
+
+  
+//    @Override
+//     public void active() {
+//         super.active(); //To change body of generated methods, choose Tools | Templates.
+//         if(Util.canDoWithTime(st,900000)){
+//             this.changeStatus(BossStatus.LEAVE_MAP);
+//         }
+//     }
+//     @Override
+//     public void joinMap() {
+//         super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+//         st= System.currentTimeMillis();
+//     }
+//     private long st;
+
+  
+    
+    }

@@ -1,4 +1,5 @@
 package com.KhanhDTK.models.boss;
+
 import com.KhanhDTK.utils.Logger;
 import com.KhanhDTK.jdbc.daos.GodGK;
 import com.KhanhDTK.models.boss.list_boss.LuyenTap;
@@ -111,9 +112,10 @@ public class BossManager implements Runnable {
         this.bosses = new ArrayList<>();
     }
 
-     public List<Boss> getBosses() {
+    public List<Boss> getBosses() {
         return this.bosses;
     }
+
     private boolean loadedBoss;
     private final List<Boss> bosses;
 
@@ -130,6 +132,8 @@ public class BossManager implements Runnable {
             return;
         }
         try {
+            this.createBoss(BossID.ONG_GIA_NOEL);
+
             this.createBoss(BossID.BROLY);
             this.createBoss(BossID.KING_KONG);
             this.createBoss(BossID.COOLER);
@@ -166,11 +170,10 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.VOICHINNGA);
             this.createBoss(BossID.GACHINCUA);
             this.createBoss(BossID.NGUALOMAO);
-//            this.createBoss(BossID.SON_TINH);
+            // this.createBoss(BossID.SON_TINH);
             this.createBoss(BossID.GOKU_SSJ4);
             this.createBoss(BossID.MAY);
             this.createBoss(BossID.SAN_CA);
-            this.createBoss(BossID.ONG_GIA_NOEL);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -183,8 +186,8 @@ public class BossManager implements Runnable {
     public Boss createBossBdkb(int bossID, int dame, int hp, Zone zone) {
         try {
             switch (bossID) {
-//                case BossID.TRUNG_UY_XANH_LO_BDKB:
-//                    return new TrungUyXanhLoBdkb(dame, hp, zone);
+                // case BossID.TRUNG_UY_XANH_LO_BDKB:
+                // return new TrungUyXanhLoBdkb(dame, hp, zone);
                 default:
                     return null;
             }
@@ -200,6 +203,8 @@ public class BossManager implements Runnable {
                 return new Broly(MapService.gI().getZone(Util.randomMapBossBroly()), 500, 5000);
             }
             switch (bossID) {
+                case BossID.ONG_GIA_NOEL:
+                    return new OngGiaNoel();
                 case BossID.ANDROID_13:
                     return new Android13();
                 case BossID.ANDROID_14:
@@ -336,18 +341,17 @@ public class BossManager implements Runnable {
                     return new Chaien();
                 case BossID.DORAEMON:
                     return new Doraemon();
-//                case BossID.SON_TINH:
-//                    return new Sontinh();
-//                case BossID.THUY_TINH:
-//                    return new Thuytinh();
+                // case BossID.SON_TINH:
+                // return new Sontinh();
+                // case BossID.THUY_TINH:
+                // return new Thuytinh();
                 case BossID.GOKU_SSJ4:
                     return new GokuSsj4();
                 case BossID.MAY:
                     return new May();
                 case BossID.SAN_CA:
                     return new Sanca();
-                case BossID.ONG_GIA_NOEL:
-                    new OngGiaNoel();
+
                 default:
                     return null;
             }
@@ -356,9 +360,13 @@ public class BossManager implements Runnable {
             return null;
         }
     }
+
     public boolean checkBosses(Zone zone, int BossID) {
-        return this.bosses.stream().filter(boss -> boss.id == BossID && boss.zone != null && boss.zone.equals(zone) && !boss.isDie()).findFirst().orElse(null) != null;
+        return this.bosses.stream()
+                .filter(boss -> boss.id == BossID && boss.zone != null && boss.zone.equals(zone) && !boss.isDie())
+                .findFirst().orElse(null) != null;
     }
+
     public boolean existBossOnPlayer(Player player) {
         return player.zone.getBosses().size() > 0;
     }
@@ -430,8 +438,8 @@ public class BossManager implements Runnable {
                     .writeByte(
                             (int) bosses.stream()
                                     .filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
-                                    && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
-                                    && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0]))
+                                            && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
+                                            && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0]))
                                     .count());
             for (int i = 0; i < bosses.size(); i++) {
                 Boss boss = this.bosses.get(i);
@@ -452,20 +460,24 @@ public class BossManager implements Runnable {
                 msg.writer().writeUTF(boss.data[0].getName());
                 if (boss.zone != null) {
                     msg.writer().writeUTF("Sống");
-                    msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " + boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") \nZone: " + boss.zone.zoneId + "\nHP: " + Util.powerToString(boss.nPoint.hp) + "\nDame: " + Util.powerToString(boss.nPoint.dame));
+                    msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " + boss.zone.map.mapName + "("
+                            + boss.zone.map.mapId + ") \nZone: " + boss.zone.zoneId + "\nHP: "
+                            + Util.powerToString(boss.nPoint.hp) + "\nDame: " + Util.powerToString(boss.nPoint.dame));
                 } else {
                     msg.writer().writeUTF("Chết");
-                    msg.writer().writeUTF("Boss Respawn\n|7|Time to Reset : " + (boss.secondsRest <= 0 ? "BossAppear" : boss.secondsRest + " giây"));
+                    msg.writer().writeUTF("Boss Respawn\n|7|Time to Reset : "
+                            + (boss.secondsRest <= 0 ? "BossAppear" : boss.secondsRest + " giây"));
                 }
             }
             player.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
             e.printStackTrace();
-//            Logger.logException(Manager.class, e, "Lỗi show list boss");
+            // Logger.logException(Manager.class, e, "Lỗi show list boss");
         }
     }
-  public void showListBoss(Player player) {
+
+    public void showListBoss(Player player) {
         if (!player.isAdmin() && !player.isAdmin()) {
             return;
         }
@@ -478,11 +490,10 @@ public class BossManager implements Runnable {
             List<Boss> aliveBosses = bosses.stream()
                     .filter(boss -> boss.zone != null)
                     .filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
-                        || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])
-                        || MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
-                        || MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0]))
+                            || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])
+                            || MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
+                            || MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0]))
                     .collect(Collectors.toList());
-            
 
             msg.writer().writeByte(aliveBosses.size());
             for (int i = 0; i < aliveBosses.size(); i++) {
@@ -498,55 +509,64 @@ public class BossManager implements Runnable {
                 msg.writer().writeShort(boss.data[0].getOutfit()[2]);
                 msg.writer().writeUTF(boss.data[0].getName());
 
-                msg.writer().writeUTF(boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") khu " + boss.zone.zoneId + "");
+                msg.writer()
+                        .writeUTF(boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") khu " + boss.zone.zoneId + "");
                 if (boss.zone != null) {
-                    msg.writer().writeUTF(boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") khu " + boss.zone.zoneId + "");
+                    msg.writer().writeUTF(
+                            boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") khu " + boss.zone.zoneId + "");
                 } else {
                     msg.writer().writeUTF("N/A");
                 }
             }
-//                msg.writer().writeShort(boss.data[0].getOutfit()[1]);
-//                msg.writer().writeShort(boss.data[0].getOutfit()[2]);
-//                msg.writer().writeUTF(boss.data[0].getName());
-//                if (boss.zone != null) {
-//                    msg.writer().writeUTF("Sống");
-//                    msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " + boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") \nZone: " + boss.zone.zoneId + "\nHP: " + Util.powerToString(boss.nPoint.hp) + "\nDame: " + Util.powerToString(boss.nPoint.dame));
-//                } else {
-//                    msg.writer().writeUTF("Chết");
-//                    msg.writer().writeUTF("Boss Respawn\n|7|Time to Reset : " + (boss.secondsRest <= 0 ? "BossAppear" : boss.secondsRest + " giây"));
-//                }
-//            }
+            // msg.writer().writeShort(boss.data[0].getOutfit()[1]);
+            // msg.writer().writeShort(boss.data[0].getOutfit()[2]);
+            // msg.writer().writeUTF(boss.data[0].getName());
+            // if (boss.zone != null) {
+            // msg.writer().writeUTF("Sống");
+            // msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " +
+            // boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") \nZone: " +
+            // boss.zone.zoneId + "\nHP: " + Util.powerToString(boss.nPoint.hp) + "\nDame: "
+            // + Util.powerToString(boss.nPoint.dame));
+            // } else {
+            // msg.writer().writeUTF("Chết");
+            // msg.writer().writeUTF("Boss Respawn\n|7|Time to Reset : " + (boss.secondsRest
+            // <= 0 ? "BossAppear" : boss.secondsRest + " giây"));
+            // }
+            // }
             player.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public void dobossmember(Player player) {
         Message msg;
         try {
             msg = new Message(-96);
             msg.writer().writeByte(0);
             msg.writer().writeUTF("Boss");
-            msg.writer().writeByte((int) bosses.stream().filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
-                    //                    && !MapService.gI().isMapTienMon(boss.data[0].getMapJoin()[0])
-                    //                    && !(boss instanceof MiNuong)
-                    && !(boss instanceof AnTrom)
-                    && !MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])
-                    //                    && !MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])).count());
+            msg.writer().writeByte(
+                    (int) bosses.stream().filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
+                            && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
+                            // && !MapService.gI().isMapTienMon(boss.data[0].getMapJoin()[0])
+                            // && !(boss instanceof MiNuong)
+                            && !(boss instanceof AnTrom)
+                            && !MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
+                            && !MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])
+                            // && !MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0])
+                            && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])).count());
             for (int i = 0; i < bosses.size(); i++) {
                 Boss boss = this.bosses.get(i);
                 if (MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
-                        //                        || boss instanceof MiNuong 
+                        // || boss instanceof MiNuong
                         || boss instanceof AnTrom
                         || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])
                         || MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
                         || MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
-                        || MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])) //                        || MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0]) 
-                //                        || MapService.gI().isMapTienMon(boss.data[0].getMapJoin()[0]))
+                        || MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])) // ||
+                                                                                      // MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0])
+                // || MapService.gI().isMapTienMon(boss.data[0].getMapJoin()[0]))
                 {
                     continue;
                 }
@@ -578,7 +598,8 @@ public class BossManager implements Runnable {
     public synchronized void callBoss(Player player, int mapId) {
         try {
             if (BossManager.gI().existBossOnPlayer(player)
-                    || player.zone.items.stream().anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id))
+                    || player.zone.items.stream()
+                            .anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id))
                     || player.zone.getPlayers().stream().anyMatch(p -> p.iDMark.isHoldBlackBall())) {
                 return;
             }
@@ -616,7 +637,8 @@ public class BossManager implements Runnable {
     }
 
     public Boss getBossById(int bossId) {
-        return BossManager.gI().bosses.stream().filter(boss -> boss.id == bossId && !boss.isDie()).findFirst().orElse(null);
+        return BossManager.gI().bosses.stream().filter(boss -> boss.id == bossId && !boss.isDie()).findFirst()
+                .orElse(null);
     }
 
     public static String covertString(String value) {
