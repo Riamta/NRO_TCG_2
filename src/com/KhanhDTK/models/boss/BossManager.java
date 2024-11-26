@@ -1,5 +1,5 @@
 package com.KhanhDTK.models.boss;
-
+import com.KhanhDTK.utils.Logger;
 import com.KhanhDTK.jdbc.daos.GodGK;
 import com.KhanhDTK.models.boss.list_boss.LuyenTap;
 import com.KhanhDTK.models.boss.list_boss.AnTrom;
@@ -22,6 +22,7 @@ import com.KhanhDTK.models.boss.list_boss.cell.SieuBoHung;
 import com.KhanhDTK.models.boss.list_boss.cell.XenBoHung;
 import com.KhanhDTK.models.boss.list_boss.doanh_trai.*;
 import com.KhanhDTK.models.boss.list_boss.Broly.Broly;
+import com.KhanhDTK.models.boss.list_boss.ChristmasEvent.OngGiaNoel;
 import com.KhanhDTK.models.boss.list_boss.Doraemon.Nobita;
 import com.KhanhDTK.models.boss.list_boss.Doraemon.Xeko;
 import com.KhanhDTK.models.boss.list_boss.Doraemon.Xuka;
@@ -67,7 +68,6 @@ import com.KhanhDTK.models.boss.list_boss.cell.xensandetu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import com.KhanhDTK.models.boss.list_boss.AnTrom;
 import com.KhanhDTK.models.boss.list_boss.Kaido.GokuSsj4;
 import com.KhanhDTK.models.boss.list_boss.May;
@@ -107,7 +107,7 @@ public class BossManager implements Runnable {
         return BossManager.I;
     }
 
-    private BossManager() {
+    protected BossManager() {
         this.bosses = new ArrayList<>();
     }
 
@@ -170,6 +170,7 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.GOKU_SSJ4);
             this.createBoss(BossID.MAY);
             this.createBoss(BossID.SAN_CA);
+            this.createBoss(BossID.ONG_GIA_NOEL);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -345,6 +346,8 @@ public class BossManager implements Runnable {
                     return new May();
                 case BossID.SAN_CA:
                     return new Sanca();
+                case BossID.ONG_GIA_NOEL:
+                    new OngGiaNoel();
                 default:
                     return null;
             }
@@ -353,7 +356,9 @@ public class BossManager implements Runnable {
             return null;
         }
     }
-
+    public boolean checkBosses(Zone zone, int BossID) {
+        return this.bosses.stream().filter(boss -> boss.id == BossID && boss.zone != null && boss.zone.equals(zone) && !boss.isDie()).findFirst().orElse(null) != null;
+    }
     public boolean existBossOnPlayer(Player player) {
         return player.zone.getBosses().size() > 0;
     }

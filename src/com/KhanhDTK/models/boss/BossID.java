@@ -221,4 +221,8 @@ public class BossID {
     public static final int XUKA = -220;
     public static final int CHAIEN = -219;
     public static final int XEKO = -218;
+
+        //========================CHRISTMAS EVENT========================
+        public static final int ONG_GIA_NOEL = -690;
+
 }

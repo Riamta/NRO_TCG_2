@@ -11,6 +11,7 @@ import static com.KhanhDTK.models.boss.BossStatus.RESPAWN;
 import static com.KhanhDTK.models.boss.BossStatus.REST;
 import com.KhanhDTK.models.boss.iboss.IBossNew;
 import com.KhanhDTK.models.boss.iboss.IBossOutfit;
+import com.KhanhDTK.models.boss.list_boss.ChristmasEvent.ChristmasEventManager;
 import com.KhanhDTK.models.boss.list_boss.NRD.*;
 import com.KhanhDTK.models.map.ItemMap;
 import com.KhanhDTK.models.map.Zone;
@@ -88,6 +89,61 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
     }
 
+    public Boss(BossType bossType, int id, BossData... data) throws Exception {
+        this.id = id;
+        this.isBoss = true;
+        if (data == null || data.length == 0) {
+            throw new Exception("Dữ liệu boss không hợp lệ");
+        }
+        this.data = data;
+        this.secondsRest = this.data[0].getSecondsRest();
+        this.bossStatus = BossStatus.REST;
+        switch (bossType) {
+            // case YARDART ->
+            //     YardartManager.gI().addBoss(this);
+            // case FINAL ->
+            //     FinalBossManager.gI().addBoss(this);
+            // case SKILLSUMMONED ->
+            //     SkillSummonedManager.gI().addBoss(this);
+            // case BROLY ->
+            //     BrolyManager.gI().addBoss(this);
+            // case PHOBAN ->
+            //     OtherBossManager.gI().addBoss(this);
+            // case PHOBANDT ->
+            //     RedRibbonHQManager.gI().addBoss(this);
+            // case PHOBANBDKB ->
+            //     TreasureUnderSeaManager.gI().addBoss(this);
+            // case PHOBANCDRD ->
+            //     SnakeWayManager.gI().addBoss(this);
+            // case PHOBANKGHD ->
+            //     GasDestroyManager.gI().addBoss(this);
+            // case TRUNGTHU_EVENT ->
+            //     TrungThuEventManager.gI().addBoss(this);
+            // case HALLOWEEN_EVENT ->
+            //     HalloweenEventManager.gI().addBoss(this);
+            case CHRISTMAS_EVENT:
+                ChristmasEventManager.gI().addBoss(this);
+            // case HUNGVUONG_EVENT ->
+            //     HungVuongEventManager.gI().addBoss(this);
+            // case TET_EVENT ->
+            //     LunarNewYearEventManager.gI().addBoss(this);
+        }
+
+        this.bossAppearTogether = new Boss[this.data.length][];
+        for (int i = 0; i < this.bossAppearTogether.length; i++) {
+            if (this.data[i].getBossesAppearTogether() != null) {
+                this.bossAppearTogether[i] = new Boss[this.data[i].getBossesAppearTogether().length];
+                for (int j = 0; j < this.data[i].getBossesAppearTogether().length; j++) {
+                    Boss boss = BossManager.gI().createBoss(this.data[i].getBossesAppearTogether()[j]);
+                    if (boss != null) {
+                        boss.parentBoss = this;
+                        this.bossAppearTogether[i][j] = boss;
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public void initBase() {
         BossData data = this.data[this.currentLevel];
@@ -127,7 +183,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         this.indexChatE = 0;
     }
 
-    //.outfit.
+    // .outfit.
     @Override
     public short getHead() {
         if (effectSkill != null && effectSkill.isMonkey) {
@@ -169,9 +225,10 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     }
 
     public Zone getMapJoin() {
-        int mapId = this.data[this.currentLevel].getMapJoin()[Util.nextInt(0, this.data[this.currentLevel].getMapJoin().length - 1)];
+        int mapId = this.data[this.currentLevel].getMapJoin()[Util.nextInt(0,
+                this.data[this.currentLevel].getMapJoin().length - 1)];
         Zone map = MapService.gI().getMapWithRandZone(mapId);
-        //to do: check boss in map
+        // to do: check boss in map
 
         return map;
     }
@@ -183,7 +240,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public Player getPlayerAttack() {
-        if (this.playerTarger != null && (this.playerTarger.isDie() && !this.isNewPet || !this.name.equals("binn") || !this.zone.equals(this.playerTarger.zone))) {
+        if (this.playerTarger != null && (this.playerTarger.isDie() && !this.isNewPet || !this.name.equals("binn")
+                || !this.zone.equals(this.playerTarger.zone))) {
             this.playerTarger = null;
         }
         if (this.playerTarger == null || Util.canDoWithTime(this.lastTimeTargetPlayer, this.timeTargetPlayer)) {
@@ -207,7 +265,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     @Override
     public void update() {
         super.update();
-//        System.out.println("this status: " + this.bossStatus + " (" + this.id + ")");
+        // System.out.println("this status: " + this.bossStatus + " (" + this.id + ")");
         this.nPoint.mp = this.nPoint.mpg;
         if (this.effectSkill.isHaveEffectSkill()) {
             return;
@@ -255,7 +313,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
     }
 
-    //loop
+    // loop
     @Override
     public void rest() {
         int nextLevel = this.currentLevel + 1;
@@ -326,9 +384,11 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
     }
 
-     protected void notifyJoinMap() {
-        if (this.id >= -22 && this.id <= -20) return;
-        if (this.zone.map.mapId == 140||MapService.gI().isMapMaBu(this.zone.map.mapId) || MapService.gI().isMapBlackBallWar(this.zone.map.mapId))
+    protected void notifyJoinMap() {
+        if (this.id >= -22 && this.id <= -20)
+            return;
+        if (this.zone.map.mapId == 140 || MapService.gI().isMapMaBu(this.zone.map.mapId)
+                || MapService.gI().isMapBlackBallWar(this.zone.map.mapId))
             return;
         ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName);
     }
@@ -371,7 +431,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         if (!Util.canDoWithTime(this.lastTimeChatM, this.timeChatM)) {
             return;
         }
-        String textChat = this.data[this.currentLevel].getTextM()[Util.nextInt(0, this.data[this.currentLevel].getTextM().length - 1)];
+        String textChat = this.data[this.currentLevel].getTextM()[Util.nextInt(0,
+                this.data[this.currentLevel].getTextM().length - 1)];
         int prefix = Integer.parseInt(textChat.substring(1, textChat.lastIndexOf("|")));
         textChat = textChat.substring(textChat.lastIndexOf("|") + 1);
         this.chat(prefix, textChat);
@@ -399,15 +460,18 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                     return;
                 }
                 if (pl != null) {
-                    this.playerSkill.skillSelect = this.playerSkill.skills.get(Util.nextInt(0, this.playerSkill.skills.size() - 1));
+                    this.playerSkill.skillSelect = this.playerSkill.skills
+                            .get(Util.nextInt(0, this.playerSkill.skills.size() - 1));
                     if (Util.getDistance(this, pl) <= this.getRangeCanAttackWithSkillSelect()) {
                         if (Util.isTrue(5, 20)) {
                             if (SkillUtil.isUseSkillChuong(this)) {
                                 this.moveTo(pl.location.x + (Util.getOne(-1, 1) * Util.nextInt(20, 200)),
-                                        Util.nextInt(10) % 2 == 0 ? pl.location.y : pl.location.y - Util.nextInt(0, 70));
+                                        Util.nextInt(10) % 2 == 0 ? pl.location.y
+                                                : pl.location.y - Util.nextInt(0, 70));
                             } else {
                                 this.moveTo(pl.location.x + (Util.getOne(-1, 1) * Util.nextInt(10, 40)),
-                                        Util.nextInt(10) % 2 == 0 ? pl.location.y : pl.location.y - Util.nextInt(0, 50));
+                                        Util.nextInt(10) % 2 == 0 ? pl.location.y
+                                                : pl.location.y - Util.nextInt(0, 50));
                             }
                         }
                         SkillService.gI().useSkill(this, pl, null, null);
@@ -449,13 +513,15 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     }
 
     public void rewardFutureBoss(Player plKill) {
-        int[] itemDos = new int[]{16, 17, 934, 934};
+        int[] itemDos = new int[] { 16, 17, 934, 934 };
         int randomnro = new Random().nextInt(itemDos.length);
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         if (Util.isTrue(70, 100)) {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone, itemDos[randomnro], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, itemDos[randomnro], 1, this.location.x,
+                    zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         } else {
-            Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
+            Service.gI().dropItemMap(this.zone,
+                    Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
 
         }
     }
@@ -463,7 +529,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     public void rewardBossForest(Player plKill) {
         int random = Util.nextInt(100);
         if (random <= 40) {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 674, 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 674, 1, this.location.x,
+                    zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
     }
 
@@ -508,8 +575,16 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
         this.wakeupAnotherBossWhenDisappear();
     }
-    //end loop
+    // end loop
+    public void leaveMapNew() {
+        if (this.data != null) {
+            this.currentLevel = this.data.length;
+        }
+        this.changeStatus(BossStatus.LEAVE_MAP);
+    }
+    public void autoLeaveMap() {
 
+    }
     @Override
     public int injured(Player plAtt, int damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
@@ -551,7 +626,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     public void moveTo(int x, int y) {
         byte dir = (byte) (this.location.x - x < 0 ? 1 : -1);
         byte move = (byte) Util.nextInt(40, 60);
-        PlayerService.gI().playerMove(this, this.location.x + (dir == 1 ? move : -move), y + (Util.isTrue(3, 10) ? -50 : 0));
+        PlayerService.gI().playerMove(this, this.location.x + (dir == 1 ? move : -move),
+                y + (Util.isTrue(3, 10) ? -50 : 0));
     }
 
     public void chat(String text) {
@@ -591,9 +667,11 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void wakeupAnotherBossWhenAppear() {
-        System.out.println(this.name + ":" + this.zone.map.mapName + " khu vực " + this.zone.zoneId + "(" + this.zone.map.mapId + ")");
+        System.out.println(this.name + ":" + this.zone.map.mapName + " khu vực " + this.zone.zoneId + "("
+                + this.zone.map.mapId + ")");
         if (!MapService.gI().isMapMaBu(this.zone.map.mapId) && MapService.gI().isMapBlackBallWar(this.zone.map.mapId)) {
-//            System.out.println("BOSS " + this.name + " : " + this.zone.map.mapName + " khu vực " + this.zone.zoneId + "(" + this.zone.map.mapId + ")");
+            // System.out.println("BOSS " + this.name + " : " + this.zone.map.mapName + "
+            // khu vực " + this.zone.zoneId + "(" + this.zone.map.mapId + ")");
         }
         if (this.bossAppearTogether == null || this.bossAppearTogether[this.currentLevel] == null) {
             return;
@@ -619,7 +697,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void wakeupAnotherBossWhenDisappear() {
-//        System.out.println("NRO KhanhDTK THÔNG BÁO :");
+        // System.out.println("NRO KhanhDTK THÔNG BÁO :");
         System.out.println("Boss " + this.name + " vừa bị tiêu diệt");
     }
 
