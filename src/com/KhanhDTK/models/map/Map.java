@@ -178,6 +178,7 @@ public class Map implements Runnable {
                     switch (mob.tempId) {
                         case ConstMob.HIRUDEGARN:
                             mobZone = new Hirudegarn(mob);
+                            zone.mobs.add(mobZone);
                             break;
                         default:
                             break;
