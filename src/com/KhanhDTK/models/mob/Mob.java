@@ -54,6 +54,7 @@ public class Mob {
     public int status = 5;
 
     public boolean isMobMe;
+    private long timeAttack = 2000;
 
     public Mob(Mob mob) {
         this.point = new MobPoint(this);
@@ -261,7 +262,7 @@ public class Mob {
                 case ConstMap.MAP_KHI_GAS:
                     break;
                 default:
-                    if (Util.canDoWithTime(lastTimeDie, 5000)) {
+                    if (Util.canDoWithTime(lastTimeDie, 2000)) {
                         this.randomSieuQuai();
                         this.hoiSinh();
                         this.sendMobHoiSinh();
@@ -386,7 +387,11 @@ public class Mob {
         }
         return plAttack;
     }
-
+   
+    public boolean isBigBoss() {
+        return (this.tempId == ConstMob.HIRUDEGARN || this.tempId == ConstMob.VUA_BACH_TUOC
+                || this.tempId == ConstMob.ROBOT_BAO_VE || this.tempId == ConstMob.GAU_TUONG_CUOP);
+    }
     // **************************************************************************
     private void mobAttackPlayer(Player player) {
         int dameMob = (int) this.point.getDameAttack();
@@ -399,6 +404,19 @@ public class Mob {
         int dame = player.injured(null, dameMob, false, true);
         this.sendMobAttackMe(player, dame);
         this.sendMobAttackPlayer(player);
+    }
+
+    public void attack() {
+        Player player = getPlayerCanAttack();
+        if (!isDie() && !effectSkill.isHaveEffectSkill() && tempId != ConstMob.MOC_NHAN
+                && tempId != ConstMob.BU_NHIN_MA_QUAI && tempId != ConstMob.CO_MAY_HUY_DIET && !this.isBigBoss()
+                && (this.lvMob < 1 || MapService.gI().isMapPhoBan(this.zone.map.mapId))
+                && Util.canDoWithTime(lastTimeAttackPlayer, timeAttack)) {
+            if (player != null) {
+                this.mobAttackPlayer(player);
+            }
+            this.lastTimeAttackPlayer = System.currentTimeMillis();
+        }
     }
 
     private void sendMobAttackMe(Player player, int dame) {
@@ -614,7 +632,7 @@ public class Mob {
                 list.add(new ItemMap(zone, 76, gold, x, player.location.y, player.id));
             } else if (Util.isTrue(3, 100)) { // thoi vang
                 list.add(new ItemMap(zone, 99, 1, x, player.location.y, player.id));
-            } 
+            }
         }
 
         if (!items.isEmpty()) {

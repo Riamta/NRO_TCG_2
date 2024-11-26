@@ -41,7 +41,9 @@ public class MapService {
         }
         return null;
     }
-
+    public boolean isMapPhoBan(int mapId) {
+        return isMapBanDoKhoBau(mapId) || isMapDoanhTrai(mapId);
+    }
     /**
      * @param tileTypeFocus tile type: top, bot, left, right...
      * @return [tileMapId][tileType]

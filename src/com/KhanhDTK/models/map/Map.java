@@ -1,6 +1,7 @@
 package com.KhanhDTK.models.map;
 
 import com.KhanhDTK.consts.ConstMap;
+import com.KhanhDTK.consts.ConstMob;
 import com.KhanhDTK.models.Template;
 import com.KhanhDTK.models.boss.Boss;
 import com.KhanhDTK.models.boss.BossID;
@@ -12,6 +13,7 @@ import com.KhanhDTK.models.map.doanhtrai.DoanhTrai;
 import com.KhanhDTK.models.map.doanhtrai.DoanhTraiService;
 import com.KhanhDTK.models.map.gas.Gas;
 import com.KhanhDTK.models.mob.Mob;
+import com.KhanhDTK.models.mob.bigboss_list.Hirudegarn;
 import com.KhanhDTK.models.npc.Npc;
 import com.KhanhDTK.models.npc.NpcFactory;
 import com.KhanhDTK.models.player.Player;
@@ -173,6 +175,13 @@ public class Map implements Runnable {
                 mob.setTiemNang();
                 for (Zone zone : this.zones) {
                     Mob mobZone = new Mob(mob);
+                    switch (mob.tempId) {
+                        case ConstMob.HIRUDEGARN:
+                            mobZone = new Hirudegarn(mob);
+                            break;
+                        default:
+                            break;
+                    }
                     mobZone.zone = zone;
                     zone.mobs.add(mobZone);
                 }

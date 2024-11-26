@@ -10,7 +10,7 @@ import com.KhanhDTK.utils.TimeUtil;
 
 public class MapTrung {
 
-    public static final byte HOUR_OPEN_MAP_SATAN = 13;
+    public static final byte HOUR_OPEN_MAP_SATAN = 00;
     public static final byte MIN_OPEN_MAP_SATAN = 0;
     public static final byte SECOND_OPEN_MAP_SATAN = 0;
 

@@ -1817,6 +1817,59 @@ public class Service {
         }
     }
 
+
+    public void sendBigBoss(Zone zone, int action, int size, int id, int dame) {
+        Message msg = null;
+        try {
+            msg = new Message(102);
+            msg.writer().writeByte(action);
+            if (action != 6 && action != 7) {
+                msg.writer().writeByte(size); // SIZE PLAYER ATTACK
+                msg.writer().writeInt(id); // PLAYER ID
+                msg.writer().writeInt(dame); // DAME
+            }
+            sendMessAllPlayerInMap(zone, msg);
+        } catch (Exception e) {
+        } finally {
+            if (msg != null) {
+                msg.cleanup();
+            }
+        }
+    }
+
+    public void sendBigBoss2(Zone zone, int action, Mob bigboss) {
+        Message msg = null;
+        try {
+            msg = new Message(101);
+            msg.writer().writeByte(action);
+            msg.writer().writeShort(bigboss.location.x);
+            msg.writer().writeShort(bigboss.location.y);
+            sendMessAllPlayerInMap(zone, msg);
+        } catch (Exception e) {
+        } finally {
+            if (msg != null) {
+                msg.cleanup();
+            }
+        }
+    }
+
+    public void sendBigBoss2(Player player, int action, Mob bigboss) {
+        Message msg = null;
+        try {
+            msg = new Message(101);
+            msg.writer().writeByte(action);
+            msg.writer().writeShort(bigboss.location.x);
+            msg.writer().writeShort(bigboss.location.y);
+            player.sendMessage(msg);
+        } catch (Exception e) {
+        } finally {
+            if (msg != null) {
+                msg.cleanup();
+            }
+        }
+    }
+
+
     public void Send_Caitrang(Player player) {
         if (player != null) {
             Message msg;

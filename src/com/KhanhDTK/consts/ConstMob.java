@@ -87,4 +87,7 @@ public class ConstMob {
     public static final byte TABURINE_DO = 79;
     public static final byte TRU_INVIS = 82;
 
+
+    public static final byte BU_NHIN_MA_QUAI = 103;
+
 }
