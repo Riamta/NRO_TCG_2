@@ -81,6 +81,8 @@ public class Input {
     public static final int BOTITEM = 206762;
     
     public static final int BOTBOSS = 2067683;
+    public static final int GIVE_CS = 625;
+    public static final int SUB_CS = 626;
 
     private Input() {
 
@@ -835,6 +837,23 @@ public class Input {
         } catch (NumberFormatException e) {
             Service.gI().sendThongBao(player, "Số lượng nhập không hợp lệ");
         }
+    }
+    
+    public void buffcspet(Player pl) {
+        createForm(pl, GIVE_CS, "BUFF CHỈ SỐ ĐỆ TỬ [ TĂNG CS GỐC ]",
+                new SubInput("SỨC MẠNH",ANY),
+                new SubInput("TIỀM NĂNG",ANY),
+                new SubInput("SỨC ĐÁNH",ANY),
+                new SubInput("HP, KI",ANY),
+                new SubInput("CRIT",ANY));
+    }
+    public void subcspet(Player pl) {
+        createForm(pl, SUB_CS, "GIẢM CHỈ SỐ ĐỆ TỬ [ GIẢM CS GỐC ]",
+                new SubInput("GIẢM SỨC MẠNH",ANY),
+                new SubInput("GIẢM TIỀM NĂNG",ANY),
+                new SubInput("GIẢM SỨC ĐÁNH",ANY),
+                new SubInput("GIẢM HP, KI",ANY),
+                new SubInput("GIẢM CRIT",ANY));
     }
 
     public void createForm(Player pl, int typeInput, String title, SubInput... subInputs) {

@@ -1870,12 +1870,12 @@ public class NPoint {
             tiemNang /= 400; // Giảm nhẹ
         } else if (power >= 80_000_000_000L) {
             tiemNang /= 100; // Giảm nhẹ
-        } else if (power >= 60_000_000_000L) {
-            tiemNang /= 50;
-        } else if (power >= 20_000_000_000L) {
-            tiemNang *= 3;
-        } else if (power <= 10_000_000_000L) {
-            tiemNang *= 5; // Tăng 100%
+        } else if (power <= 60_000_000_000L) {
+            tiemNang *= 5;
+        } else if (power <= 40_000_000_000L) {
+            tiemNang *= 10; // Tăng 100%
+        } else {
+            tiemNang *= 1;
         }
         return tiemNang;
     }

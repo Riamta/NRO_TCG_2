@@ -729,6 +729,9 @@ public class Service {
                 System.err.print(DataMobReward);
                 return;
 
+            } else if (text.equals("ad")) {
+                showListPlayer(player);
+                return;
             }
             if (text.equals("skillxd")) {
                 SkillService.gI().learSkillSpecial(player, Skill.LIEN_HOAN_CHUONG);
@@ -887,7 +890,7 @@ public class Service {
                 try {
                     int mapId = Integer.parseInt(text.replace("m", ""));
                     ChangeMapService.gI().changeMapInYard(player, mapId, -1, -1);
-                   
+
                     return;
                 } catch (Exception e) {
 
@@ -1029,6 +1032,44 @@ public class Service {
             msg.cleanup();
         } catch (Exception e) {
             Logger.logException(this.getClass(), e);
+        }
+    }
+
+    public void showListPlayer(Player player) {
+        Message msg;
+        try {
+            msg = new Message(-96);
+            msg.writer().writeByte(1);
+            msg.writer().writeUTF("(" + TimeUtil.getTimeNow("dd/MM/yyyy HH:mm:ss") + ")");
+            msg.writer().writeByte(Client.gI().getPlayers().size());
+            for (int i = 0; i < Client.gI().getPlayers().size(); i++) {
+                Player pl = Client.gI().getPlayers().get(i);
+                if (pl == null) {
+                    pl = player;
+                }
+                msg.writer().writeInt(i + 1);
+                msg.writer().writeInt((int) pl.id);
+                msg.writer().writeShort(pl.getHead());
+                if (player.getSession().version > 214) {
+                    msg.writer().writeShort(-1);
+                }
+                msg.writer().writeShort(pl.getBody());
+                msg.writer().writeShort(pl.getLeg());
+                msg.writer().writeUTF(pl.name);
+                msg.writer().writeUTF(pl.isAdmin() ? "" : "Member");
+                msg.writer().writeUTF("SM: " + Util.powerToString(pl.nPoint.power)
+                        + "\nTN: " + Util.powerToString(pl.nPoint.tiemNang)
+                        + "\nHP: " + Util.powerToString(pl.nPoint.hpMax)
+                        + "\nKI: " + Util.powerToString(pl.nPoint.mpMax)
+                        + "\nSD: " + Util.powerToString(pl.nPoint.dame)
+                        + "\nDEF: " + Util.powerToString(pl.nPoint.def)
+                        + "\nCM: " + pl.nPoint.crit + "%"
+                        + "\n|7|[Map: " + pl.zone.map.mapName + "(" + pl.zone.map.mapId + ") " + "Khu: "
+                        + pl.zone.zoneId + "]");
+            }
+            player.sendMessage(msg);
+            msg.cleanup();
+        } catch (IOException e) {
         }
     }
 
@@ -1355,7 +1396,7 @@ public class Service {
             long paramTemp = param;
             paramTemp = player.nPoint.calSubTNSM_DT(paramTemp);
             player.nPoint.powerUp(paramTemp);
-            player.nPoint.tiemNangUp(paramTemp);
+            player.nPoint.tiemNangUp(param);
 
             Player master = ((Pet) player).master;
             param = master.nPoint.calSubTNSM(param);
@@ -1435,134 +1476,137 @@ public class Service {
                 return "";
         }
     }
-     public void sendPetFollow(Player player, short smallId) {
-    Message msg = new Message(31);
-    try {
-        msg.writer().writeInt((int) player.id);
-        if (smallId == 0) {
-            msg.writer().writeByte(0);
-        } else {
-            msg.writer().writeByte(1);
-            msg.writer().writeShort(smallId);
-            msg.writer().writeByte(1);
 
-            int[] fr = getImageFrames(smallId);
-            msg.writer().writeByte(fr.length);
-            for (int i = 0; i < fr.length; i++) {
-                msg.writer().writeByte(fr[i]);
+    public void sendPetFollow(Player player, short smallId) {
+        Message msg = new Message(31);
+        try {
+            msg.writer().writeInt((int) player.id);
+            if (smallId == 0) {
+                msg.writer().writeByte(0);
+            } else {
+                msg.writer().writeByte(1);
+                msg.writer().writeShort(smallId);
+                msg.writer().writeByte(1);
+
+                int[] fr = getImageFrames(smallId);
+                msg.writer().writeByte(fr.length);
+                for (int i = 0; i < fr.length; i++) {
+                    msg.writer().writeByte(fr[i]);
+                }
+
+                int[] dimensions = getImageDimensions(smallId);
+                msg.writer().writeShort(dimensions[0]);
+                msg.writer().writeShort(dimensions[1]);
             }
+            sendMessAllPlayerInMap(player, msg);
+            msg.cleanup();
+        } catch (Exception e) {
+            e.printStackTrace(); // Thêm lệnh in ra lỗi để debug
+        }
+    }
 
-            int[] dimensions = getImageDimensions(smallId);
-            msg.writer().writeShort(dimensions[0]);
-            msg.writer().writeShort(dimensions[1]);
-        }
-        sendMessAllPlayerInMap(player, msg);
-        msg.cleanup();
-    } catch (Exception e) {
-        e.printStackTrace(); // Thêm lệnh in ra lỗi để debug
-    }
-}
-     private int[] getImageFrames(short smallId) {
-    switch (smallId) {
-        case 16046:
-        case 16048:
-        case 16050:
-        case 16052:
-        case 16054:
-        case 16056:
-        case 16058:
-        case 16060:
-        case 16062:
-        case 16064:
-            return new int[]{0, 1, 2};
-        case 16066:
-        case 16068:
-        case 16070:
-            return new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        case 16072:
-        case 16074:  
-        case 16076:
-        case 16078:
-            return new int[]{0, 1, 2};
-        case 16080:
-            return new int[]{0, 1, 2, 3, 4};
-        case 16082:
-            return new int[]{0, 1, 2, 3, 4, 5};
-        case 16084:
-            return new int[]{0, 1, 2, 3, 4, 5};
-        case 16086:
-            return new int[]{0, 1, 2, 3, 4, 5};
-        case 16088:
-        case 16090:
-        case 16092:
-        case 16094:
-        case 16096:
-        case 16098:
-        case 16100:
-        case 16102:
-        case 16104:
-            return new int[]{0, 1, 2, 3};
-        case 16106:
-            return new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}; 
-        case 16108:
-        case 16110:
-        case 16112:
-            return new int[]{0, 1, 2, 3, 4};     
-        default:
-            return new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+    private int[] getImageFrames(short smallId) {
+        switch (smallId) {
+            case 16046:
+            case 16048:
+            case 16050:
+            case 16052:
+            case 16054:
+            case 16056:
+            case 16058:
+            case 16060:
+            case 16062:
+            case 16064:
+                return new int[] { 0, 1, 2 };
+            case 16066:
+            case 16068:
+            case 16070:
+                return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            case 16072:
+            case 16074:
+            case 16076:
+            case 16078:
+                return new int[] { 0, 1, 2 };
+            case 16080:
+                return new int[] { 0, 1, 2, 3, 4 };
+            case 16082:
+                return new int[] { 0, 1, 2, 3, 4, 5 };
+            case 16084:
+                return new int[] { 0, 1, 2, 3, 4, 5 };
+            case 16086:
+                return new int[] { 0, 1, 2, 3, 4, 5 };
+            case 16088:
+            case 16090:
+            case 16092:
+            case 16094:
+            case 16096:
+            case 16098:
+            case 16100:
+            case 16102:
+            case 16104:
+                return new int[] { 0, 1, 2, 3 };
+            case 16106:
+                return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            case 16108:
+            case 16110:
+            case 16112:
+                return new int[] { 0, 1, 2, 3, 4 };
+            default:
+                return new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         }
     }
-     private int[] getImageDimensions(short smallId) {
-    switch (smallId) {
-        case 16046:
-        case 16048:
-        case 16050:
-        case 16052:
-        case 16054:
-        case 16056:
-        case 16058:
-        case 16060:
-        case 16062:
-        case 16064:
-            return new int[]{45, 50};
-        case 16066:
-        case 16068:
-        case 16070:
-            return new int[]{32, 40};
-        case 16072:
-            return new int[]{22, 21};
-        case 16074:
-            return new int[]{19, 21};
-        case 16076:
-            return new int[]{26, 27};
-        case 16078:
-            return new int[]{20, 20};
-        case 16080:
-            return new int[]{64, 64};
-        case 16082:
-            return new int[]{46, 62};
-        case 16084:
-            return new int[]{31, 29};
-        case 16086:
-            return new int[]{32, 36};
-        case 16088:
-        case 16090:
-        case 16092:
-        case 16094:
-        case 16096:
-        case 16098:
-        case 16100:
-        case 16102:
-        case 16104:
-            return new int[]{20, 20};
-        case 16106:
-            return new int[]{20, 20};
-        case 16108:
-        case 16110:
-        case 16112:
-            return new int[]{20, 20};
-        default:
-            return new int[]{smallId == 15067 ? 65 : 75, smallId == 15067 ? 65 : 75};
+
+    private int[] getImageDimensions(short smallId) {
+        switch (smallId) {
+            case 16046:
+            case 16048:
+            case 16050:
+            case 16052:
+            case 16054:
+            case 16056:
+            case 16058:
+            case 16060:
+            case 16062:
+            case 16064:
+                return new int[] { 45, 50 };
+            case 16066:
+            case 16068:
+            case 16070:
+                return new int[] { 32, 40 };
+            case 16072:
+                return new int[] { 22, 21 };
+            case 16074:
+                return new int[] { 19, 21 };
+            case 16076:
+                return new int[] { 26, 27 };
+            case 16078:
+                return new int[] { 20, 20 };
+            case 16080:
+                return new int[] { 64, 64 };
+            case 16082:
+                return new int[] { 46, 62 };
+            case 16084:
+                return new int[] { 31, 29 };
+            case 16086:
+                return new int[] { 32, 36 };
+            case 16088:
+            case 16090:
+            case 16092:
+            case 16094:
+            case 16096:
+            case 16098:
+            case 16100:
+            case 16102:
+            case 16104:
+                return new int[] { 20, 20 };
+            case 16106:
+                return new int[] { 20, 20 };
+            case 16108:
+            case 16110:
+            case 16112:
+                return new int[] { 20, 20 };
+            default:
+                return new int[] { smallId == 15067 ? 65 : 75, smallId == 15067 ? 65 : 75 };
         }
     }
 

@@ -651,7 +651,7 @@ public class PlayerDAO {
                 String itemTime = dataArray.toJSONString();
                 dataArray.clear();
 
-                dataArray.add(player.vip = 1);
+                dataArray.add(player.vip);
                 dataArray.add(player.timevip);
                 dataArray.add(player.tutien);
                 String data_diem = dataArray.toJSONString();

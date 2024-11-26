@@ -248,6 +248,14 @@ public class ConstNpc {
     public static final int MENU_OPTION_USE_ITEM736 = 736;
     public static final int MENU_OPTION_USE_ITEM1105 = 1105;
 
+    public static final int MODE_PET = 802;
+    public static final int TYPE_PET = 803;
+    public static final int SKILL_PET = 804;
+    public static final int SKILL2_PET = 805;
+    public static final int SKILL3_PET = 806;
+    public static final int SKILL4_PET = 807;
+    public static final int SKILL5_PET = 810;
+
     //index menu rong thieng
     public static final int SHENRON_CONFIRM = 501;
     public static final int SHENRON_1_1 = 502;
