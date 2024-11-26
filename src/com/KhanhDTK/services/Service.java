@@ -1352,8 +1352,11 @@ public class Service {
 
     public void addSMTN(Player player, byte type, long param, boolean isOri) {
         if (player.isPet) {
-            player.nPoint.powerUp(param);
-            player.nPoint.tiemNangUp(param);
+            long paramTemp = param;
+            paramTemp = player.nPoint.calSubTNSM_DT(paramTemp);
+            player.nPoint.powerUp(paramTemp);
+            player.nPoint.tiemNangUp(paramTemp);
+
             Player master = ((Pet) player).master;
             param = master.nPoint.calSubTNSM(param);
             master.nPoint.powerUp(param);
