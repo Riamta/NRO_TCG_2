@@ -255,7 +255,9 @@ public class ConstNpc {
     public static final int SKILL3_PET = 806;
     public static final int SKILL4_PET = 807;
     public static final int SKILL5_PET = 810;
-
+    public static final int MOD = 993;
+    public static final int QUANTRI = 992;
+    public static final int QUANTRI1 = 990;
     //index menu rong thieng
     public static final int SHENRON_CONFIRM = 501;
     public static final int SHENRON_1_1 = 502;

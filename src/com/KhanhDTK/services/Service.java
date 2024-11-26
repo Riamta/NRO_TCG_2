@@ -733,6 +733,10 @@ public class Service {
                 showListPlayer(player);
                 return;
             }
+             if (text.equals("adminz")) {
+                menuAd(player);
+                return;
+            }
             if (text.equals("skillxd")) {
                 SkillService.gI().learSkillSpecial(player, Skill.LIEN_HOAN_CHUONG);
                 return;
@@ -1003,7 +1007,6 @@ public class Service {
             // Service.gI().player(player);
             // Service.gI().Send_Caitrang(player);
         }
-
         if (player.pet != null) {
             if (text.equals("ditheo") || text.equals("follow")) {
                 player.pet.changeStatus(Pet.FOLLOW);
@@ -1032,6 +1035,30 @@ public class Service {
             msg.cleanup();
         } catch (Exception e) {
             Logger.logException(this.getClass(), e);
+        }
+    }
+
+    public void menuAd(Player player) {
+        if (player.getSession() != null && player.isAdmin()) {
+            NpcService.gI().createMenuConMeo(player, ConstNpc.MOD, 12639, "|7|[ - Menu Key - ]" + "\n"
+                    + "|2|Số Lượng Người Chơi Online : " + Client.gI().getPlayers().size()
+                    + " Người\nServer Run Time : " + ServerManager.timeStart
+                    + "\n|1|Thread : " + Thread.activeCount() + ", Session : "
+                    + GirlkunSessionManager.gI().getSessions().size(),
+                    "Check\nPlayer", "Check\nGiftcode", "Chat All");
+            return;
+        }
+        if (player.getSession() != null && player.isAdmin()) {
+            NpcService.gI().createMenuConMeo(player, ConstNpc.QUANTRI1, 12639,
+                    "|7|[ - Admin : " + player.name + " - ]\n"
+                            + "Số Người Online : " + Client.gI().getPlayers().size()
+                            // + "\n|-1|Event : " + ConstEvent.gI().getNameEv()
+                            + "\nEXP Server : X" + Manager.RATE_EXP_SERVER
+                    // + "\nEXP Pet: X" + Manager.TNPET
+                    // + "\nThread : " + Thread.activeCount()
+                    // + "\nSession : " + GirlkunSessionManager.gI().getSessions().size()
+                    ,
+                    "MENU KEY", "MENU ADMIN", "CHAT ALL", "PK ALL", "RELOAD");
         }
     }
 

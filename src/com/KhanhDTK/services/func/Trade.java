@@ -77,14 +77,16 @@ public class Trade {
         } catch (Exception e) {
         }
     }
-    
-    public void addItemBot(Item it){
+
+    public void addItemBot(Item it) {
         itemsTrade2.add(it);
     }
-    
+
     public void addItemTrade(Player pl, byte index, int quantity) {
-//        System.out.println("quantity: " + quantity);
-//        if (pl.getSession().actived) {
+        if (pl.getSession() != null && pl.vip < 0) {
+            Service.gI().sendThongBaoOK(pl, "Khoá giao dịch do không phải là thành viên VIP");
+            return;
+        }
         if (true) {
             if (index == -1) {
                 if (pl.equals(this.player1)) {
@@ -176,26 +178,26 @@ public class Trade {
                 } else {
                     return false;
                 }
-            case 29: //vật phẩm thời gian
+            case 29: // vật phẩm thời gian
                 if (item.template.id >= 381 && item.template.id <= 385) {
                     return false;
                 } else {
                     return true;
                 }
-            case 5: //cải trang
-            case 6: //đậu thần
-            case 7: //sách skill
-            case 8: //vật phẩm nhiệm vụ
-            case 11: //flag bag
-            case 13: //bùa
-            case 22: //vệ tinh
-            case 23: //ván bay
-            case 24: //ván bay vip
-            case 25: //rada dò ngọc
-            
-            case 28: //cờ
-            case 31: //bánh trung thu, bánh tết
-            case 32: //giáp tập luyện
+            case 5: // cải trang
+            case 6: // đậu thần
+            case 7: // sách skill
+            case 8: // vật phẩm nhiệm vụ
+            case 11: // flag bag
+            case 13: // bùa
+            case 22: // vệ tinh
+            case 23: // ván bay
+            case 24: // ván bay vip
+            case 25: // rada dò ngọc
+
+            case 28: // cờ
+            case 31: // bánh trung thu, bánh tết
+            case 32: // giáp tập luyện
                 return true;
             default:
                 return false;
@@ -236,6 +238,10 @@ public class Trade {
     }
 
     public void lockTran(Player pl) {
+        if (pl.getSession() != null && pl.vip < 0) {
+            Service.gI().sendThongBaoOK(pl, "Khoá giao dịch do không phải là thành viên VIP");
+            return;
+        }
         Message msg;
         try {
             msg = new Message(-86);
@@ -271,14 +277,15 @@ public class Trade {
         } catch (Exception e) {
             Logger.logException(Trade.class, e);
         }
-        if(player2.isBot){
-            if(pl.equals(player1)){ 
-                ((Bot) player2).shop.CheckTraDe(itemsTrade1); 
+        if (player2.isBot) {
+            if (pl.equals(player1)) {
+                ((Bot) player2).shop.CheckTraDe(itemsTrade1);
             }
         }
     }
 
     public void acceptTrade() {
+        
         this.accept++;
         if (this.accept == 2) {
             this.startTrade();
@@ -295,14 +302,14 @@ public class Trade {
         if (tradeStatus != SUCCESS) {
             sendNotifyTrade(tradeStatus);
         } else {
-          if(!player2.isBot){
-            for (Item item : itemsTrade1) {
-                if (!InventoryServiceNew.gI().addItemList(itemsBag2, item)) {
-                    tradeStatus = FAIL_NOT_ENOUGH_BAG_P1;
-                    break;
+            if (!player2.isBot) {
+                for (Item item : itemsTrade1) {
+                    if (!InventoryServiceNew.gI().addItemList(itemsBag2, item)) {
+                        tradeStatus = FAIL_NOT_ENOUGH_BAG_P1;
+                        break;
+                    }
                 }
             }
-          }
             if (tradeStatus != SUCCESS) {
                 sendNotifyTrade(tradeStatus);
             } else {
@@ -311,7 +318,7 @@ public class Trade {
                         tradeStatus = FAIL_NOT_ENOUGH_BAG_P2;
                         break;
                     }
-              }
+                }
                 if (tradeStatus == SUCCESS) {
                     player1.inventory.gold += goldTrade2;
                     player2.inventory.gold += goldTrade1;
@@ -321,7 +328,7 @@ public class Trade {
                     player2.inventory.itemsBag = itemsBag2;
 
                     InventoryServiceNew.gI().sendItemBags(player1);
-                    if(!player2.isBot){
+                    if (!player2.isBot) {
                         InventoryServiceNew.gI().sendItemBags(player2);
                     }
                     PlayerService.gI().sendInfoHpMpMoney(player1);
@@ -350,17 +357,23 @@ public class Trade {
                 Service.getInstance().sendThongBao(player2, "Giao dịch thành công");
                 break;
             case FAIL_MAX_GOLD_PLAYER1:
-                Service.getInstance().sendThongBao(player1, "Giao dịch thất bại do số lượng vàng sau giao dịch vượt tối đa");
-                Service.getInstance().sendThongBao(player2, "Giao dịch thất bại do số lượng vàng " + player1.name + " sau vượt tối đa");
+                Service.getInstance().sendThongBao(player1,
+                        "Giao dịch thất bại do số lượng vàng sau giao dịch vượt tối đa");
+                Service.getInstance().sendThongBao(player2,
+                        "Giao dịch thất bại do số lượng vàng " + player1.name + " sau vượt tối đa");
                 break;
             case FAIL_MAX_GOLD_PLAYER2:
-                Service.getInstance().sendThongBao(player2, "Giao dịch thất bại do số lượng vàng sau giao dịch vượt tối đa");
-                Service.getInstance().sendThongBao(player1, "Giao dịch thất bại do số lượng vàng " + player2.name + " sau giao dịch vượt tối đa");
+                Service.getInstance().sendThongBao(player2,
+                        "Giao dịch thất bại do số lượng vàng sau giao dịch vượt tối đa");
+                Service.getInstance().sendThongBao(player1,
+                        "Giao dịch thất bại do số lượng vàng " + player2.name + " sau giao dịch vượt tối đa");
                 break;
             case FAIL_NOT_ENOUGH_BAG_P1:
             case FAIL_NOT_ENOUGH_BAG_P2:
-                Service.getInstance().sendThongBao(player1, "Giao dịch thất bại do 1 trong 2 không đủ ô trống trong hành trang");
-                Service.getInstance().sendThongBao(player2, "Giao dịch thất bại do 1 trong 2 không đủ ô trống trong hành trang");
+                Service.getInstance().sendThongBao(player1,
+                        "Giao dịch thất bại do 1 trong 2 không đủ ô trống trong hành trang");
+                Service.getInstance().sendThongBao(player2,
+                        "Giao dịch thất bại do 1 trong 2 không đủ ô trống trong hành trang");
                 break;
         }
     }
@@ -371,4 +384,3 @@ public class Trade {
         }
     }
 }
-

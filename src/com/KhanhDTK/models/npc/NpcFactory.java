@@ -8659,15 +8659,15 @@ public class NpcFactory {
                         break;
 
                     // case ConstNpc.BUFF_PET:
-                    //     if (select == 0) {
-                    //         Player pl = (Player) PLAYERID_OBJECT.get(player.id);
-                    //         if (pl.pet == null) {
-                    //             PetService.gI().createNormalPet(pl);
-                    //             Service.gI().sendThongBao(player, "Phát đệ tử cho "
-                    //                     + ((Player) PLAYERID_OBJECT.get(player.id)).name + " thành công");
-                    //         }
-                    //     }
-                    //     break;
+                    // if (select == 0) {
+                    // Player pl = (Player) PLAYERID_OBJECT.get(player.id);
+                    // if (pl.pet == null) {
+                    // PetService.gI().createNormalPet(pl);
+                    // Service.gI().sendThongBao(player, "Phát đệ tử cho "
+                    // + ((Player) PLAYERID_OBJECT.get(player.id)).name + " thành công");
+                    // }
+                    // }
+                    // break;
                     case ConstNpc.UP_TOP_ITEM:
                         ShopKyGuiService.gI().StartupItemToTop(player);
                         break;
@@ -8763,6 +8763,23 @@ public class NpcFactory {
 
                         }
                         break;
+                    case ConstNpc.MOD:
+                        switch (select) {
+                            case 0:
+                                Input.gI().createFormFindPlayer(player);
+                                break;
+
+                            case 1:
+                                try {
+                                  //  GiftcodeManager.gI().checkInfomationGiftCode(player);
+                                } catch (Exception ex) {
+                                }
+                                break;
+                            case 2:
+                                Input.gI().ChatAll(player);
+                                break;
+                        }
+                        break;
                     case 20102002:
                         switch (select) {
                             case 0:
@@ -8788,22 +8805,26 @@ public class NpcFactory {
                                     PetService.gI().createNormalPet(player);
                                 } else {
                                     // if (player.pet.typePet == 1) {
-                                    //     PetService.gI().changePicPet(player);
+                                    // PetService.gI().changePicPet(player);
                                     // } else if (player.pet.typePet == 2) {
-                                    //     PetService.gI().changeMabuPet(player);
+                                    // PetService.gI().changeMabuPet(player);
                                     // }
                                     // PetService.gI().changeBerusPet(player);
-                                    NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                    + "\n" + "|7|[ CHANGE ALL FOR PLAYER PET ]\n" + "|1|Player : " + player.name + "\n"
-                                    + "Player Pet : (" + player.pet.typePet + ") " + player.pet.name.substring(1) + "\n"
-                                    + "Tiềm Năng : " + player.pet.nPoint.tiemNang + "\n"
-                                    + "Sức Mạnh : " + player.pet.nPoint.power + "\n"
-                                    + "Dame : " + player.pet.nPoint.dame + "\n"
-                                    + "HP : " + player.pet.nPoint.hp + "\n"
-                                    + "MP : " + player.pet.nPoint.mp + "\n"
-                                    + "Crit : " + player.pet.nPoint.crit + "\n"
-                                    + "|7|Chọn tùy chọn cho : " + player.name + "?",
-                                    "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ", "GIẢM\nCHỈ SỐ");
+                                    NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639,
+                                            "|7|Ngọc Rồng Service" + "\n"
+                                                    + "\n" + "|7|[ CHANGE ALL FOR PLAYER PET ]\n" + "|1|Player : "
+                                                    + player.name + "\n"
+                                                    + "Player Pet : (" + player.pet.typePet + ") "
+                                                    + player.pet.name.substring(1) + "\n"
+                                                    + "Tiềm Năng : " + player.pet.nPoint.tiemNang + "\n"
+                                                    + "Sức Mạnh : " + player.pet.nPoint.power + "\n"
+                                                    + "Dame : " + player.pet.nPoint.dame + "\n"
+                                                    + "HP : " + player.pet.nPoint.hp + "\n"
+                                                    + "MP : " + player.pet.nPoint.mp + "\n"
+                                                    + "Crit : " + player.pet.nPoint.crit + "\n"
+                                                    + "|7|Chọn tùy chọn cho : " + player.name + "?",
+                                            "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ",
+                                            "GIẢM\nCHỈ SỐ");
 
                                 }
                                 break;
@@ -8829,22 +8850,30 @@ public class NpcFactory {
                     case ConstNpc.MODE_PET:
                         switch (select) {
                             case 0:
-                                NpcService.gI().createMenuConMeo(player, ConstNpc.TYPE_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                        + "\n" + "|1|[ CHANGE PET FOR PLAYER ]\n" + "Đổi Pet Giữ Lại Đồ Và Skill\n"
-                                        + "Nếu player chưa có đệ, chọn Pet Mabu sẽ auto tạo đệ thường\n"
-                                        + "|7|Chọn Pet Muốn Đổi Cho Player : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
-                                        "PET\nMABU", "PET\nGOHAN BUU", "PET\nEVIL BUU", "PET\nCUMBER V2", "PET\nGOKU V4", "PET\nVEGETA V4");
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.TYPE_PET, 12639,
+                                        "|7|Ngọc Rồng Service" + "\n"
+                                                + "\n" + "|1|[ CHANGE PET FOR PLAYER ]\n"
+                                                + "Đổi Pet Giữ Lại Đồ Và Skill\n"
+                                                + "Nếu player chưa có đệ, chọn Pet Mabu sẽ auto tạo đệ thường\n"
+                                                + "|7|Chọn Pet Muốn Đổi Cho Player : "
+                                                + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                                        "PET\nMABU", "PET\nGOHAN BUU", "PET\nEVIL BUU", "PET\nCUMBER V2",
+                                        "PET\nGOKU V4", "PET\nVEGETA V4");
                                 break;
                             case 1:
-                                NpcService.gI().createMenuConMeo(player, ConstNpc.BUFF_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                        + "\n" + "|1|[ CHANGE GENDER PET FOR PLAYER ]\n" + "Đổi Gender Pet\n"
-                                        + "|7|Chọn Hành Tinh Pet Muốn Đổi Cho Player : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.BUFF_PET, 12639,
+                                        "|7|Ngọc Rồng Service" + "\n"
+                                                + "\n" + "|1|[ CHANGE GENDER PET FOR PLAYER ]\n" + "Đổi Gender Pet\n"
+                                                + "|7|Chọn Hành Tinh Pet Muốn Đổi Cho Player : "
+                                                + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
                                         "GENDER\nTD", "GENDER\nNM", "GENDER\nXD");
                                 break;
                             case 2:
-                                NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                        + "\n" + "|1|[ CHANGE SKILL PET FOR PLAYER ]\n" + "Đổi Skill Pet\n"
-                                        + "|7|Chọn Skill Pet Muốn Đổi Cho Player : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL_PET, 12639,
+                                        "|7|Ngọc Rồng Service" + "\n"
+                                                + "\n" + "|1|[ CHANGE SKILL PET FOR PLAYER ]\n" + "Đổi Skill Pet\n"
+                                                + "|7|Chọn Skill Pet Muốn Đổi Cho Player : "
+                                                + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
                                         "SKILL 2", "SKILL 3", "SKILL 4", "SKILL 5");
                                 break;
                             case 3:
@@ -9006,12 +9035,14 @@ public class NpcFactory {
                             }
                             pl1.pet.gender = 0;
                             ChangeMapService.gI().exitMap(pl1.pet);
-                            Service.gI().sendThongBaoOK(pl1, "Change Gender Pet Trái Đất by Admin [" + player.name + "]");
+                            Service.gI().sendThongBaoOK(pl1,
+                                    "Change Gender Pet Trái Đất by Admin [" + player.name + "]");
                             Service.gI().sendThongBaoOK(player, "Đổi hành tinh đệ TD cho " + pl1.name + " thành công");
                         }
                         if (select == 1) {
                             if (pl1.pet == null) {
-                                Service.gI().sendThongBao(player, "Player " + ((Player) PLAYERID_OBJECT.get(player.id)).name + " chưa có đệ");
+                                Service.gI().sendThongBao(player,
+                                        "Player " + ((Player) PLAYERID_OBJECT.get(player.id)).name + " chưa có đệ");
                             }
                             pl1.pet.gender = 1;
                             ChangeMapService.gI().exitMap(pl1.pet);
@@ -9030,33 +9061,41 @@ public class NpcFactory {
                         break;
 
                     // case ConstNpc.TANG_PET:
-                    //     Player phatde = ((Player) PLAYERID_OBJECT.get(player.id));
-                    //     int gender = ((Player) PLAYERID_OBJECT.get(player.id)).gender;
-                    //     if (select == 0) {
-                    //         PetService.gI().createMabuPet(phatde, gender);
-                    //         Service.gI().sendThongBaoOK(phatde, "Buff Pet Mabu by Admin [" + player.name + "]");
-                    //         Service.gI().sendThongBaoOK(player, "Buff đệ Mabu cho " + phatde.name + " thành công");
-                    //         break;
-                    //     }
-                    //     if (select == 1) {
-                    //         PetService.gI().createPicPet(phatde, gender);
-                    //         Service.gI().sendThongBaoOK(phatde, "Buff Pet Kefla by Admin [" + player.name + "]");
-                    //         Service.gI().sendThongBaoOK(player, "Buff đệ Kefla cho " + phatde.name + " thành công");
-                    //         break;
-                    //     }
-                    //     if (select == 2) {
-                    //         PetService.gI().createCumberPet(phatde, gender);
-                    //         Service.gI().sendThongBaoOK(phatde, "Buff Pet Cumber by Admin [" + player.name + "]");
-                    //         Service.gI().sendThongBaoOK(player, "Buff đệ Cumber cho " + phatde.name + " thành công");
-                    //         break;
-                    //     }
-                    //     if (select == 3) {
-                    //         PetService.gI().createGokuPet(phatde, gender);
-                    //         Service.gI().sendThongBaoOK(phatde, "Buff Pet Goku by Admin [" + player.name + "]");
-                    //         Service.gI().sendThongBaoOK(player, "Buff đệ Goku cho " + phatde.name + " thành công");
-                    //         break;
-                    //     }
-                    //     break;
+                    // Player phatde = ((Player) PLAYERID_OBJECT.get(player.id));
+                    // int gender = ((Player) PLAYERID_OBJECT.get(player.id)).gender;
+                    // if (select == 0) {
+                    // PetService.gI().createMabuPet(phatde, gender);
+                    // Service.gI().sendThongBaoOK(phatde, "Buff Pet Mabu by Admin [" + player.name
+                    // + "]");
+                    // Service.gI().sendThongBaoOK(player, "Buff đệ Mabu cho " + phatde.name + "
+                    // thành công");
+                    // break;
+                    // }
+                    // if (select == 1) {
+                    // PetService.gI().createPicPet(phatde, gender);
+                    // Service.gI().sendThongBaoOK(phatde, "Buff Pet Kefla by Admin [" + player.name
+                    // + "]");
+                    // Service.gI().sendThongBaoOK(player, "Buff đệ Kefla cho " + phatde.name + "
+                    // thành công");
+                    // break;
+                    // }
+                    // if (select == 2) {
+                    // PetService.gI().createCumberPet(phatde, gender);
+                    // Service.gI().sendThongBaoOK(phatde, "Buff Pet Cumber by Admin [" +
+                    // player.name + "]");
+                    // Service.gI().sendThongBaoOK(player, "Buff đệ Cumber cho " + phatde.name + "
+                    // thành công");
+                    // break;
+                    // }
+                    // if (select == 3) {
+                    // PetService.gI().createGokuPet(phatde, gender);
+                    // Service.gI().sendThongBaoOK(phatde, "Buff Pet Goku by Admin [" + player.name
+                    // + "]");
+                    // Service.gI().sendThongBaoOK(player, "Buff đệ Goku cho " + phatde.name + "
+                    // thành công");
+                    // break;
+                    // }
+                    // break;
 
                     case ConstNpc.SKILL_PET:
                         Player pl2 = (Player) PLAYERID_OBJECT.get(player.id);
@@ -9065,9 +9104,11 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + pl2.name + " chưa có đệ");
                                 return;
                             }
-                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL2_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                    + "\n" + "|7|[ CHANGE SKILL 2 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
-                                    + "Bạn có muốn Đổi Skill 2 Đệ Tử cho : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL2_PET, 12639,
+                                    "|7|Ngọc Rồng Service" + "\n"
+                                            + "\n" + "|7|[ CHANGE SKILL 2 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
+                                            + "Bạn có muốn Đổi Skill 2 Đệ Tử cho : "
+                                            + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
                                     "SKILL\nKAMEJOKO", "SKILL\nAUTOMIC", "SKILL\nMASENKO");
                         }
                         if (select == 1) {
@@ -9075,9 +9116,11 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + pl2.name + " chưa có đệ");
                                 return;
                             }
-                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL3_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                    + "\n" + "|7|[ CHANGE SKILL 3 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
-                                    + "Bạn có muốn Đổi Skill 3 Đệ Tử cho : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL3_PET, 12639,
+                                    "|7|Ngọc Rồng Service" + "\n"
+                                            + "\n" + "|7|[ CHANGE SKILL 3 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
+                                            + "Bạn có muốn Đổi Skill 3 Đệ Tử cho : "
+                                            + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
                                     "SKILL\nTDHS", "SKILL\nTTNL", "SKILL\nKAIOKEN");
                         }
                         if (select == 2) {
@@ -9085,9 +9128,11 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + pl2.name + " chưa có đệ");
                                 return;
                             }
-                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL4_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                    + "\n" + "|7|[ CHANGE SKILL 4 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
-                                    + "Bạn có muốn Đổi Skill 4 Đệ Tử cho : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL4_PET, 12639,
+                                    "|7|Ngọc Rồng Service" + "\n"
+                                            + "\n" + "|7|[ CHANGE SKILL 4 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
+                                            + "Bạn có muốn Đổi Skill 4 Đệ Tử cho : "
+                                            + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
                                     "SKILL\nHÓA KHỈ", "SKILL\nKHIÊN", "SKILL\nĐẺ TRỨNG");
                         }
                         if (select == 3) {
@@ -9095,9 +9140,11 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + pl2.name + " chưa có đệ");
                                 return;
                             }
-                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL5_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                    + "\n" + "|7|[ CHANGE SKILL 5 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
-                                    + "Bạn có muốn Đổi Skill 4 Đệ Tử cho : " + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
+                            NpcService.gI().createMenuConMeo(player, ConstNpc.SKILL5_PET, 12639,
+                                    "|7|Ngọc Rồng Service" + "\n"
+                                            + "\n" + "|7|[ CHANGE SKILL 5 PET FOR PLAYER ]\n" + "|1|Đổi Skill Pet\n"
+                                            + "Bạn có muốn Đổi Skill 4 Đệ Tử cho : "
+                                            + ((Player) PLAYERID_OBJECT.get(player.id)).name + "?",
                                     "SKILL\nDCTT", "SKILL\nTRÓI", "SKILL\nTỰ SÁT");
                         }
                         break;
@@ -9108,21 +9155,24 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + plsk2.name + " chưa có đệ");
                             }
                             plsk2.pet.playerSkill.skills.set(1, SkillUtil.createSkill(Skill.KAMEJOKO, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 2 Kamejoko cho Player : " + plsk2.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 2 Kamejoko cho Player : " + plsk2.name);
                         }
                         if (select == 1) {
                             if (plsk2.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk2.name + " chưa có đệ");
                             }
                             plsk2.pet.playerSkill.skills.set(1, SkillUtil.createSkill(Skill.ANTOMIC, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 2 Automic cho Player : " + plsk2.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 2 Automic cho Player : " + plsk2.name);
                         }
                         if (select == 2) {
                             if (plsk2.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk2.name + " chưa có đệ");
                             }
                             plsk2.pet.playerSkill.skills.set(1, SkillUtil.createSkill(Skill.MASENKO, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 2 Masenko cho Player : " + plsk2.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 2 Masenko cho Player : " + plsk2.name);
                         }
                         break;
                     case ConstNpc.SKILL3_PET:
@@ -9132,21 +9182,24 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + plsk3.name + " chưa có đệ");
                             }
                             plsk3.pet.playerSkill.skills.set(2, SkillUtil.createSkill(Skill.THAI_DUONG_HA_SAN, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 3 TDHS cho Player : " + plsk3.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 3 TDHS cho Player : " + plsk3.name);
                         }
                         if (select == 1) {
                             if (plsk3.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk3.name + " chưa có đệ");
                             }
                             plsk3.pet.playerSkill.skills.set(2, SkillUtil.createSkill(Skill.TAI_TAO_NANG_LUONG, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 3 TTNL cho Player : " + plsk3.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 3 TTNL cho Player : " + plsk3.name);
                         }
                         if (select == 2) {
                             if (plsk3.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk3.name + " chưa có đệ");
                             }
                             plsk3.pet.playerSkill.skills.set(2, SkillUtil.createSkill(Skill.KAIOKEN, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 3 KOK cho Player : " + plsk3.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 3 KOK cho Player : " + plsk3.name);
                         }
                         break;
                     case ConstNpc.SKILL4_PET:
@@ -9156,28 +9209,32 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + plsk4.name + " chưa có đệ");
                             }
                             plsk4.pet.playerSkill.skills.set(3, SkillUtil.createSkill(Skill.BIEN_KHI, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 4 Biến Khỉ cho Player : " + plsk4.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 4 Biến Khỉ cho Player : " + plsk4.name);
                         }
                         if (select == 1) {
                             if (plsk4.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk4.name + " chưa có đệ");
                             }
                             plsk4.pet.playerSkill.skills.set(3, SkillUtil.createSkill(Skill.KHIEN_NANG_LUONG, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 4 Khiên Năng Lượng cho Player : " + plsk4.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 4 Khiên Năng Lượng cho Player : " + plsk4.name);
                         }
                         if (select == 2) {
                             if (plsk4.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk4.name + " chưa có đệ");
                             }
                             plsk4.pet.playerSkill.skills.set(3, SkillUtil.createSkill(Skill.DE_TRUNG, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 4 Đẻ Trứng cho Player : " + plsk4.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 4 Đẻ Trứng cho Player : " + plsk4.name);
                         }
                         if (select == 3) {
                             if (plsk4.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk4.name + " chưa có đệ");
                             }
                             plsk4.pet.playerSkill.skills.set(3, SkillUtil.createSkill(Skill.TU_SAT, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 4 Tự Sát cho Player : " + plsk4.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 4 Tự Sát cho Player : " + plsk4.name);
                         }
                         break;
                     case ConstNpc.SKILL5_PET:
@@ -9187,32 +9244,26 @@ public class NpcFactory {
                                 Service.gI().sendThongBao(player, "Player " + plsk5.name + " chưa có đệ");
                             }
                             plsk5.pet.playerSkill.skills.set(4, SkillUtil.createSkill(Skill.DICH_CHUYEN_TUC_THOI, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 5 DCTT cho Player : " + plsk5.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 5 DCTT cho Player : " + plsk5.name);
                         }
                         if (select == 1) {
                             if (plsk5.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk5.name + " chưa có đệ");
                             }
                             plsk5.pet.playerSkill.skills.set(4, SkillUtil.createSkill(Skill.TROI, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 5 Trói cho Player : " + plsk5.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 5 Trói cho Player : " + plsk5.name);
                         }
                         if (select == 2) {
                             if (plsk5.pet == null) {
                                 Service.gI().sendThongBao(player, "Player " + plsk5.name + " chưa có đệ");
                             }
                             plsk5.pet.playerSkill.skills.set(4, SkillUtil.createSkill(Skill.TU_SAT, 1));
-                            Service.gI().sendThongBaoFromAdmin(player, "|7|Đã Mở Skill 5 Tự Sát cho Player : " + plsk5.name);
+                            Service.gI().sendThongBaoFromAdmin(player,
+                                    "|7|Đã Mở Skill 5 Tự Sát cho Player : " + plsk5.name);
                         }
                         break;
-
-
-
-
-
-
-
-
-
 
                     case 2010200322:
                         switch (select) {
@@ -9797,81 +9848,106 @@ public class NpcFactory {
                                     Input.gI().createFormChangeName(player, plql);
                                     break;
                                 case 1:
-                                    String[] selects = new String[]{"Đồng ý", "Hủy"};
+                                    String[] selects = new String[] { "Đồng ý", "Hủy" };
                                     NpcService.gI().createMenuConMeo(player, ConstNpc.BAN_PLAYER, 12639,
-                                            "|7|[ BANDED PLAYER ]\n" + "Bạn có chắc chắn muốn ban : " + plql.name + "\n", selects, plql);
+                                            "|7|[ BANDED PLAYER ]\n" + "Bạn có chắc chắn muốn ban : " + plql.name
+                                                    + "\n",
+                                            selects, plql);
                                     break;
                                 case 2:
-                                    if (plql.isAdmin2()) {
-                                    }
                                     Service.gI().sendThongBao(player, "Kick người chơi " + plql.name + " thành công");
                                     Client.gI().getPlayers().remove(plql);
                                     Client.gI().kickSession(plql.getSession());
                                     break;
                                 case 3:
-                                    String[] selectss = new String[]{"Đồng ý", "Hủy"};
+                                    String[] selectss = new String[] { "Đồng ý", "Hủy" };
                                     NpcService.gI().createMenuConMeo(player, ConstNpc.ACTIVE, 12639,
-                                            "|7| [ ACTIVE PLAYER ]\n" + "Bạn có chắc chắn muốn Mở Thành Viên cho : " + plql.name, selectss, plql);
+                                            "|7| [ ACTIVE PLAYER ]\n" + "Bạn có chắc chắn muốn Mở Thành Viên cho : "
+                                                    + plql.name,
+                                            selectss, plql);
                                     break;
                                 case 4:
                                     if (plql.pet == null) {
-                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                                + "\n" + "|7|[ CHANGE ALL MODE FOR PLAYER PET ]\n" + "|1|Player : " + plql.name + "\n"
-                                                + "(Player Chưa Có Đệ Tử)" + "\n"
-                                                + "|7|Chọn tùy chọn cho : " + plql.name + "?",
-                                                "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ", "GIẢM\nCHỈ SỐ");
+                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639,
+                                                "|7|Ngọc Rồng Service" + "\n"
+                                                        + "\n" + "|7|[ CHANGE ALL MODE FOR PLAYER PET ]\n"
+                                                        + "|1|Player : " + plql.name + "\n"
+                                                        + "(Player Chưa Có Đệ Tử)" + "\n"
+                                                        + "|7|Chọn tùy chọn cho : " + plql.name + "?",
+                                                "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ",
+                                                "GIẢM\nCHỈ SỐ");
                                         return;
                                     }
                                     if (plql.pet != null) {
-                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
-                                                + "\n" + "|7|[ CHANGE ALL FOR PLAYER PET ]\n" + "|1|Player : " + plql.name + "\n"
-                                                + "Player Pet : (" + plql.pet.typePet + ") " + plql.pet.name.substring(1) + "\n"
-                                                + "Tiềm Năng : " + plql.pet.nPoint.tiemNang + "\n"
-                                                + "Sức Mạnh : " + plql.pet.nPoint.power + "\n"
-                                                + "Dame : " + plql.pet.nPoint.dame + "\n"
-                                                + "HP : " + plql.pet.nPoint.hp + "\n"
-                                                + "MP : " + plql.pet.nPoint.mp + "\n"
-                                                + "Crit : " + plql.pet.nPoint.crit + "\n"
-                                                + "|7|Chọn tùy chọn cho : " + plql.name + "?",
-                                                "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ", "GIẢM\nCHỈ SỐ");
+                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639,
+                                                "|7|Ngọc Rồng Service" + "\n"
+                                                        + "\n" + "|7|[ CHANGE ALL FOR PLAYER PET ]\n" + "|1|Player : "
+                                                        + plql.name + "\n"
+                                                        + "Player Pet : (" + plql.pet.typePet + ") "
+                                                        + plql.pet.name.substring(1) + "\n"
+                                                        + "Tiềm Năng : " + plql.pet.nPoint.tiemNang + "\n"
+                                                        + "Sức Mạnh : " + plql.pet.nPoint.power + "\n"
+                                                        + "Dame : " + plql.pet.nPoint.dame + "\n"
+                                                        + "HP : " + plql.pet.nPoint.hp + "\n"
+                                                        + "MP : " + plql.pet.nPoint.mp + "\n"
+                                                        + "Crit : " + plql.pet.nPoint.crit + "\n"
+                                                        + "|7|Chọn tùy chọn cho : " + plql.name + "?",
+                                                "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ",
+                                                "GIẢM\nCHỈ SỐ");
                                     }
                                     break;
                                 case 5:
                                     // NpcService.gI().createMenuConMeo(player, ConstNpc.BUFFDHIEU, 12639,
-                                    //         "|2|TẶNG DANH HIỆU\nPlayer name : " + plql.name
-                                    //         + "\n|5|Đại Thần : " + (plql.timedh1 > 0 ? Util.msToTime(plql.timedh1) : plql.timedh1 <= 0 ? "Chưa Sở Hữu" : plql.usedh1 == true ? "Đang Bật" : "Đang Tắt")
-                                    //         + "\nTrùm Cuối : " + (plql.timedh2 > 0 ? Util.msToTime(plql.timedh2) : plql.timedh2 <= 0 ? "Chưa Sở Hữu" : plql.usedh2 == true ? "Đang Bật" : "Đang Tắt")
-                                    //         + "\nBất Bại : " + (plql.timedh3 > 0 ? Util.msToTime(plql.timedh3) : plql.timedh3 <= 0 ? "Chưa Sở Hữu" : plql.usedh3 == true ? "Đang Bật" : "Đang Tắt")
-                                    //         + "\nBuôn Ve Chai : " + (plql.dhtang1 == true ? "Đang Bật" : plql.titlett == false ? "Chưa Sở Hữu" : "Đang Tắt")
-                                    //         + "\nFan Cứng : " + (plql.dhtang2 == true ? "Đang Bật" : plql.titlett == false ? "Chưa Sở Hữu" : "Đang Tắt"),
-                                    //         "Đại Thần", "Trùm Cuối", "Bất Bại", "Ve Chai", "Fan Cứng", "Làm Mới");
+                                    // "|2|TẶNG DANH HIỆU\nPlayer name : " + plql.name
+                                    // + "\n|5|Đại Thần : " + (plql.timedh1 > 0 ? Util.msToTime(plql.timedh1) :
+                                    // plql.timedh1 <= 0 ? "Chưa Sở Hữu" : plql.usedh1 == true ? "Đang Bật" : "Đang
+                                    // Tắt")
+                                    // + "\nTrùm Cuối : " + (plql.timedh2 > 0 ? Util.msToTime(plql.timedh2) :
+                                    // plql.timedh2 <= 0 ? "Chưa Sở Hữu" : plql.usedh2 == true ? "Đang Bật" : "Đang
+                                    // Tắt")
+                                    // + "\nBất Bại : " + (plql.timedh3 > 0 ? Util.msToTime(plql.timedh3) :
+                                    // plql.timedh3 <= 0 ? "Chưa Sở Hữu" : plql.usedh3 == true ? "Đang Bật" : "Đang
+                                    // Tắt")
+                                    // + "\nBuôn Ve Chai : " + (plql.dhtang1 == true ? "Đang Bật" : plql.titlett ==
+                                    // false ? "Chưa Sở Hữu" : "Đang Tắt")
+                                    // + "\nFan Cứng : " + (plql.dhtang2 == true ? "Đang Bật" : plql.titlett ==
+                                    // false ? "Chưa Sở Hữu" : "Đang Tắt"),
+                                    // "Đại Thần", "Trùm Cuối", "Bất Bại", "Ve Chai", "Fan Cứng", "Làm Mới");
                                     // break;
                                     break;
                                 case 6:
-                                    String[] selectssss = new String[]{"TRỰC TIẾP\nID < 32", "NEXT MAIN\n" + "ID NV : " + plql.playerTask.taskMain.id, "NEXT SUB\n" + "ID SUB : " + plql.playerTask.taskMain.index};
+                                    String[] selectssss = new String[] { "TRỰC TIẾP\nID < 32",
+                                            "NEXT MAIN\n" + "ID NV : " + plql.playerTask.taskMain.id,
+                                            "NEXT SUB\n" + "ID SUB : " + plql.playerTask.taskMain.index };
                                     NpcService.gI().createMenuConMeo(player, ConstNpc.NEXTNV, 12639,
-                                            "|7| [ NEXT TASK PLAYER ]\n" + "Bạn có chắc chắn muốn NEXT NHIỆM VỤ player : " + plql.name + " không?"
-                                            + "\n" + "|1|TRỰC TIẾP : NEXT TRỰC TIẾP ĐẾN ID ĐÃ CHỌN"
-                                            + "\n" + "NEXT MAIN : NEXT 1 NHIỆM VỤ CHÍNH TIẾP THEO"
-                                            + "\n" + "NEXT SUB : NEXT 1 NHIỆM VỤ NHÁNH TIẾP THEO",
+                                            "|7| [ NEXT TASK PLAYER ]\n"
+                                                    + "Bạn có chắc chắn muốn NEXT NHIỆM VỤ player : " + plql.name
+                                                    + " không?"
+                                                    + "\n" + "|1|TRỰC TIẾP : NEXT TRỰC TIẾP ĐẾN ID ĐÃ CHỌN"
+                                                    + "\n" + "NEXT MAIN : NEXT 1 NHIỆM VỤ CHÍNH TIẾP THEO"
+                                                    + "\n" + "NEXT SUB : NEXT 1 NHIỆM VỤ NHÁNH TIẾP THEO",
                                             selectssss, plql);
                                     break;
                                 case 7:
-//                                    String[] selectsss = new String[]{(plql.isJail() ? "MỞ GIAM" : "GIAM GIỮ"), "Đóng"};
-//                                    NpcService.gI().createMenuConMeo(player, ConstNpc.JAIL, 12639,
-//                                            "|7| [ PRISON ]\n" + "Player " + plql.name + " đang : [" + (plql.getSession().isJail ? "Ở Tù Xám Hối]" : "Chơi Vơi Giữa Cuộc Đời]"), selectsss, plql);
-//                                    break;
+                                    // String[] selectsss = new String[]{(plql.isJail() ? "MỞ GIAM" : "GIAM GIỮ"),
+                                    // "Đóng"};
+                                    // NpcService.gI().createMenuConMeo(player, ConstNpc.JAIL, 12639,
+                                    // "|7| [ PRISON ]\n" + "Player " + plql.name + " đang : [" +
+                                    // (plql.getSession().isJail ? "Ở Tù Xám Hối]" : "Chơi Vơi Giữa Cuộc Đời]"),
+                                    // selectsss, plql);
+                                    // break;
                                 case 8:
                                     if (player.isAdmin()) {
                                         Service.gI().sendThongBao(player, "Bạn không phải Admin Cấp Cao");
                                     } else {
-                                        String[] selectsssss = new String[]{"CẤP QUYỀN", "HỦY QUYỀN"};
+                                        String[] selectsssss = new String[] { "CẤP QUYỀN", "HỦY QUYỀN" };
                                         NpcService.gI().createMenuConMeo(player, ConstNpc.MAKEADMIN, 12639,
-                                                "|7|NÂNG KEY TRỰC TIẾP CHO PLAYER : " + plql.name + "?", selectsssss, plql);
+                                                "|7|NÂNG KEY TRỰC TIẾP CHO PLAYER : " + plql.name + "?", selectsssss,
+                                                plql);
                                     }
                                     break;
                                 case 9:
-                                    //Input.gI().thuitem(player);
+                                    // Input.gI().thuitem(player);
                                     break;
                             }
                         }
