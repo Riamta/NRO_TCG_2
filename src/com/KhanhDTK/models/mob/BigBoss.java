@@ -27,7 +27,7 @@ public class BigBoss extends Mob {
         //         return;
         //     }
         // }
-        // effectSkill.update();
-        // attack();
+        effectSkill.update();
+        attack();
     }
 }
