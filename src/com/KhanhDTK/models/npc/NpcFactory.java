@@ -9794,14 +9794,84 @@ public class NpcFactory {
                         if (plql != null) {
                             switch (select) {
                                 case 0:
+                                    Input.gI().createFormChangeName(player, plql);
+                                    break;
+                                case 1:
+                                    String[] selects = new String[]{"Đồng ý", "Hủy"};
+                                    NpcService.gI().createMenuConMeo(player, ConstNpc.BAN_PLAYER, 12639,
+                                            "|7|[ BANDED PLAYER ]\n" + "Bạn có chắc chắn muốn ban : " + plql.name + "\n", selects, plql);
+                                    break;
+                                case 2:
+                                    if (plql.isAdmin2()) {
+                                    }
+                                    Service.gI().sendThongBao(player, "Kick người chơi " + plql.name + " thành công");
+                                    Client.gI().getPlayers().remove(plql);
+                                    Client.gI().kickSession(plql.getSession());
+                                    break;
+                                case 3:
+                                    String[] selectss = new String[]{"Đồng ý", "Hủy"};
+                                    NpcService.gI().createMenuConMeo(player, ConstNpc.ACTIVE, 12639,
+                                            "|7| [ ACTIVE PLAYER ]\n" + "Bạn có chắc chắn muốn Mở Thành Viên cho : " + plql.name, selectss, plql);
+                                    break;
+                                case 4:
+                                    if (plql.pet == null) {
+                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
+                                                + "\n" + "|7|[ CHANGE ALL MODE FOR PLAYER PET ]\n" + "|1|Player : " + plql.name + "\n"
+                                                + "(Player Chưa Có Đệ Tử)" + "\n"
+                                                + "|7|Chọn tùy chọn cho : " + plql.name + "?",
+                                                "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ", "GIẢM\nCHỈ SỐ");
+                                        return;
+                                    }
+                                    if (plql.pet != null) {
+                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MODE_PET, 12639, "|7|Ngọc Rồng Service" + "\n"
+                                                + "\n" + "|7|[ CHANGE ALL FOR PLAYER PET ]\n" + "|1|Player : " + plql.name + "\n"
+                                                + "Player Pet : (" + plql.pet.typePet + ") " + plql.pet.name.substring(1) + "\n"
+                                                + "Tiềm Năng : " + plql.pet.nPoint.tiemNang + "\n"
+                                                + "Sức Mạnh : " + plql.pet.nPoint.power + "\n"
+                                                + "Dame : " + plql.pet.nPoint.dame + "\n"
+                                                + "HP : " + plql.pet.nPoint.hp + "\n"
+                                                + "MP : " + plql.pet.nPoint.mp + "\n"
+                                                + "Crit : " + plql.pet.nPoint.crit + "\n"
+                                                + "|7|Chọn tùy chọn cho : " + plql.name + "?",
+                                                "CHANGE\nTYPE", "CHANGE\nGENDER", "CHANGE\nSKILL", "BUFF\nCHỈ SỐ", "GIẢM\nCHỈ SỐ");
+                                    }
+                                    break;
+                                case 5:
+                                    // NpcService.gI().createMenuConMeo(player, ConstNpc.BUFFDHIEU, 12639,
+                                    //         "|2|TẶNG DANH HIỆU\nPlayer name : " + plql.name
+                                    //         + "\n|5|Đại Thần : " + (plql.timedh1 > 0 ? Util.msToTime(plql.timedh1) : plql.timedh1 <= 0 ? "Chưa Sở Hữu" : plql.usedh1 == true ? "Đang Bật" : "Đang Tắt")
+                                    //         + "\nTrùm Cuối : " + (plql.timedh2 > 0 ? Util.msToTime(plql.timedh2) : plql.timedh2 <= 0 ? "Chưa Sở Hữu" : plql.usedh2 == true ? "Đang Bật" : "Đang Tắt")
+                                    //         + "\nBất Bại : " + (plql.timedh3 > 0 ? Util.msToTime(plql.timedh3) : plql.timedh3 <= 0 ? "Chưa Sở Hữu" : plql.usedh3 == true ? "Đang Bật" : "Đang Tắt")
+                                    //         + "\nBuôn Ve Chai : " + (plql.dhtang1 == true ? "Đang Bật" : plql.titlett == false ? "Chưa Sở Hữu" : "Đang Tắt")
+                                    //         + "\nFan Cứng : " + (plql.dhtang2 == true ? "Đang Bật" : plql.titlett == false ? "Chưa Sở Hữu" : "Đang Tắt"),
+                                    //         "Đại Thần", "Trùm Cuối", "Bất Bại", "Ve Chai", "Fan Cứng", "Làm Mới");
+                                    // break;
+                                    break;
+                                case 6:
+                                    String[] selectssss = new String[]{"TRỰC TIẾP\nID < 32", "NEXT MAIN\n" + "ID NV : " + plql.playerTask.taskMain.id, "NEXT SUB\n" + "ID SUB : " + plql.playerTask.taskMain.index};
+                                    NpcService.gI().createMenuConMeo(player, ConstNpc.NEXTNV, 12639,
+                                            "|7| [ NEXT TASK PLAYER ]\n" + "Bạn có chắc chắn muốn NEXT NHIỆM VỤ player : " + plql.name + " không?"
+                                            + "\n" + "|1|TRỰC TIẾP : NEXT TRỰC TIẾP ĐẾN ID ĐÃ CHỌN"
+                                            + "\n" + "NEXT MAIN : NEXT 1 NHIỆM VỤ CHÍNH TIẾP THEO"
+                                            + "\n" + "NEXT SUB : NEXT 1 NHIỆM VỤ NHÁNH TIẾP THEO",
+                                            selectssss, plql);
+                                    break;
+                                case 7:
+//                                    String[] selectsss = new String[]{(plql.isJail() ? "MỞ GIAM" : "GIAM GIỮ"), "Đóng"};
+//                                    NpcService.gI().createMenuConMeo(player, ConstNpc.JAIL, 12639,
+//                                            "|7| [ PRISON ]\n" + "Player " + plql.name + " đang : [" + (plql.getSession().isJail ? "Ở Tù Xám Hối]" : "Chơi Vơi Giữa Cuộc Đời]"), selectsss, plql);
+//                                    break;
+                                case 8:
                                     if (player.isAdmin()) {
                                         Service.gI().sendThongBao(player, "Bạn không phải Admin Cấp Cao");
                                     } else {
-                                        String[] selectsssss = new String[] { "CẤP QUYỀN", "HỦY QUYỀN" };
-                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MAKEADMIN, 22630,
-                                                "|7|NÂNG KEY TRỰC TIẾP CHO PLAYER : " + plql.name + "?", selectsssss,
-                                                plql);
+                                        String[] selectsssss = new String[]{"CẤP QUYỀN", "HỦY QUYỀN"};
+                                        NpcService.gI().createMenuConMeo(player, ConstNpc.MAKEADMIN, 12639,
+                                                "|7|NÂNG KEY TRỰC TIẾP CHO PLAYER : " + plql.name + "?", selectsssss, plql);
                                     }
+                                    break;
+                                case 9:
+                                    //Input.gI().thuitem(player);
                                     break;
                             }
                         }
