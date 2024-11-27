@@ -1572,6 +1572,8 @@ public class UseItem {
                 ct.itemOptions.add(new Item.ItemOption(77, Util.nextInt(30, 30)));
                 ct.itemOptions.add(new Item.ItemOption(103, Util.nextInt(30, 30)));
                 ct.itemOptions.add(new Item.ItemOption(5, Util.nextInt(10, 10)));
+                ct.itemOptions.add(new Item.ItemOption(93, Util.nextInt(1, 3)));
+
             }
             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
             InventoryServiceNew.gI().addItemBag(pl, ct);
