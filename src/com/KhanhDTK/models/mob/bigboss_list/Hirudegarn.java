@@ -1,5 +1,10 @@
 package com.KhanhDTK.models.mob.bigboss_list;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
+
 /*
  * @Author: DienCoLamCoi
  * @Description: Điện Cơ Lâm Còi - Chuyên cung cấp thiết bị điện cơ uy tín chất lượng cao.
@@ -12,6 +17,9 @@ import com.KhanhDTK.models.mob.BigBoss;
 import com.KhanhDTK.models.mob.Mob;
 import com.girlkun.network.io.Message;
 import com.KhanhDTK.models.player.Player;
+import com.KhanhDTK.models.reward.ItemMobReward;
+import com.KhanhDTK.models.reward.MobReward;
+import com.KhanhDTK.server.Manager;
 import com.KhanhDTK.services.ItemService;
 import com.KhanhDTK.services.Service;
 import com.KhanhDTK.utils.Util;
@@ -198,4 +206,23 @@ public class Hirudegarn extends BigBoss {
         }
     }
 
+    @Override
+    public List<ItemMap> getItemMobReward(Player player, int x, int yEnd) {
+        List<ItemMap> list = new ArrayList<>();
+        MobReward mobReward = Manager.MOB_REWARDS.get(this.tempId);
+        if (mobReward == null) {
+            return list;
+        }
+        final Calendar rightNow = Calendar.getInstance();
+        int hour = rightNow.get(11);
+        if (MapStart(player.zone.map.mapId)) {
+            return new ArrayList<>();
+        }
+        List<ItemMobReward> items = mobReward.getItemReward();
+        List<ItemMobReward> golds = mobReward.getGoldReward();
+        if (Util.isTrue(15, 100)) { // thoi vang
+            list.add(new ItemMap(zone, 568, 1, x, player.location.y, player.id));
+        }
+        return list;
+    }
 }

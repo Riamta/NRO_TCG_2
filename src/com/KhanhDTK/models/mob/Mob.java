@@ -609,7 +609,7 @@ public class Mob {
         return itemReward;
     }
 
-    private boolean MapStart(int mapid) {
+    public boolean MapStart(int mapid) {
         return mapid == 0;
     }
 

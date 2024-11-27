@@ -394,24 +394,24 @@ public class GodGK {
                                     if (ItemService.gI().isOutOfDateTime(item)) {
                                         item = ItemService.gI().createItemNull();
                                     }
-                                    if (tempId == 884 && flag) {
-                                        List<Item.ItemOption> itemsToRemove = new ArrayList<>();
-                                        for (Item.ItemOption op : item.itemOptions) {
-                                            if (op.optionTemplate.id == 50 || op.optionTemplate.id == 102) {
-                                                itemsToRemove.add(op);
-                                            }
-                                        }
-                                        item.itemOptions.removeAll(itemsToRemove);
-                                    }
+                                    // if (tempId == 884 && flag) {
+                                    //     List<Item.ItemOption> itemsToRemove = new ArrayList<>();
+                                    //     for (Item.ItemOption op : item.itemOptions) {
+                                    //         if (op.optionTemplate.id == 50 || op.optionTemplate.id == 102) {
+                                    //             itemsToRemove.add(op);
+                                    //         }
+                                    //     }
+                                    //     item.itemOptions.removeAll(itemsToRemove);
+                                    // }
                                 } else {
                                     item = ItemService.gI().createItemNull();
                                 }
                                 com.KhanhDTK.models.Event.ResetParamItem.SetBasicChiSo(item);
                                 player.inventory.itemsBody.add(item);
                             }
-                            while (player.inventory.itemsBody.size() <= 11) {
-                                player.inventory.itemsBody.add(ItemService.gI().createItemNull());
-                            }
+                            // while (player.inventory.itemsBody.size() <= 11) {
+                            //     player.inventory.itemsBody.add(ItemService.gI().createItemNull());
+                            // }
                             dataArray.clear();
 
                             //data bag

@@ -18,7 +18,7 @@ public class BigBoss extends Mob {
     public BigBoss(Mob mob) {
         super(mob);
     }
-
+    
     @Override
     public void update() {
         // if (zone.isGoldenFriezaAlive && TimeUtil.is21H()) {

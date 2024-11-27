@@ -167,7 +167,7 @@ public class Broly extends Boss {
             lastTimeDamaged = currentTime;
         }
         damage = Math.min(damage, nPoint.hpMax * 5 / 100);
-        this.nPoint.subHP((int)damage);
+        this.nPoint.subHP((int) damage);
         if (isDie()) {
             Zone zonetemp = this.zone;
             long hptemp = this.nPoint.hpMax;

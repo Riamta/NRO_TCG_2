@@ -1,7 +1,7 @@
 package com.KhanhDTK.consts;
 
 public class ConstNpc {
-    public static final String HUONG_DAN_MAP_SATAN = "Mỗi ngày từ 22h đến 23h tại thành phố Satan sẽ xảy ra 1 cuộc đại chiến\n"
+    public static final String HUONG_DAN_MAP_SATAN = "Mỗi ngày từ 15h đến 23h tại thành phố Satan sẽ xảy ra 1 cuộc đại chiến\n"
         + "Người nào tham gia đánh bại các boss ở map sẽ nhận được những món đồ giá trị\n"
         + "Đồ kích hoạt, trứng đệ Ngộ không,Mabu,Berus,Admin ...\n"
         + "Cố gắng tồn tại và chiến đấu đến Boss cuối cùng\n"

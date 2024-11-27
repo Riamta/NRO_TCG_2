@@ -94,8 +94,8 @@ public class NewBot {
                Mobb mo1 = new Mobb(b);
                b.mo1 = mo1;
                b.boss = bos;
-               int congThem = new Random().nextInt(50000000);
-               b.nPoint.limitPower = 8;
+               int congThem = new Random().nextInt(500000000);
+               b.nPoint.limitPower = 10;
                b.nPoint.power = 1000 + congThem;
                b.nPoint.tiemNang = 20000000 + congThem;
                b.nPoint.dameg = 10;
