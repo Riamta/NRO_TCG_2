@@ -36,6 +36,10 @@ public class Hirudegarn extends BigBoss {
     public void injured(Player plAtt, int damage, boolean dieWhenHpFull) {
         damage = this.point.hp / 100 > 0 ? this.point.hp / 100 : 1;
         super.injured(plAtt, damage, false);
+        if (Util.isTrue(1, 20)) {
+            Service.gI().dropItemMap(this.zone,Util.ratiItem(zone, 568, 1, this.location.x, this.location.y, plAtt.id));
+            return;
+        }
     }
 
     @Override

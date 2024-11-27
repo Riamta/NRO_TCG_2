@@ -540,6 +540,55 @@ public class BossManager implements Runnable {
         }
     }
 
+    public void showListBoss2(Player player) {
+        Message msg;
+        try {
+            msg = new Message(-96);
+            msg.writer().writeByte(0);
+            msg.writer().writeUTF("Boss");
+            msg.writer()
+                    .writeByte(
+                            (int) bosses.stream()
+                                    .filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
+                                            && !MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])
+                                            && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
+                                            && !MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])
+                                            && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0]))
+                                    .count());
+            for (int i = 0; i < bosses.size(); i++) {
+                Boss boss = this.bosses.get(i);
+                if (MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
+                        || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])
+                        || MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
+                        || MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
+                        || MapService.gI().isMapHuyDiet(boss.data[0].getMapJoin()[0])) {
+                    continue;
+                }
+                msg.writer().writeInt((int) boss.id);
+                msg.writer().writeInt((int) boss.id);
+                msg.writer().writeShort(boss.data[0].getOutfit()[0]);
+                if (player.getSession().version > 214) {
+                    msg.writer().writeShort(-1);
+                }
+                msg.writer().writeShort(boss.data[0].getOutfit()[1]);
+                msg.writer().writeShort(boss.data[0].getOutfit()[2]);
+                msg.writer().writeUTF(boss.data[0].getName());
+                if (boss.zone != null) {
+                    msg.writer().writeUTF("Sống");
+                    msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " + boss.zone.map.mapName);
+                } else {
+                    msg.writer().writeUTF("Chết");
+                    msg.writer().writeUTF("Time to Reset : " + boss.secondsRest-- + " Giây");
+                }
+            }
+            player.sendMessage(msg);
+            msg.cleanup();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Logger.logException(Manager.class, e, "Lỗi show list boss");
+        }
+    }
+
     public void dobossmember(Player player) {
         Message msg;
         try {

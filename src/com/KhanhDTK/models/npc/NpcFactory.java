@@ -8771,7 +8771,7 @@ public class NpcFactory {
 
                             case 1:
                                 try {
-                                  //  GiftcodeManager.gI().checkInfomationGiftCode(player);
+                                    // GiftcodeManager.gI().checkInfomationGiftCode(player);
                                 } catch (Exception ex) {
                                 }
                                 break;
@@ -9265,8 +9265,7 @@ public class NpcFactory {
                         }
                         break;
 
-                    
-                        case 2010200322:
+                    case 2010200322:
                         switch (select) {
                             case 0:
                                 Input.gI().createFormSenditem(player);
@@ -9951,6 +9950,50 @@ public class NpcFactory {
                                     // Input.gI().thuitem(player);
                                     break;
                             }
+                        }
+                        break;
+                    case ConstNpc.NEXTNV:
+                        switch (select) {
+                            case 0:
+                                Input.gI().nextnhiemvu(player);
+                                break;
+                            case 1:
+                                if (((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.id > 33) {
+                                    Service.gI().sendThongBao(player, "NHIỆM VỤ QUÁ GIỚI HẠN");
+                                    break;
+                                }
+                                if (((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.id < 33) {
+                                    int nvp = ((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.id;
+                                    TaskService.gI().sendNextTaskMain(((Player) PLAYERID_OBJECT.get(player.id)));
+                                    Service.gI().sendThongBaoOK(((Player) PLAYERID_OBJECT.get(player.id)),
+                                            "Bạn vừa được next nhiệm vụ bởi ADMIN");
+                                    Service.gI().sendThongBaoOK(player,
+                                            "Next NV player [" + ((Player) PLAYERID_OBJECT.get(player.id)).name
+                                                    + "] đến " + nvp + " thành công");
+                                } else {
+                                    Service.gI().sendThongBao(player, "Player không online");
+                                }
+                                break;
+                            case 2:
+                                if (((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.id > 33) {
+                                    Service.gI().sendThongBao(player, "NHIỆM VỤ QUÁ GIỚI HẠN");
+                                    break;
+                                }
+                                if (((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.id < 33) {
+                                    String nvp = ((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.subTasks
+                                            .get(((Player) PLAYERID_OBJECT
+                                                    .get(player.id)).playerTask.taskMain.index).name;
+                                    TaskService.gI().addDoneSubTask(((Player) PLAYERID_OBJECT.get(player.id)),
+                                            ((Player) PLAYERID_OBJECT.get(player.id)).playerTask.taskMain.subTasks
+                                                    .get(((Player) PLAYERID_OBJECT
+                                                            .get(player.id)).playerTask.taskMain.index).maxCount);
+                                    Service.gI().sendThongBaoOK(player,
+                                            "Next NV player [" + ((Player) PLAYERID_OBJECT.get(player.id)).name
+                                                    + "] đến " + nvp + " thành công");
+                                } else {
+                                    Service.gI().sendThongBao(player, "Player không online");
+                                }
+                                break;
                         }
                         break;
                     case ConstNpc.MENU_ADMIN:

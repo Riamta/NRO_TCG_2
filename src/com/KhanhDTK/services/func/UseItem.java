@@ -705,8 +705,11 @@ public class UseItem {
                                         "Chúc mừng bạn nhận được Linh thú " + linhThu.template.name);
                             }
                             break;
-
                         }
+                        case 2087: // máy dò boss
+                            BossManager.gI().showListBoss2(pl);
+                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                            break;
                     }
                     break;
             }

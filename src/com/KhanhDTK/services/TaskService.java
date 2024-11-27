@@ -1165,7 +1165,7 @@ public class TaskService {
     }
 
     // vd: pem đc 1 mộc nhân -> +1 mộc nhân vào nv hiện tại
-    private void addDoneSubTask(Player player, int numDone) {
+    public void addDoneSubTask(Player player, int numDone) {
         player.playerTask.taskMain.subTasks.get(player.playerTask.taskMain.index).count += numDone;
         if (player.playerTask.taskMain.subTasks.get(player.playerTask.taskMain.index).count
                 >= player.playerTask.taskMain.subTasks.get(player.playerTask.taskMain.index).maxCount) {

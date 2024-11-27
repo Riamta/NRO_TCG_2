@@ -88,8 +88,7 @@ public class Broly extends Boss {
         int randomNR = new Random().nextInt(NRs.length);
         if (Util.isTrue(15, 100)) {
             if (Util.isTrue(1, 50)) {
-                Service.gI().dropItemMap(this.zone,
-                        Util.ratiItem(zone, 568, 1, this.location.x, this.location.y, plKill.id));
+                Service.gI().dropItemMap(this.zone,Util.ratiItem(zone, 568, 1, this.location.x, this.location.y, plKill.id));
                 return;
             }
             Service.gI().dropItemMap(this.zone,

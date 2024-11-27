@@ -81,6 +81,7 @@ public class Input {
     public static final int BOTQUAI = 206783;
 
     public static final int BOTITEM = 206762;
+    public static final int NEXTNV = 522;
 
     public static final int BOTBOSS = 2067683;
     public static final int GIVE_CS = 625;
@@ -1090,6 +1091,9 @@ public class Input {
 
     public void createFormNapCoin(Player pl) {
         createForm(pl, NAP_COIN, "Nạp coin", new SubInput("Tên nhân vật", ANY), new SubInput("Số lượng", ANY));
+    }
+    public void nextnhiemvu(Player pl) {
+        createForm(pl, NEXTNV, "NEXT NHIỆM VỤ TRỰC TIẾP",  new SubInput("ID NV (không quá 31)", ANY));
     }
 
     public void createFormSenditem1(Player pl) {
