@@ -1155,7 +1155,7 @@ public class BossesData {
             "Black Goku", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{550, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            93000, //dame
+            100000, //dame
             new int[]{1100000000}, //hp
             new int[]{0, 1, 2, 3, 4, 5, 6, 27, 28, 29}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO, FULL_LIENHOAN), //skill
@@ -1180,8 +1180,8 @@ public class BossesData {
             "Black Goku", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{550, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            93000, //dame
-            new int[]{500000000}, //hp
+            100000, //dame
+            new int[]{800000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là Sôn Gô Ku",
@@ -1206,8 +1206,8 @@ public class BossesData {
             "Thần Huỷ diệt", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{508, 509, 510, 69, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            100000, //dame
-            new int[]{1100000000}, //hp
+            130000, //dame
+            new int[]{1500000000}, //hp
             new int[]{154}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO, FULL_LIENHOAN), //skill
             new String[]{"|-1|Ta là bill",
@@ -1232,8 +1232,8 @@ public class BossesData {
             "Thiên Sứ Whis", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{838, 839, 840, 69, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            110000, //dame
-            new int[]{1100000000}, //hp
+            150000, //dame
+            new int[]{1800000000}, //hp
             new int[]{154}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là whis",
@@ -1257,7 +1257,7 @@ public class BossesData {
             "Thần Huỷ diệt", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{508, 509, 510, 69, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            90000, //dame
+            100000, //dame
             new int[]{1100000000}, //hp
             new int[]{175}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO, FULL_LIENHOAN), //skill
@@ -1322,8 +1322,8 @@ public class BossesData {
             "Thiên Sứ Whis", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{838, 839, 840, 69, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            110000, //dame
-            new int[]{1100000000}, //hp
+            130000, //dame
+            new int[]{1800000000}, //hp
             new int[]{175}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là whis",
@@ -1347,8 +1347,8 @@ public class BossesData {
             "Thần Huỷ diệt", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{508, 509, 510, 69, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            90000, //dame
-            new int[]{1100000000}, //hp
+            100000, //dame
+            new int[]{1600000000}, //hp
             new int[]{176}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO, FULL_LIENHOAN), //skill
             new String[]{"|-1|Ta là bill",
@@ -1373,8 +1373,8 @@ public class BossesData {
             "Thiên Sứ Whis", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{838, 839, 840, 69, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            90000, //dame
-            new int[]{1100000000}, //hp
+            130000, //dame
+            new int[]{1600000000}, //hp
             new int[]{176}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là whis",
@@ -1436,14 +1436,15 @@ public class BossesData {
             "Super Black Goku Rose", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{553, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            90000, //dame
-            new int[]{1100000000}, //hp
+            130000, //dame
+            new int[]{1700000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             new int[][]{
                 {Skill.THAI_DUONG_HA_SAN, 7, 30000},
                 {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                 {Skill.KAMEJOKO, 7, 10000},
-                {Skill.LIEN_HOAN, 7, 10000}},
+                {Skill.LIEN_HOAN, 7, 10000},
+                {Skill.KHIEN_NANG_LUONG, 7, 10000}},
             //skill
             new String[]{}, //text chat 1
             new String[]{"|-1|Ta chính là người mang thân thể của Songoku",
@@ -1463,8 +1464,8 @@ public class BossesData {
             "Super Black Goku Rose", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{553, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            90000, //dame
-            new int[]{1100000000}, //hp
+            130000, //dame
+            new int[]{1500000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             //            new int[]{14}, //map join
             new int[][]{
@@ -1491,8 +1492,8 @@ public class BossesData {
             "Kaioshin Zamas", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{433, 904, 905, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            90000, //dame
-            new int[]{1100000000}, //hp
+            110000, //dame
+            new int[]{1500000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             //            new int[]{14}, //map join
 
