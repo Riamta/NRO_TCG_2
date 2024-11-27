@@ -36,10 +36,6 @@ public class Hirudegarn extends BigBoss {
     public void injured(Player plAtt, int damage, boolean dieWhenHpFull) {
         damage = this.point.hp / 100 > 0 ? this.point.hp / 100 : 1;
         super.injured(plAtt, damage, false);
-        if (Util.isTrue(1, 20)) {
-            Service.gI().dropItemMap(this.zone,Util.ratiItem(zone, 568, 1, this.location.x, this.location.y, plAtt.id));
-            return;
-        }
     }
 
     @Override
@@ -224,9 +220,10 @@ public class Hirudegarn extends BigBoss {
         }
         List<ItemMobReward> items = mobReward.getItemReward();
         List<ItemMobReward> golds = mobReward.getGoldReward();
-        if (Util.isTrue(15, 100)) { // thoi vang
+        if (Util.isTrue(15, 100)) {
             list.add(new ItemMap(zone, 568, 1, x, player.location.y, player.id));
         }
+
         return list;
     }
 }
