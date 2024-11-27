@@ -9265,7 +9265,8 @@ public class NpcFactory {
                         }
                         break;
 
-                    case 2010200322:
+                    
+                        case 2010200322:
                         switch (select) {
                             case 0:
                                 Input.gI().createFormSenditem(player);
