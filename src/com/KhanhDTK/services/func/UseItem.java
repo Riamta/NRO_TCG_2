@@ -335,6 +335,9 @@ public class UseItem {
                         case 1980:// hop qua skh, item 2002 xd
                             UseItem.gI().Hophdt(pl, item);
                             break;
+                        case 915:
+                            UseItem.gI().CapsuleSquidGame(pl, item);
+                            break;
                         // case 1979://hop qua skh, item 2002 xd
                         // pl.cauca.StartCauCa();
                         // break;
@@ -1551,7 +1554,7 @@ public class UseItem {
     private void opencaitrang(Player pl, Item item) {
         if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 1) {
             int id = Util.nextInt(0, 100);
-            int[] rdct = new int[] { 1340 };
+            int[] rdct = new int[] { 1340, 1341, 1342 };
             int[] rdop = new int[] { 5, 14, 94, 108, 97, 106, 107 };
             int randomct = new Random().nextInt(rdct.length);
             int randomop = new Random().nextInt(rdop.length);
@@ -1700,6 +1703,37 @@ public class UseItem {
             InventoryServiceNew.gI().addItemBag(pl, gold);
             Service.getInstance().sendThongBao(pl, "Bạn đã nhận được " + goldt + " Vàng");
         }
+        InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+
+    }
+
+    private void CapsuleSquidGame(Player pl, Item item) {
+        int[] nRandom = new int[] { 14, 15, 16, 1203, 1204, 1205 };
+        int random = new Random().nextInt(nRandom.length);
+
+        Item hopquaCaiTrang = ItemService.gI().createNewItem((short) 1501);
+        hopquaCaiTrang.quantity = 1;
+        InventoryServiceNew.gI().addItemBag(pl, hopquaCaiTrang);
+
+        Item itemReward = ItemService.gI().createNewItem((short) nRandom[random]);
+        itemReward.quantity = 1;
+        if(random == 1203 || random == 1204 || random == 1205){
+            itemReward.itemOptions.add(new ItemOption(50, 10));
+            itemReward.itemOptions.add(new ItemOption(77, 10));
+            itemReward.itemOptions.add(new ItemOption(103, 10));
+            itemReward.itemOptions.add(new ItemOption(101, 25));
+            itemReward.itemOptions.add(new ItemOption(93, 3));
+        }
+        InventoryServiceNew.gI().addItemBag(pl, itemReward);
+
+        Item gold = ItemService.gI().createNewItem((short) 76);
+        int goldt = Util.nextInt(100000000, 1000000000);
+        gold.quantity += goldt;
+        InventoryServiceNew.gI().addItemBag(pl, gold);
+
+        Service.getInstance().sendThongBao(pl,
+                "Bạn đã nhận được " + itemReward.template.name + "\n " + hopquaCaiTrang.template.name + "\n " + goldt
+                        + " Vàng");
         InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
 
     }

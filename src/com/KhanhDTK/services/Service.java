@@ -1422,7 +1422,7 @@ public class Service {
             long paramTemp = param;
             paramTemp = player.nPoint.calSubTNSM_DT(paramTemp);
             player.nPoint.powerUp(paramTemp);
-            player.nPoint.tiemNangUp(param);
+            player.nPoint.tiemNangUp(paramTemp);
 
             Player master = ((Pet) player).master;
             param = master.nPoint.calSubTNSM(param);
