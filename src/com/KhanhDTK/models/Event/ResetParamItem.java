@@ -68,9 +68,9 @@ public class ResetParamItem {
     }
 
     public static int GetBasicChiSo(int type, int level, int typeitem, int gender) {
-        if (gender == 3) {
-            gender = 2;
-        }
+        // if (gender == 3) {
+        //     gender = 2;
+        // }
         if (type == 1) {
             if (level == 0) {
                 return ChiSoQuan[typeitem][gender];

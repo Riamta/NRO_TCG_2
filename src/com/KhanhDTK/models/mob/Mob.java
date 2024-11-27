@@ -649,6 +649,7 @@ public class Mob {
                 list.add(itemMap);
             }
         }
+        // quan than linh
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
             if (Util.isTrue(5, 90000)) {
                 Item Quanthanlinh = ItemService.gI().createNewItem((short) (556));

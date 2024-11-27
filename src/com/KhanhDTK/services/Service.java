@@ -1287,8 +1287,7 @@ public class Service {
             msg.writer().writeByte(pl.playerTask.taskMain.id);
             msg.writer().writeByte(pl.gender);
             msg.writer().writeShort(pl.head);
-            msg.writer().writeUTF(
-                    pl.vip < 4 ? "" + pl.vip + "" + pl.name : pl.vip == 4 ? "" + pl.name : pl.name);
+            msg.writer().writeUTF(pl.name);
             msg.writer().writeByte(0); // cPK
             msg.writer().writeByte(pl.typePk);
             msg.writer().writeLong(pl.nPoint.power);
