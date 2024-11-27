@@ -452,8 +452,8 @@ public class InventoryServiceNew {
 
     public void itemBagToPetBody(Player player, int index) {
         if (player.pet != null && player.pet.nPoint.power >= 1500000) {
-            if (index < 8) {
-                Service.gI().sendThongBaoOK(player, "Có lỗi xãy ra");
+            if (index < 0) {
+                Service.gI().sendThongBaoOK(player, "Không thể thực hiện");
                 return;
             }
             Item item = player.inventory.itemsBag.get(index);

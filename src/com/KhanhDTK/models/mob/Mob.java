@@ -387,11 +387,12 @@ public class Mob {
         }
         return plAttack;
     }
-   
+
     public boolean isBigBoss() {
         return (this.tempId == ConstMob.HIRUDEGARN || this.tempId == ConstMob.VUA_BACH_TUOC
                 || this.tempId == ConstMob.ROBOT_BAO_VE || this.tempId == ConstMob.GAU_TUONG_CUOP);
     }
+
     // **************************************************************************
     private void mobAttackPlayer(Player player) {
         int dameMob = (int) this.point.getDameAttack();
@@ -630,8 +631,10 @@ public class Mob {
             if (Util.isTrue(50, 100)) { // vàng từ quái tất cả map
                 int gold = Util.nextInt(100000, 500000);
                 list.add(new ItemMap(zone, 76, gold, x, player.location.y, player.id));
-            } else if (Util.isTrue(3, 100)) { // thoi vang
-                list.add(new ItemMap(zone, 99, 1, x, player.location.y, player.id));
+            } else if (Util.isTrue(1, 200)) { // thoi vang
+                list.add(new ItemMap(zone, 457, 1, x, player.location.y, player.id));
+            } else if (Util.isTrue(20, 100)) { // thoi vang
+                list.add(new ItemMap(zone, 77, Util.nextInt(1, 20), x, player.location.y, player.id));
             }
         }
 
