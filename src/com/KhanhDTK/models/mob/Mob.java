@@ -531,9 +531,10 @@ public class Mob {
         if (!player.isPet && !player.isNewPet && !player.isBot) {
             if (player.charms.tdThuHut > System.currentTimeMillis()) {
                 for (ItemMap item : items) {
-                    if (item.itemTemplate.id != 590) {
-                        ItemMapService.gI().pickItem(player, item.itemMapId, true);
-                    }
+                    // if (item.itemTemplate.id != 590) {
+                    // ItemMapService.gI().pickItem(player, item.itemMapId, true);
+                    // }
+                    ItemMapService.gI().pickItem(player, item.itemMapId, true);
                 }
             }
         } else if (player.isTrieuhoipet) {
@@ -545,9 +546,10 @@ public class Mob {
         } else {
             if (((Pet) player).master.charms.tdThuHut > System.currentTimeMillis()) {
                 for (ItemMap item : items) {
-                    if (item.itemTemplate.id != 590) {
-                        ItemMapService.gI().pickItem(((Pet) player).master, item.itemMapId, true);
-                    }
+                    // if (item.itemTemplate.id != 590) {
+                    // ItemMapService.gI().pickItem(((Pet) player).master, item.itemMapId, true);
+                    // }
+                    ItemMapService.gI().pickItem(((Pet) player).master, item.itemMapId, true);
                 }
             }
         }
@@ -846,13 +848,13 @@ public class Mob {
         if (player.cFlag >= 1 && Util.isTrue(100, 100) && this.tempId == 0 && hour != 1 && hour != 3 && hour != 5
                 && hour != 7 && hour != 9 && hour != 11 && hour != 13 && hour != 15 && hour != 17 && hour != 19
                 && hour != 21 && hour != 23) { // up bí kíp
-            list.add(new ItemMap(zone, 590, 1, x, player.location.y, player.id));// cai nay sua sau nha
+            list.add(new ItemMap(zone, 590, 2, x, player.location.y, player.id));// cai nay sua sau nha
             if (Util.isTrue(50, 100) && this.tempId == 0) { // up bí kíp
-                list.add(new ItemMap(zone, 590, 1, x, player.location.y, player.id));
+                list.add(new ItemMap(zone, 590, 2, x, player.location.y, player.id));
                 if (Util.isTrue(50, 100) && this.tempId == 0) { // up bí kíp
-                    list.add(new ItemMap(zone, 590, 1, x, player.location.y, player.id));
+                    list.add(new ItemMap(zone, 590, 2, x, player.location.y, player.id));
                     if (Util.isTrue(50, 100) && this.tempId == 0) { // up bí kíp
-                        list.add(new ItemMap(zone, 590, 1, x, player.location.y, player.id));
+                        list.add(new ItemMap(zone, 590, 2, x, player.location.y, player.id));
                     }
                 }
             }
