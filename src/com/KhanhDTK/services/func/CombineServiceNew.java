@@ -4694,7 +4694,7 @@ public class CombineServiceNew {
             case PHAN_RA_SACH:
                 return "Vào hành trang chọn\n1 sách cần phân rã";
             case DOI_DIEM:
-                return "Vào hành trang\nChọn x59 Thức Ăn\nSau đó chọn 'Nâng cấp'";
+                return "Vào hành trang\nChọn x99 Thức Ăn\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_CHAN_MENH:
                 return "Vào hành trang\nChọn Chân mệnh muốn nâng cấp\nChọn Đá Hoàng Kim\n"
                         + "Sau đó chọn 'Nâng cấp'\n"
