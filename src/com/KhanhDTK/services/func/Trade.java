@@ -61,6 +61,7 @@ public class Trade {
             Service.getInstance().sendThongBao(player1, "Chỉ thành viên VIP mới có thể giao dịch");
             Service.getInstance().sendThongBao(player2, "Chỉ thành viên VIP mới có thể giao dịch");
             return;
+        }
         this.lastTimeStart = System.currentTimeMillis();
         this.start = true;
         Message msg;
