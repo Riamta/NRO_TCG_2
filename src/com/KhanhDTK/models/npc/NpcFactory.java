@@ -6122,7 +6122,12 @@ public class NpcFactory {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU,
                             "Thử đánh với ta xem nào.\nNgươi còn 1 lượt cơ mà.",
                             "Nói chuyện", "Học tuyệt kỹ", "từ chối");
+                } else if (this.mapId == 48) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU,
+                            "Đã tìm đủ nguyên liệu cho tôi chưa?\n Tôi sẽ giúp cậu mạnh lên kha khá đấy!", "Hướng Dẫn",
+                            "Đổi Thức Ăn\nLấy Điểm", "Từ Chối");
                 }
+
             }
 
             @Override
@@ -6140,7 +6145,7 @@ public class NpcFactory {
                                 break;
 
                         }
-                    } else if (player.iDMark.getIndexMenu() == 5) {
+                    } else if (player.iDMark.getIndexMenu() == 5 && this.mapId == 154) {
                         switch (select) {
                             case 0:
                                 ShopServiceNew.gI().opendShop(player, "SHOP_DA", false);
@@ -6149,7 +6154,7 @@ public class NpcFactory {
                                 CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.CHE_TAO_TRANG_BI_TS);
                                 break;
                         }
-                    } else if (player.iDMark.getIndexMenu() == 6) {
+                    } else if (player.iDMark.getIndexMenu() == 6 && this.mapId == 154) {
                         switch (select) {
                             case 0:
                                 if (player.gender == 0) {
@@ -6192,7 +6197,7 @@ public class NpcFactory {
                                 }
                                 break;
                         }
-                    } else if (player.iDMark.getIndexMenu() == ConstNpc.HOC_SKILL_TD) {
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.HOC_SKILL_TD && this.mapId == 154) {
                         switch (select) {
                             case 0:
                                 Item td1 = InventoryServiceNew.gI().findItemBag(player, 1417);
@@ -6370,7 +6375,7 @@ public class NpcFactory {
                                 }
                                 break;
                         }
-                    } else if (player.iDMark.getIndexMenu() == ConstNpc.HOC_SKILL_NM) {
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.HOC_SKILL_NM && this.mapId == 154) {
                         switch (select) {
                             case 0:
                                 Item nm1 = InventoryServiceNew.gI().findItemBag(player, 1431);
@@ -6548,7 +6553,7 @@ public class NpcFactory {
                                 }
                                 break;
                         }
-                    } else if (player.iDMark.getIndexMenu() == ConstNpc.HOC_SKILL_XD) {
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.HOC_SKILL_XD && this.mapId == 154) {
                         switch (select) {
                             case 0:
                                 Item xd1 = InventoryServiceNew.gI().findItemBag(player, 1424);
@@ -6726,11 +6731,11 @@ public class NpcFactory {
                                 }
                                 break;
                         }
-                    } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_DAP_DO) {
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_DAP_DO && this.mapId == 154) {
                         if (select == 0) {
                             CombineServiceNew.gI().startCombine(player, 0);
                         }
-                    } else if (player.iDMark.getIndexMenu() == 6) {
+                    } else if (player.iDMark.getIndexMenu() == 6 && this.mapId == 154) {
                         switch (select) {
                             case 0:
                                 Item sach = InventoryServiceNew.gI().findItemBag(player, 1320);
@@ -6769,6 +6774,19 @@ public class NpcFactory {
                                 }
 
                                 // break;
+                        }
+                    }
+
+                }
+                if (canOpenNpc(player)){
+                    if(player.iDMark.isBaseMenu() && this.mapId == 48){
+                        if (player.iDMark.isBaseMenu() && this.mapId == 48) {
+                            if (select == 0) {
+                                this.createOtherMenu(player, ConstNpc.BASE_MENU, "x99 Thức Ăn Được 1 Điểm");
+                            }
+                            if (select == 1) {
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DOI_DIEM);
+                            }
                         }
                     }
                 }
@@ -7818,7 +7836,7 @@ public class NpcFactory {
                         Item biKiep = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, 590);
                         if (select == 0) {
                             if (biKiep != null) {
-                                if (biKiep.quantity >= 10000 && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+                                if (biKiep.quantity >= 9999 && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
                                     Item yardart = ItemService.gI().createNewItem((short) (player.gender + 592));
                                     yardart.itemOptions.add(new Item.ItemOption(47, 400));
                                     yardart.itemOptions.add(new Item.ItemOption(108, 10));

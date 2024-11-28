@@ -25,6 +25,7 @@ import com.KhanhDTK.server.Manager;
 import com.KhanhDTK.server.ServerManager;
 import com.KhanhDTK.services.*;
 import com.KhanhDTK.utils.Logger;
+import com.KhanhDTK.utils.TimeUtil;
 import com.KhanhDTK.utils.Util;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -572,7 +573,7 @@ public class Mob {
                     Service.gI().sendThongBao(player, "Bạn vừa nhận được x1" + mts.template.name);
                 }
             }
-            if (Util.isTrue(50, 100)) {
+            if (Util.isTrue(30, 100)) {
                 if (player.setClothes.godClothes && MapService.gI().isMapCold(player.zone.map)) {
                     ArrietyDrop.DropItemReWard(player,
                             ArrietyDrop.list_thuc_an[Util.nextInt(0, (ArrietyDrop.list_thuc_an.length - 1))], 1,
@@ -980,6 +981,14 @@ public class Mob {
                 if (Util.nextInt(0, 100) < 100) {
 
                     list.add(new ItemMap(zone, 861, slhn, x, player.location.y, player.id));
+                }
+            }
+        }
+        // bi kip moc nhan
+        if (tempId == ConstMob.MOC_NHAN) {
+            if (TimeUtil.getCurrHour() % 2 == 0) {
+                if (Util.isTrue(33, 100)) {
+                    list.add(new ItemMap(zone, 590, 1, x, player.location.y, player.id));
                 }
             }
         }

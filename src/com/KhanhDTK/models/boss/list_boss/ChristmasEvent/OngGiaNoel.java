@@ -126,7 +126,7 @@ public class OngGiaNoel extends Boss {
             lastTimeDrop = System.currentTimeMillis();
             countDrop++;
             if (countDrop >= 5) {
-                this.leaveMapNew();
+                this.leaveMap();
             }
         }
     }
@@ -150,7 +150,7 @@ public class OngGiaNoel extends Boss {
         this.lastTimeRest = System.currentTimeMillis();
         this.changeStatus(BossStatus.REST);
     }
-
+            
     @Override
     public void attack() {
         if (Util.canDoWithTime(this.lastTimeAttack, 100)) {

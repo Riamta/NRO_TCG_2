@@ -1685,7 +1685,7 @@ public class UseItem {
     private void quagiangsinh(Player pl, Item item) {
         if (Util.isTrue(50, 100)) {
             Item gold = ItemService.gI().createNewItem((short) 76);
-            int goldt = Util.nextInt(300000, 500000);
+            int goldt = Util.nextInt(100000, 500000);
             gold.quantity += goldt;
             InventoryServiceNew.gI().addItemBag(pl, gold);
             Service.getInstance().sendThongBao(pl, "Bạn đã nhận được " + goldt + " Vàng");
@@ -1697,7 +1697,7 @@ public class UseItem {
             Service.getInstance().sendThongBao(pl, "Bạn đã nhận được " + ngocxanh + " Ngọc Xanh");
         } else if (Util.isTrue(20, 100)) {
             Item ngocv = ItemService.gI().createNewItem((short) 861);
-            int ruby = Util.nextInt(100, 500);
+            int ruby = Util.nextInt(50, 200);
             ngocv.quantity += ruby;
             InventoryServiceNew.gI().addItemBag(pl, ngocv);
             Service.getInstance().sendThongBao(pl, "Bạn đã nhận được " + ruby + " Hồng Ngọc");
