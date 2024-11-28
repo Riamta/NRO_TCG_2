@@ -667,7 +667,7 @@ public class EffectSkillService {
             msg.writer().writeByte(6);
             msg.writer().writeInt((int) player.id);
             msg.writer().writeShort((short) 97);
-            Service.getInstance().sendMessAllPlayerInMap(player, msg);
+            //Service.getInstance().sendMessAllPlayerInMap(player, msg);
             msg.cleanup();
         } catch (Exception e) {
             com.KhanhDTK.utils.Logger.logException(EffectSkillService.class, e);
