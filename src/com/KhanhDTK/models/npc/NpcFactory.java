@@ -6787,9 +6787,6 @@ public class NpcFactory {
                                 this.createOtherMenu(player, ConstNpc.BASE_MENU, "x69 Thức Ăn Được 1 Điểm");
                             }
                             if (select == 1) {
-                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DOI_DIEM_1);
-                            }
-                            else if (select == 2) {
                                 CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DOI_DIEM);
                             }
                         }

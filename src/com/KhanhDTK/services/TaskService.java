@@ -1333,6 +1333,7 @@ public class TaskService {
         if (player.playerTask.sideTask.template != null) {
             if (player.playerTask.sideTask.isDone()) {
                 int goldReward = 0;
+                int hnReward = 0;
                 switch (player.playerTask.sideTask.level) {
                     case ConstTask.EASY:
                         goldReward = ConstTask.GOLD_EASY;
@@ -1342,18 +1343,24 @@ public class TaskService {
                         break;
                     case ConstTask.HARD:
                         goldReward = ConstTask.GOLD_HARD;
+                        hnReward = ConstTask.HN_HARD;
                         break;
                     case ConstTask.VERY_HARD:
                         goldReward = ConstTask.GOLD_VERY_HARD;
+                        hnReward = ConstTask.HN_VERY_HARD;
                         break;
                     case ConstTask.HELL:
                         goldReward = ConstTask.GOLD_HELL;
+                        hnReward = ConstTask.HN_HELL;
                         break;
                 }
                 player.inventory.addGold(goldReward);
+                player.inventory.ruby += hnReward;
+                Service.gI().sendRuby(player);
+                Service.gI().sendThongBao(player, "Bạn nhận được " + Util.numberToMoney(hnReward) + " ruby");
+
                 Service.gI().sendMoney(player);
-                Service.gI().sendThongBao(player, "Bạn nhận được "
-                        + Util.numberToMoney(goldReward) + " vàng");
+                Service.gI().sendThongBao(player, "Bạn nhận được " + Util.numberToMoney(goldReward) + " vàng");
                 player.playerTask.sideTask.reset();
             } else {
                 Service.gI().sendThongBao(player, "Bạn chưa hoàn thành nhiệm vụ");

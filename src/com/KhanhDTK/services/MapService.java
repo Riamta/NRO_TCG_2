@@ -315,6 +315,7 @@ public class MapService {
         addListMapCapsule(pl, list, getMapCanJoin(pl, 79, 0));
         addListMapCapsule(pl, list, getMapCanJoin(pl, 80, 0));
         if (pl.nPoint.power >= 10_000_000_000L) {
+            addListMapCapsule(pl, list, getMapCanJoin(pl, 48, 0));
             addListMapCapsule(pl, list, getMapCanJoin(pl, 102, 0));
         }
         // addListMapCapsule(pl, list, getMapCanJoin(pl, 252, 0));
