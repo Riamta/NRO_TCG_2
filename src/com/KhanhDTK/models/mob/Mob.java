@@ -630,12 +630,14 @@ public class Mob {
         List<ItemMobReward> golds = mobReward.getGoldReward();
         if (this.zone.map.mapId >= 0) {
             if (Util.isTrue(50, 100)) { // vàng từ quái tất cả map
-                int gold = Util.nextInt(100000, 500000);
+                int gold = Util.nextInt(100000, 1000000);
                 list.add(new ItemMap(zone, 76, gold, x, player.location.y, player.id));
-            } else if (Util.isTrue(1, 300)) { // thoi vang
+            } else if (Util.isTrue(1, 300)) { // ngoc xanh
                 list.add(new ItemMap(zone, 457, 1, x, player.location.y, player.id));
-            } else if (Util.isTrue(10, 100)) { // thoi vang
+            } else if (Util.isTrue(5, 100)) { // thoi vang
                 list.add(new ItemMap(zone, 77, Util.nextInt(1, 20), x, player.location.y, player.id));
+            } else if (Util.isTrue(5, 100)) { // thoi vang
+                list.add(new ItemMap(zone, 861, Util.nextInt(1, 10), x, player.location.y, player.id));
             }
         }
 

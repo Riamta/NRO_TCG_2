@@ -61,6 +61,7 @@ public class CombineServiceNew {
     public static final int NANG_CAP_DO_TS = 515;
     public static final int NANG_CAP_SKH_VIP = 516;
     public static final int DOI_DIEM = 595;
+    public static final int DOI_DIEM_1 = 597;
     public static final int NANG_CAP_CHAN_MENH = 5380;
     public static final int NANG_CAP_SARINGAN = 5381;
 
@@ -364,8 +365,7 @@ public class CombineServiceNew {
                 break;
             case DOI_DIEM:
                 if (player.combineNew.itemsCombine.size() == 0) {
-                    this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Con hãy đưa cho ta thức ăn",
-                            "Đóng");
+                    this.whis.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Con hãy đưa cho ta thức ăn", "Đóng");
                     return;
                 }
                 if (player.combineNew.itemsCombine.size() == 1) {
@@ -379,22 +379,20 @@ public class CombineServiceNew {
                         }
                     }
                     if (couponAdd == 0) {
-                        this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "THỨC ĂN!!!!!!!!", "Đóng");
+                        this.whis.createOtherMenu(player, ConstNpc.IGNORE_MENU, "THỨC ĂN!!!!!!!!", "Đóng");
                         return;
                     }
+                    // / CombineServiceNew.gI().startCombine(player, 0);
+
                     String npcSay = "|2|Sau khi phân rã vật phẩm\n|7|"
                             + "Bạn sẽ nhận được : " + couponAdd + " điểm\n"
-                            + (500000000 > player.inventory.gold ? "|7|" : "|1|")
-                            + "Cần " + Util.numberToMoney(500000000) + " vàng";
+                            + (50_000_000 > player.inventory.gold ? "|7|" : "|1|")
+                            + "Cần " + Util.numberToMoney(50_000_000) + " vàng";
 
-                    if (player.inventory.gold < 500000000) {
-                        this.npsthiensu64.npcChat(player, "Hết tiền rồi\nẢo ít thôi con");
-                        return;
-                    }
-                    this.npsthiensu64.createOtherMenu(player, ConstNpc.MENU_PHAN_RA_DO_THAN_LINH,
-                            npcSay, "Thức Ăn", "Từ chối");
+                    this.whis.createOtherMenu(player, ConstNpc.MENU_PHAN_RA_DO_THAN_LINH, npcSay, "Đổi điểm", "Đổi toàn bộ","Đóng");
+
                 } else {
-                    this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cái Đầu Buồi", "Đóng");
+                    this.whis.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cái Đầu Buồi", "Đóng");
                 }
                 break;
             // ------Sách Tuyệt Kỹ
@@ -1648,6 +1646,9 @@ public class CombineServiceNew {
             case DOI_DIEM:
                 doidiem(player);
                 break;
+            case DOI_DIEM_1:
+                doidiem_1(player);
+                break;
             case NANG_CAP_CHAN_MENH:
                 nangCapChanMenh(player);
                 break;
@@ -1888,30 +1889,77 @@ public class CombineServiceNew {
         }
     }
 
-    private void doidiem(Player player) {
+    private void doidiem_1(Player player) {
         if (player.combineNew.itemsCombine.size() == 1) {
             player.inventory.gold -= 0;
             List<Integer> itemdov2 = new ArrayList<>(Arrays.asList(663, 664, 665, 666, 667));
             Item item = player.combineNew.itemsCombine.get(0);
-
             sendEffectSuccessCombine(player);
-            if (item.quantity < 99) {
+            if (item.quantity < 69) {
                 Service.gI().sendThongBaoOK(player, "Đéo Đủ Thức Ăn");
-            } else if (item.quantity >= 99) {
-                if (itemdov2.contains(item.idTemp)) {
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    player.inventory.coupon += 1;
-                    Service.gI().sendThongBaoOK(player, "Bú 1 Điểm");
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, item, 59);
-                    player.combineNew.itemsCombine.clear();
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    Service.gI().sendMoney(player);
-                    reOpenItemCombine(player);
-                }
-            } else {
-                Service.gI().sendThongBaoOK(player, "Có lỗi xảy ra");
+            } else if (item.quantity >= 69) {
+                InventoryServiceNew.gI().sendItemBags(player);
+                player.inventory.coupon += 1;
+                Service.gI().sendThongBaoOK(player, "Bú 1 Điểm");
+                InventoryServiceNew.gI().subQuantityItemsBag(player, item, 69);
+                player.combineNew.itemsCombine.clear();
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendMoney(player);
+                reOpenItemCombine(player);
             }
         }
+    }
+
+    private void doidiem(Player player) {
+        int costPerPoint = 50_000_000; // Chi phí để đổi 1 điểm
+        int itemsPerPoint = 69; // Số lượng vật phẩm cần cho 1 điểm
+
+        // Kiểm tra nếu danh sách combine không hợp lệ
+        if (player.combineNew.itemsCombine.size() != 1) {
+            Service.gI().sendThongBaoOK(player, "Không đủ vật phẩm để đổi điểm.");
+            return;
+        }
+
+        Item item = player.combineNew.itemsCombine.get(0);
+
+        // Vòng lặp combine liên tục
+        int totalPoints = 0; // Tổng số điểm người chơi đổi được
+        while (player.inventory.gold >= costPerPoint && item.quantity >= itemsPerPoint) {
+            // Tính toán số điểm có thể đổi trong 1 lần lặp
+            int pointsToExchange = (int) Math.min(player.inventory.gold / costPerPoint, item.quantity / itemsPerPoint);
+
+            if (pointsToExchange == 0) {
+                break; // Nếu không thể đổi thêm thì thoát vòng lặp
+            }
+
+            // Cập nhật số tiền, số lượng vật phẩm và tổng điểm
+            int itemsToConsume = pointsToExchange * itemsPerPoint;
+            int totalCost = pointsToExchange * costPerPoint;
+
+            player.inventory.gold -= totalCost;
+            player.inventory.coupon += pointsToExchange;
+            InventoryServiceNew.gI().subQuantityItemsBag(player, item, itemsToConsume);
+            totalPoints += pointsToExchange;
+
+            // Gửi hiệu ứng thành công cho mỗi lần lặp
+            sendEffectSuccessCombine(player);
+        }
+
+        // Kết thúc vòng lặp, thông báo kết quả
+        if (totalPoints > 0) {
+            Service.gI().sendThongBaoOK(player, "Đổi thành công! Bạn nhận được tổng cộng " + totalPoints
+                    + " điểm. Tiền còn lại: " + player.inventory.gold + " vàng.");
+        } else {
+            Service.gI().sendThongBaoOK(player, "Không đủ tiền hoặc vật phẩm để đổi điểm.");
+        }
+
+        // Làm mới danh sách kết hợp và túi đồ
+        player.combineNew.itemsCombine.clear();
+        InventoryServiceNew.gI().sendItemBags(player);
+
+        // Cập nhật tiền và giao diện
+        Service.gI().sendMoney(player);
+        reOpenItemCombine(player);
     }
 
     private void nangCapSaringan(Player player) {
@@ -4804,6 +4852,8 @@ public class CombineServiceNew {
                 return "Ta sẽ phù phép\nphân rã sách cho ngươi";
             case DOI_DIEM:
                 return "Thức Ăn";
+            case DOI_DIEM_1:
+                return "Thức Ăn";
             case NANG_CAP_CHAN_MENH:
                 return "Ta sẽ Nâng cấp\nChân Mệnh của ngươi\ncao hơn một bậc";
             case NANG_CAP_SARINGAN:
@@ -4884,7 +4934,7 @@ public class CombineServiceNew {
             case PHAN_RA_SACH:
                 return "Vào hành trang chọn\n1 sách cần phân rã";
             case DOI_DIEM:
-                return "Vào hành trang\nChọn x99 Thức Ăn\nSau đó chọn 'Nâng cấp'";
+                return "Vào hành trang\nChọn x69 Thức Ăn\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_CHAN_MENH:
                 return "Vào hành trang\nChọn Chân mệnh muốn nâng cấp\nChọn Đá Hoàng Kim\n"
                         + "Sau đó chọn 'Nâng cấp'\n"

@@ -6015,7 +6015,7 @@ public class NpcFactory {
                     }
                     if (player.iDMark.isBaseMenu() && this.mapId == 48) {
                         if (select == 0) {
-                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "x99 Thức Ăn Được 1 Điểm");
+                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "x69 Thức Ăn Được 1 Điểm");
                         }
                         if (select == 1) {
                             CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DOI_DIEM);
@@ -6049,6 +6049,8 @@ public class NpcFactory {
                             CombineServiceNew.gI().startCombine(player, 0);
                         }
 
+                    } else {
+                        Service.gI().sendThongBao(player, "H" + player.iDMark.getIndexMenu());
                     }
                 }
             }
@@ -6778,15 +6780,41 @@ public class NpcFactory {
                     }
 
                 }
-                if (canOpenNpc(player)){
-                    if(player.iDMark.isBaseMenu() && this.mapId == 48){
+                if (canOpenNpc(player)) {
+                    if (player.iDMark.isBaseMenu() && this.mapId == 48) {
                         if (player.iDMark.isBaseMenu() && this.mapId == 48) {
                             if (select == 0) {
-                                this.createOtherMenu(player, ConstNpc.BASE_MENU, "x99 Thức Ăn Được 1 Điểm");
+                                this.createOtherMenu(player, ConstNpc.BASE_MENU, "x69 Thức Ăn Được 1 Điểm");
                             }
                             if (select == 1) {
+                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DOI_DIEM_1);
+                            }
+                            else if (select == 2) {
                                 CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.DOI_DIEM);
                             }
+                        }
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
+                        switch (player.combineNew.typeCombine) {
+                            case CombineServiceNew.DOI_DIEM:
+
+                                if (select == 0) {
+                                    CombineServiceNew.gI().startCombine(player, 0);
+                                }
+                                break;
+                        }
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_PHAN_RA_DO_THAN_LINH) {
+                        if (select == 0) {
+                            CombineServiceNew.gI().startCombine(player, 0);
+                        }
+
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
+                        switch (player.combineNew.typeCombine) {
+                            case CombineServiceNew.CHE_TAO_TRANG_BI_TS:
+
+                                if (select == 0) {
+                                    CombineServiceNew.gI().startCombine(player, 0);
+                                }
+                                break;
                         }
                     }
                 }
@@ -8617,7 +8645,23 @@ public class NpcFactory {
                         }
                         break;
                     case ConstNpc.MENU_OPTION_USE_ITEM2003:
+                        try {
+                            ItemService.gI().OpenDHD(player, player.iDMark.getIndexMenu(), select);
+                        } catch (Exception e) {
+                            System.err.print("\nError at 217\n");
+                            e.printStackTrace();
+                            Logger.error("Lỗi mở hộp quà");
+                        }
+                        break;
                     case ConstNpc.MENU_OPTION_USE_ITEM2004:
+                        try {
+                            ItemService.gI().OpenDHD(player, player.iDMark.getIndexMenu(), select);
+                        } catch (Exception e) {
+                            System.err.print("\nError at 217\n");
+                            e.printStackTrace();
+                            Logger.error("Lỗi mở hộp quà");
+                        }
+                        break;
                     case ConstNpc.MENU_OPTION_USE_ITEM2005:
                         try {
                             ItemService.gI().OpenDHD(player, player.iDMark.getIndexMenu(), select);
