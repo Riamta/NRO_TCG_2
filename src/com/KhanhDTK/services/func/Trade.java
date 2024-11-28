@@ -57,6 +57,10 @@ public class Trade {
     }
 
     public void openTabTrade() {
+        if (player1.vip < 1 || player2.vip < 1) {
+            Service.getInstance().sendThongBao(player1, "Chỉ thành viên VIP mới có thể giao dịch");
+            Service.getInstance().sendThongBao(player2, "Chỉ thành viên VIP mới có thể giao dịch");
+            return;
         this.lastTimeStart = System.currentTimeMillis();
         this.start = true;
         Message msg;
@@ -285,7 +289,7 @@ public class Trade {
     }
 
     public void acceptTrade() {
-        
+
         this.accept++;
         if (this.accept == 2) {
             this.startTrade();

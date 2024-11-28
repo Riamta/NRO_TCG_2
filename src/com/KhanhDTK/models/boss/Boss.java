@@ -100,33 +100,33 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         this.bossStatus = BossStatus.REST;
         switch (bossType) {
             // case YARDART ->
-            //     YardartManager.gI().addBoss(this);
+            // YardartManager.gI().addBoss(this);
             // case FINAL ->
-            //     FinalBossManager.gI().addBoss(this);
+            // FinalBossManager.gI().addBoss(this);
             // case SKILLSUMMONED ->
-            //     SkillSummonedManager.gI().addBoss(this);
+            // SkillSummonedManager.gI().addBoss(this);
             // case BROLY ->
-            //     BrolyManager.gI().addBoss(this);
+            // BrolyManager.gI().addBoss(this);
             // case PHOBAN ->
-            //     OtherBossManager.gI().addBoss(this);
+            // OtherBossManager.gI().addBoss(this);
             // case PHOBANDT ->
-            //     RedRibbonHQManager.gI().addBoss(this);
+            // RedRibbonHQManager.gI().addBoss(this);
             // case PHOBANBDKB ->
-            //     TreasureUnderSeaManager.gI().addBoss(this);
+            // TreasureUnderSeaManager.gI().addBoss(this);
             // case PHOBANCDRD ->
-            //     SnakeWayManager.gI().addBoss(this);
+            // SnakeWayManager.gI().addBoss(this);
             // case PHOBANKGHD ->
-            //     GasDestroyManager.gI().addBoss(this);
+            // GasDestroyManager.gI().addBoss(this);
             // case TRUNGTHU_EVENT ->
-            //     TrungThuEventManager.gI().addBoss(this);
+            // TrungThuEventManager.gI().addBoss(this);
             // case HALLOWEEN_EVENT ->
-            //     HalloweenEventManager.gI().addBoss(this);
+            // HalloweenEventManager.gI().addBoss(this);
             case CHRISTMAS_EVENT:
                 ChristmasEventManager.gI().addBoss(this);
-            // case HUNGVUONG_EVENT ->
-            //     HungVuongEventManager.gI().addBoss(this);
-            // case TET_EVENT ->
-            //     LunarNewYearEventManager.gI().addBoss(this);
+                // case HUNGVUONG_EVENT ->
+                // HungVuongEventManager.gI().addBoss(this);
+                // case TET_EVENT ->
+                // LunarNewYearEventManager.gI().addBoss(this);
         }
 
         this.bossAppearTogether = new Boss[this.data.length][];
@@ -575,6 +575,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
         this.wakeupAnotherBossWhenDisappear();
     }
+
     // end loop
     public void leaveMapNew() {
         if (this.data != null) {
@@ -582,9 +583,11 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
         this.changeStatus(BossStatus.LEAVE_MAP);
     }
+
     public void autoLeaveMap() {
 
     }
+
     @Override
     public int injured(Player plAtt, int damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {

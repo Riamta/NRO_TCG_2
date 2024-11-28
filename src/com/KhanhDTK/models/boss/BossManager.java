@@ -575,7 +575,9 @@ public class BossManager implements Runnable {
                 msg.writer().writeUTF(boss.data[0].getName());
                 if (boss.zone != null) {
                     msg.writer().writeUTF("Sống");
-                    msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " + boss.zone.map.mapName);
+                    msg.writer().writeUTF("Thông Tin Boss\n" + "|7|Map : " + boss.zone.map.mapName + "("
+                            + boss.zone.map.mapId + ") \nZone: " + boss.zone.zoneId + "\nHP: "
+                            + Util.powerToString(boss.nPoint.hp) + "\nDame: " + Util.powerToString(boss.nPoint.dame));
                 } else {
                     msg.writer().writeUTF("Chết");
                     msg.writer().writeUTF("Time to Reset : " + boss.secondsRest-- + " Giây");

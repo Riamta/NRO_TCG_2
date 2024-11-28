@@ -28,7 +28,7 @@ public class OngGiaNoel extends Boss {
     private long lastTimeDrop;
     private long st;
     private int timeLeave;
-    
+    private int countDrop = 0;
     public OngGiaNoel() throws Exception {
         super(BossID.ONG_GIA_NOEL, BossesData.ONG_GIA_NOEL);
     }
@@ -124,6 +124,10 @@ public class OngGiaNoel extends Boss {
                 Service.gI().dropItemMap(this.zone, item3);
             }
             lastTimeDrop = System.currentTimeMillis();
+            countDrop++;
+            if (countDrop >= 5) {
+                this.leaveMapNew();
+            }
         }
     }
 
