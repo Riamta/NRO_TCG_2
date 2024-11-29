@@ -575,7 +575,7 @@ public class Mob {
                     Service.gI().sendThongBao(player, "Bạn vừa nhận được x1" + mts.template.name);
                 }
             }
-            if (Util.isTrue(30, 100)) {
+            if (Util.isTrue(60, 100)) {
                 if (player.setClothes.godClothes && MapService.gI().isMapCold(player.zone.map)) {
                     ArrietyDrop.DropItemReWard(player,
                             ArrietyDrop.list_thuc_an[Util.nextInt(0, (ArrietyDrop.list_thuc_an.length - 1))], 1,
