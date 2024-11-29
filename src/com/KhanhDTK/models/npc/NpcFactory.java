@@ -1555,9 +1555,12 @@ public class NpcFactory {
                                         TaskService.gI().sendNextTaskMain(player);
                                         this.npcChat(player,
                                                 "Ta đã giúp con hoàn thành nhiệm vụ rồi mau đi trả nhiệm vụ");
-                                    } else {
-                                        this.npcChat(player, "Bạn Đã Tới Giới Hạn Next Nhiệm Vụ");
-                                    }
+                                    } else if(player.playerTask.taskMain.id == 27) {
+                                        TaskService.gI().getTaskMainById(player, player.playerTask.taskMain.id = 27);
+                                        TaskService.gI().sendNextTaskMain(player);
+                                        this.npcChat(player,
+                                                "Ta đã giúp con hoàn thành nhiệm vụ rồi mau đi trả nhiệm vụ");
+                                    } 
                                 } else {
                                     this.npcChat(player, "Bạn Chưa Tới Nhiệm Vụ Chỉ Định Để Có Thể Next");
                                 }
