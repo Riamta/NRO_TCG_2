@@ -179,6 +179,7 @@ public class Player {
     public long LastDoanhTrai = 0;
     public Zone zone;
     public Zone mapBeforeCapsule;
+    public Zone mapBeforeCapsule_2;
     public List<Zone> mapCapsule;
     public Pet pet;
     public NewPet newpet;
@@ -2271,6 +2272,7 @@ public class Player {
         }
         zone = null;
         mapBeforeCapsule = null;
+        mapBeforeCapsule_2 = null;
         if (mapMaBu != null) {
             mapMaBu.clear();
             mapMaBu = null;
@@ -2281,6 +2283,7 @@ public class Player {
         }
         zone = null;
         mapBeforeCapsule = null;
+        mapBeforeCapsule_2 = null;
         if (mapCapsule != null) {
             mapCapsule.clear();
             mapCapsule = null;

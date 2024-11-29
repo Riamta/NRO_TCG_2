@@ -69,7 +69,10 @@ public class ChangeMapService {
                         Zone zone = pl.mapCapsule.get(i);
                         if (i == 0 && pl.mapBeforeCapsule != null) {
                             msg.writer().writeUTF("Về chỗ cũ: " + zone.map.mapName);
-                        } else if (zone.map.mapName.equals("Nhà Broly") || zone.map.mapName.equals("Nhà Gôhan")
+                        }else if (i == 1 && pl.mapBeforeCapsule_2 != null) {
+                            msg.writer().writeUTF("Về chỗ cũ hơn: " + zone.map.mapName);
+                        } 
+                        else if (zone.map.mapName.equals("Nhà Broly") || zone.map.mapName.equals("Nhà Gôhan")
                                 || zone.map.mapName.equals("Nhà Moori")) {
                             msg.writer().writeUTF("Về nhà");
                         } else {

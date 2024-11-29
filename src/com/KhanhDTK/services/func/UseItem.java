@@ -1722,7 +1722,7 @@ public class UseItem {
 
         Item itemReward = ItemService.gI().createNewItem((short) nRandom[random]);
         itemReward.quantity = 1;
-        if(random == 1203 || random == 1204 || random == 1205){
+        if (random == 1203 || random == 1204 || random == 1205) {
             itemReward.itemOptions.add(new ItemOption(50, 10));
             itemReward.itemOptions.add(new ItemOption(77, 10));
             itemReward.itemOptions.add(new ItemOption(103, 10));
@@ -2307,6 +2307,9 @@ public class UseItem {
             if (index != 0 || zoneChose.map.mapId == 21
                     || zoneChose.map.mapId == 22
                     || zoneChose.map.mapId == 23) {
+                if(pl.mapBeforeCapsule_2 != pl.mapBeforeCapsule){
+                    pl.mapBeforeCapsule_2 = pl.mapBeforeCapsule;
+                }
                 pl.mapBeforeCapsule = pl.zone;
             } else {
                 zoneId = pl.mapBeforeCapsule != null ? pl.mapBeforeCapsule.zoneId : -1;

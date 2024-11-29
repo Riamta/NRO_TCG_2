@@ -7398,6 +7398,7 @@ public class NpcFactory {
                                         player.point_gapthu += 1;
                                         InventoryServiceNew.gI().addItemBag(player, gapt);
                                         InventoryServiceNew.gI().sendItemBags(player);
+                                        ServerNotify.gI().sendThongBaoBenDuoi("Chúc mừng " + player.name + " đã gắp được " + gapt.template.name + " từ máy gắp kẹo Halloween");
                                         this.createOtherMenu(player, 12345,
                                                 "|2|Bạn vừa gắp được : " + gapt.template.name + "\nSố xu còn : "
                                                         + xuthuong.quantity + "\n|7|Chiến tiếp ngay!",
@@ -7448,6 +7449,8 @@ public class NpcFactory {
                                             if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
                                                 if (Util.isTrue(10, 100)) {
                                                     player.point_gapthu += 1;
+                                                    ServerNotify.gI().sendThongBaoBenDuoi("Chúc mừng " + player.name + " đã gắp được " + gapx10.template.name + " từ máy gắp kẹo Halloween");
+
                                                     InventoryServiceNew.gI().addItemBag(player, gapx10);
                                                     InventoryServiceNew.gI().sendItemBags(player);
                                                     this.createOtherMenu(player, 12345,
@@ -7542,6 +7545,8 @@ public class NpcFactory {
                                                     player.point_gapthu += 1;
                                                     InventoryServiceNew.gI().addItemBag(player, gapx100);
                                                     InventoryServiceNew.gI().sendItemBags(player);
+                                                    ServerNotify.gI().sendThongBaoBenDuoi("Chúc mừng " + player.name + " đã gắp được " + gapx100.template.name + " từ máy gắp kẹo Halloween");
+
                                                     this.createOtherMenu(player, 12345,
                                                             "|7|ĐANG TIẾN HÀNH GẮP AUTO X100\nSỐ LƯỢT CÒN : " + timex100
                                                                     + " LƯỢT\n" + "|2|Đã gắp được : "

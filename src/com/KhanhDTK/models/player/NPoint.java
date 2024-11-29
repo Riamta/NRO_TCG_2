@@ -1852,7 +1852,7 @@ public class NPoint {
         } else if (power >= 80_000_000_000L) {
             tiemNang /= 100; // Giảm nhẹ
         } else if (power >= 60_000_000_000L) {
-            tiemNang /= 30;
+            tiemNang /= 15;
         } else if (power >= 20_000_000_000L) {
             tiemNang *= 2;
         } else if (power >= 10_000_000_000L) {

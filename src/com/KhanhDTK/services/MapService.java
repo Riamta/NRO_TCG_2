@@ -35,15 +35,18 @@ public class MapService {
 
     public WayPoint getWaypointPlayerIn(Player player) {
         for (WayPoint wp : player.zone.map.wayPoints) {
-            if (player.location.x >= wp.minX && player.location.x <= wp.maxX && player.location.y >= wp.minY && player.location.y <= wp.maxY) {
+            if (player.location.x >= wp.minX && player.location.x <= wp.maxX && player.location.y >= wp.minY
+                    && player.location.y <= wp.maxY) {
                 return wp;
             }
         }
         return null;
     }
+
     public boolean isMapPhoBan(int mapId) {
         return isMapBanDoKhoBau(mapId) || isMapDoanhTrai(mapId);
     }
+
     /**
      * @param tileTypeFocus tile type: top, bot, left, right...
      * @return [tileMapId][tileType]
@@ -76,7 +79,7 @@ public class MapService {
         return tileIndexTileType;
     }
 
-    //tilemap for paint
+    // tilemap for paint
     public int[][] readTileMap(int mapId) {
         int[][] tileMap = null;
         try {
@@ -98,13 +101,13 @@ public class MapService {
     }
 
     public Zone getMapCanJoin(Player player, int mapId, int zoneId) {
-//        if (player.getSession() != null && player.isAdmin()) {
-//            if (zoneId == -1) {
-//                return getRandomZoneByMapID(mapId);
-//            } else {
-//                return getZoneByMapIDAndZoneID(mapId, zoneId);
-//            }
-//        }
+        // if (player.getSession() != null && player.isAdmin()) {
+        // if (zoneId == -1) {
+        // return getRandomZoneByMapID(mapId);
+        // } else {
+        // return getZoneByMapIDAndZoneID(mapId, zoneId);
+        // }
+        // }
         if (isMapOffline(mapId)) {
             return getMapById(mapId).zones.get(0);
         }
@@ -179,16 +182,17 @@ public class MapService {
             /**
              * Qua map mới thì làm mới lại mob
              */
-//            if (player.clan.BanDoKhoBau.getListMap().indexOf(mapId) > player.clan.BanDoKhoBau.getCurrentIndexMap()) {
-//                player.clan.BanDoKhoBau.setCurrentIndexMap(player.clan.BanDoKhoBau.getListMap().indexOf(mapId));
-//                player.clan.BanDoKhoBau.init();
-//
-//            }
+            // if (player.clan.BanDoKhoBau.getListMap().indexOf(mapId) >
+            // player.clan.BanDoKhoBau.getCurrentIndexMap()) {
+            // player.clan.BanDoKhoBau.setCurrentIndexMap(player.clan.BanDoKhoBau.getListMap().indexOf(mapId));
+            // player.clan.BanDoKhoBau.init();
+            //
+            // }
             return player.clan.BanDoKhoBau.getMapById(mapId);
         }
 
-        //**********************************************************************
-        if (zoneId == -1) { //vào khu bất kỳ
+        // **********************************************************************
+        if (zoneId == -1) { // vào khu bất kỳ
             return getZone(mapId);
         } else {
             return getZoneByMapIDAndZoneID(mapId, zoneId);
@@ -266,7 +270,7 @@ public class MapService {
                 return "";
         }
     }
-    
+
     public int getMapTrainOff(Player pl) {
         switch (pl.typetrain) {
             case 0:
@@ -298,6 +302,13 @@ public class MapService {
                 && pl.mapBeforeCapsule.map.mapId != 23
                 && !isMapTuongLai(pl.mapBeforeCapsule.map.mapId)) {
             addListMapCapsule(pl, list, pl.mapBeforeCapsule);
+        }
+        if (pl.mapBeforeCapsule_2 != null
+                && pl.mapBeforeCapsule_2.map.mapId != 21
+                && pl.mapBeforeCapsule_2.map.mapId != 22
+                && pl.mapBeforeCapsule_2.map.mapId != 23
+                && !isMapTuongLai(pl.mapBeforeCapsule_2.map.mapId)) {
+            addListMapCapsule(pl, list, pl.mapBeforeCapsule_2);
         }
         addListMapCapsule(pl, list, getMapCanJoin(pl, 21 + pl.gender, 0));
         addListMapCapsule(pl, list, getMapCanJoin(pl, 47, 0));
@@ -384,9 +395,11 @@ public class MapService {
     public boolean isMapMaBu(int mapId) {
         return mapId >= 114 && mapId <= 120;
     }
+
     public boolean isMapSatan(int mapId) {
         return mapId == 192;
     }
+
     public boolean isMapPVP(int mapId) {
         return mapId == 112;
     }
@@ -415,6 +428,7 @@ public class MapService {
     public boolean isMapNgucTu(int mapId) {
         return mapId == 155;
     }
+
     public boolean isMapCauCa(int mapId) {
         return mapId == 5 || mapId == 29 || mapId == 30;
     }
@@ -423,12 +437,12 @@ public class MapService {
         return mapId >= 122 && mapId <= 124;
     }
 
-//    147	Sa Mạc
-//148	Lâu đài Lychee
-//149	Thành phố Santa
-//150	Lôi Đài
-//151	Hành tinh bóng tối
-//152	Vùng đất băng giá
+    // 147 Sa Mạc
+    // 148 Lâu đài Lychee
+    // 149 Thành phố Santa
+    // 150 Lôi Đài
+    // 151 Hành tinh bóng tối
+    // 152 Vùng đất băng giá
     public boolean isMapTuongLai(int mapId) {
         return (mapId >= 92 && mapId <= 94)
                 || (mapId >= 96 && mapId <= 100)
@@ -459,7 +473,7 @@ public class MapService {
                 && mapId != 12 && mapId != 31 && mapId != 32
                 && mapId != 18 && mapId != 35 && mapId != 36;
     }
-    
+
     public boolean isMapTrainOff(Player pl, int mapId) {
         return mapId == 46 || mapId == 47 || mapId == 45 || mapId == 48 || mapId == 50 || mapId == 154;
     }
