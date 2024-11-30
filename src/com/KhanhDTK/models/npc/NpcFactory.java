@@ -1271,7 +1271,7 @@ public class NpcFactory {
                                             break;
                                         case 1:
                                             tv = 5;
-                                            hn = 3000;
+                                            hn = 5000;
                                             break;
                                     }
                                     player.inventory.ruby += hn;
