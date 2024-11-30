@@ -6148,7 +6148,7 @@ public class NpcFactory {
                                 break;
                             case 1:
                                 this.createOtherMenu(player, 6, "|1|Ta sẽ dạy ngươi tuyệt kỹ\n",
-                                        "Đồng ý", "Từ chối");
+                                        "Trái Đất", "Na mếc", "Xayda", "Đóng");
                                 break;
 
                         }
