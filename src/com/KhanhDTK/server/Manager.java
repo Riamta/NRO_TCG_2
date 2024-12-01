@@ -168,19 +168,19 @@ public class Manager {
     public static final short[] giaynmt = {28};
     public static final short[] radaSKH = {12};
 // SKH VIP
-    public static final short[] aotd = {138, 139, 230, 231, 232, 233, 555};
-    public static final short[] quantd = {142, 143, 242, 243, 244, 245, 556};
-    public static final short[] gangtd = {146, 147, 254, 255, 256, 257, 562};
-    public static final short[] giaytd = {150, 151, 266, 267, 268, 269, 563};
-    public static final short[] aoxd = {170, 171, 238, 239, 240, 241, 559};
-    public static final short[] quanxd = {174, 175, 250, 251, 252, 253, 560};
-    public static final short[] gangxd = {178, 179, 262, 263, 264, 265, 566};
-    public static final short[] giayxd = {182, 183, 274, 275, 276, 277, 567};
-    public static final short[] aonm = {154, 155, 234, 235, 236, 237, 557};
-    public static final short[] quannm = {158, 159, 246, 247, 248, 249, 558};
-    public static final short[] gangnm = {162, 163, 258, 259, 260, 261, 564};
-    public static final short[] giaynm = {166, 167, 270, 271, 272, 273, 565};
-    public static final short[] radaSKHVip = {186, 187, 278, 279, 280, 281, 561};
+    public static final short[] aotd = {232, 233, 555};
+    public static final short[] quantd = { 244, 245, 556};
+    public static final short[] gangtd = { 256, 257, 562};
+    public static final short[] giaytd = {268, 269, 563};
+    public static final short[] aoxd = { 240, 241, 559};
+    public static final short[] quanxd = { 252, 253, 560};
+    public static final short[] gangxd = { 264, 265, 566};
+    public static final short[] giayxd = { 276, 277, 567};
+    public static final short[] aonm = { 236, 237, 557};
+    public static final short[] quannm = { 248, 249, 558};
+    public static final short[] gangnm = {260, 261, 564};
+    public static final short[] giaynm = { 272, 273, 565};
+    public static final short[] radaSKHVip = {280, 281, 561};
     public static final short[][][] doSKH = {{aotdt, quantdt, gangtdt, giaytdt, radaSKH}, {aonmt, quannmt, gangnmt, giaynmt, radaSKH}, {aoxdt, quanxdt, gangxdt, giayxdt, radaSKH}};
 
     public static final short[][][] doSKHVip = {{aotd, quantd, gangtd, giaytd}, {aonm, quannm, gangnm, giaynm}, {aoxd, quanxd, gangxd, giayxd}};
