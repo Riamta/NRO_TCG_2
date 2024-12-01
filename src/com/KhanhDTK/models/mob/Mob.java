@@ -576,7 +576,7 @@ public class Mob {
                 }
             }
             if (Util.isTrue(60, 100)) {
-                if (player.setClothes.godClothes && MapService.gI().isMapCold(player.zone.map)) {
+                if ((player.setClothes.godClothes || player.setClothes.IsSetHuyDiet()) && MapService.gI().isMapCold(player.zone.map)) {
                     ArrietyDrop.DropItemReWard(player,
                             ArrietyDrop.list_thuc_an[Util.nextInt(0, (ArrietyDrop.list_thuc_an.length - 1))], 1,
                             this.location.x, this.location.y);

@@ -3014,7 +3014,7 @@ public class NpcFactory {
                     } else if (this.mapId == 5) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Ngươi tìm ta có việc gì?",
-                                "Ép sao\ntrang bị", "Pha lê\nhóa\ntrang bị", "Đóng");
+                                "Ép sao\ntrang bị", "Pha lê\nhóa\ntrang bị", "Nâng cấp\nset\nkích hoạt\nVIP","Đóng");
                     } else if (this.mapId == 121) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Ngươi tìm ta có việc gì?",
@@ -3093,7 +3093,6 @@ public class NpcFactory {
                             }
                         }
                     }
-
                     if (this.mapId == 5) {
                         if (player.iDMark.isBaseMenu()) {
                             switch (select) {
@@ -4786,17 +4785,17 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (this.mapId == 50) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ngươi có muốn úp mảnh thiên sứ ? \n"
-                                + "Vậy thì hãy đạt 120 tỉ sức mạnh và mặc đủ 5 món đồ thần linh trước đi !\n"
+                                + "Vậy thì hãy đạt 120 tỉ sức mạnh và mặc đủ 5 món đồ huỷ diệt trước đi !\n"
                                 + "Nếu đã săn sàng rồi thì hãy đưa ta 2000 ruby, ta sẽ dịch chuyển ngươi qua map up mảnh thiên sứ siêu vip !!!",
                                 "Đến\nKaio", "Đến\nhành tinh\nBill", "Từ chối");
                     } else if (this.mapId == 154) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ngươi có muốn úp mảnh thiên sứ ? \n"
-                                + "Vậy thì hãy đạt 120 tỉ sức mạnh và mặc đủ 5 món đồ thần linh trước đi !\n"
+                                + "Vậy thì hãy đạt 120 tỉ sức mạnh và mặc đủ 5 món đồ huỷ diệt trước đi !\n"
                                 + "Nếu đã săn sàng rồi thì hãy đưa ta 2000 ruby, ta sẽ dịch chuyển ngươi qua map up mảnh thiên sứ siêu vip !!!",
                                 "Về thánh địa", "Đến\nhành tinh\nngục tù", "Từ chối");
                     } else if (this.mapId == 155) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ngươi có muốn úp mảnh thiên sứ ? \n"
-                                + "Vậy thì hãy đạt 120 tỉ sức mạnh và mặc đủ 5 món đồ thần linh trước đi !\n"
+                                + "Vậy thì hãy đạt 120 tỉ sức mạnh và mặc đủ 5 món đồ huỷ diệt trước đi !\n"
                                 + "Nếu đã săn sàng rồi thì hãy đưa ta 2000 ruby, ta sẽ dịch chuyển ngươi qua map up mảnh thiên sứ siêu vip !!!",
                                 "Quay về", "Từ chối");
                     } else if (this.mapId == 52) {
@@ -4858,9 +4857,9 @@ public class NpcFactory {
                                     ChangeMapService.gI().changeMap(player, 50, -1, 318, 336);
                                     break;
                                 case 1:
-                                    if (!player.setClothes.godClothes) {
+                                    if (!player.setClothes.IsSetHuyDiet()) {
                                         this.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                                "Yêu Cầu Phải Mặc Full Set Thần Linh", "Đóng");
+                                                "Yêu Cầu Phải Mặc Full Set Huỷ Diệt", "Đóng");
                                     } else {
                                         if (player.getSession().player.playerTask.taskMain.id >= 29) {
                                             ChangeMapService.gI().goToPotaufeu(player);
