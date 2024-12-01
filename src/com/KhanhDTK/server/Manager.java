@@ -180,8 +180,7 @@ public class Manager {
     public static final short[] quannm = {158, 159, 246, 247, 248, 249, 558};
     public static final short[] gangnm = {162, 163, 258, 259, 260, 261, 564};
     public static final short[] giaynm = {166, 167, 270, 271, 272, 273, 565};
-    // public static final short[] radaSKHVip = {186, 187, 278, 279, 280, 281, 561};
-    public static final short[] radaSKHVip = {280, 281, 561};
+    public static final short[] radaSKHVip = {186, 187, 278, 279, 280, 281, 561};
     public static final short[][][] doSKH = {{aotdt, quantdt, gangtdt, giaytdt, radaSKH}, {aonmt, quannmt, gangnmt, giaynmt, radaSKH}, {aoxdt, quanxdt, gangxdt, giayxdt, radaSKH}};
 
     public static final short[][][] doSKHVip = {{aotd, quantd, gangtd, giaytd}, {aonm, quannm, gangnm, giaynm}, {aoxd, quanxd, gangxd, giayxd}};
