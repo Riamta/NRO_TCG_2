@@ -788,7 +788,7 @@ public class CombineServiceNew {
                             manhVo = item;
                         }
                     }
-                    if (bongTai != null && manhVo != null && manhVo.quantity >= 9999) {
+                    if (bongTai != null && manhVo != null && manhVo.quantity >= 999) {
 
                         player.combineNew.goldCombine = GOLD_BONG_TAI;
                         player.combineNew.gemCombine = GEM_BONG_TAI;
@@ -809,11 +809,11 @@ public class CombineServiceNew {
                         }
                     } else {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                "Cần 1 Bông tai Porata cấp 1 và X9999 Mảnh vỡ bông tai", "Đóng");
+                                "Cần 1 Bông tai Porata cấp 1 và X999 Mảnh vỡ bông tai", "Đóng");
                     }
                 } else {
                     this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                            "Cần 1 Bông tai Porata cấp 1 và X9999 Mảnh vỡ bông tai", "Đóng");
+                            "Cần 1 Bông tai Porata cấp 1 và X999 Mảnh vỡ bông tai", "Đóng");
                 }
                 break;
             case MO_CHI_SO_BONG_TAI:
@@ -869,7 +869,7 @@ public class CombineServiceNew {
                             mvbt = item;
                         }
                     }
-                    if (bongTai != null && mvbt != null && mvbt.quantity >= 9999) {
+                    if (bongTai != null && mvbt != null && mvbt.quantity >= 999) {
 
                         player.combineNew.goldCombine = GOLD_BONG_TAI;
                         player.combineNew.gemCombine = GEM_BONG_TAI;
@@ -896,12 +896,12 @@ public class CombineServiceNew {
                         }
                     } else {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                "Cần 1 Bông tai Porata cấp 2 , 5K Hồng Ngọc, 500 Triệu Vàng , X9999 Mảnh vỡ bông tai "
+                                "Cần 1 Bông tai Porata cấp 2 , 5K Hồng Ngọc, 500 Triệu Vàng , X999 Mảnh vỡ bông tai "
                                 + " và X999 Mảnh hồn bông tai", "Đóng");
                     }
                 } else {
                     this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                            "Cần 1 Bông tai Porata cấp 2 , 5K Hồng Ngọc, 500 Triệu Vàng , X9999 Mảnh vỡ bông tai "
+                            "Cần 1 Bông tai Porata cấp 2 , 5K Hồng Ngọc, 500 Triệu Vàng , X999 Mảnh vỡ bông tai "
                             + " và X999 Mảnh hồn bông tai", "Đóng");
                 }
                 break;
@@ -921,7 +921,7 @@ public class CombineServiceNew {
 
                         }
                     }
-                    if (bongTai != null && thachPhu != null && daXanhLam != null && thachPhu.quantity >= 9999) {
+                    if (bongTai != null && thachPhu != null && daXanhLam != null && thachPhu.quantity >= 999) {
                         player.combineNew.goldCombine = GOLD_BONG_TAI;
                         player.combineNew.gemCombine = GEM_BONG_TAI;
                         player.combineNew.ratioCombine = RATIO_NANG_CAP;
@@ -940,11 +940,11 @@ public class CombineServiceNew {
                         }
                     } else {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                                "Cần 1 Bông tai Porata cấp 3, X9999 Mảnh hồn bông tai và 1 Đá xanh lam", "Đóng");
+                                "Cần 1 Bông tai Porata cấp 3, X999 Mảnh hồn bông tai và 1 Đá xanh lam", "Đóng");
                     }
                 } else {
                     this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                            "Cần 1 Bông tai Porata cấp 3, X9999 Mảnh hồn bông tai và 1 Đá xanh lam", "Đóng");
+                            "Cần 1 Bông tai Porata cấp 3, X999 Mảnh hồn bông tai và 1 Đá xanh lam", "Đóng");
                 }
                 break;
             case MO_CHI_SO_Chien_Linh:
@@ -3017,11 +3017,11 @@ public class CombineServiceNew {
                     manhVo = item;
                 }
             }
-            if (bongTai != null && manhVo != null && manhVo.quantity >= 9999) {
+            if (bongTai != null && manhVo != null && manhVo.quantity >= 999) {
                 player.inventory.gold -= gold;
                 player.inventory.gem -= gem;
                 player.inventory.ruby -= ruby;
-                InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, 9999);
+                InventoryServiceNew.gI().subQuantityItemsBag(player, manhVo, 999);
                 if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
                     bongTai.template = ItemService.gI().getTemplate(1155);
                     bongTai.itemOptions.add(new Item.ItemOption(72, 3));
@@ -3060,10 +3060,10 @@ public class CombineServiceNew {
                     daxanhlam = item;
                 }
             }
-            if (bongtai != null && thachPhu != null && thachPhu.quantity >= 9999) {
+            if (bongtai != null && thachPhu != null && thachPhu.quantity >= 999) {
                 player.inventory.gold -= gold;
                 player.inventory.gem -= gem;
-                InventoryServiceNew.gI().subQuantityItemsBag(player, thachPhu, 9999);
+                InventoryServiceNew.gI().subQuantityItemsBag(player, thachPhu, 999);
                 InventoryServiceNew.gI().subQuantityItemsBag(player, daxanhlam, 1);
                 if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
                     bongtai.itemOptions.clear();
@@ -4682,13 +4682,13 @@ public class CombineServiceNew {
                         + "Lưu Ý : Đồ Kích Hoạt Vip\nsẽ ra cùng loại và hành tinh \n với đồ kích hoạt đã chọn ban đầu!\n" + "\n"
                         + "Sau đó chỉ cần chọn 'Nâng Cấp'";
             case NANG_CAP_BONG_TAI:
-                return "Tách bông tai trước khi nâng\nVào hành trang\nChọn bông tai Porata\nChọn x9999 mảnh bông tai để nâng cấp \nSau đó chọn 'Nâng cấp'";
+                return "Tách bông tai trước khi nâng\nVào hành trang\nChọn bông tai Porata\nChọn x999 mảnh bông tai để nâng cấp \nSau đó chọn 'Nâng cấp'";
             case MO_CHI_SO_BONG_TAI:
                 return "Vào hành trang\nChọn bông tai Porata Cấp 2\nChọn Mảnh hồn bông tai số lượng 15 cái\nvà 10 Đá ngũ sắc để nâng cấp\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_BONG_TAI_CAP3:
-                return "Vào hành trang\nChọn Porata Cấp 2 và 9999 mảnh vỡ bông tai\nSau đó chọn 'Nâng cấp'";
+                return "Vào hành trang\nChọn Porata Cấp 2 và 999 mảnh vỡ bông tai\nSau đó chọn 'Nâng cấp'";
             case MO_CHI_SO_BONG_TAI_CAP3:
-                return "Vào hành trang\nChọn Porata Cấp 3 + 9999 mảnh hồn bông tai + 1 Đá xanh lam \nSau đó chọn 'Nâng cấp'";
+                return "Vào hành trang\nChọn Porata Cấp 3 + 999 mảnh hồn bông tai + 1 Đá xanh lam \nSau đó chọn 'Nâng cấp'";
             case MO_CHI_SO_Chien_Linh:
                 return "Vào hành trang\nChọn Chiến Linh\nChọn Đá ma thuật số lượng 99 cái\nvà x99 Hồn Thú để nâng cấp\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_KHI:

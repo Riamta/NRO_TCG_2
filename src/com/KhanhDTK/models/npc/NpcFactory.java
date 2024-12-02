@@ -6757,7 +6757,7 @@ public class NpcFactory {
                                     if (player.gender == 1) {
                                         SkillService.gI().learSkillSpecial(player, Skill.MA_PHONG_BA);
                                     }
-                                    InventoryServiceNew.gI().subQuantityItem(player.inventory.itemsBag, sach, 9999);
+                                    InventoryServiceNew.gI().subQuantityItem(player.inventory.itemsBag, sach, 999);
                                     player.inventory.gold -= 10000000;
                                     player.inventory.gem -= 99;
                                     InventoryServiceNew.gI().sendItemBags(player);
@@ -6765,8 +6765,8 @@ public class NpcFactory {
                                     Service.getInstance().sendThongBao(player,
                                             "Ngươi không đủ sức mạnh để học tuyệt kỹ");
                                     return;
-                                } else if (sach.quantity <= 9999) {
-                                    int sosach = 9999 - sach.quantity;
+                                } else if (sach.quantity <= 999) {
+                                    int sosach = 999 - sach.quantity;
                                     Service.getInstance().sendThongBao(player,
                                             "Ngươi còn thiếu " + sosach + " bí kíp nữa.\nHãy tìm đủ rồi đến gặp ta.");
                                     return;
@@ -7853,7 +7853,7 @@ public class NpcFactory {
                         Item biKiep = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, 590);
                         this.createOtherMenu(player, ConstNpc.BASE_MENU, "Vào các khung giờ chẵn trong ngày\n"
                                 + "Khi luyện tập với Mộc nhân với chế độ bật Cờ sẽ đánh rơi Bí kíp\n"
-                                + "Hãy cố găng tập luyện thu thập 9999 bí kíp rồi quay lại gặp ta nhé", "Nhận\nthưởng",
+                                + "Hãy cố găng tập luyện thu thập 999 bí kíp rồi quay lại gặp ta nhé", "Nhận\nthưởng",
                                 "OK");
 
                     } catch (Exception ex) {
@@ -7870,7 +7870,7 @@ public class NpcFactory {
                         Item biKiep = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, 590);
                         if (select == 0) {
                             if (biKiep != null) {
-                                if (biKiep.quantity >= 9999 && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+                                if (biKiep.quantity >= 999 && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
                                     Item yardart = ItemService.gI().createNewItem((short) (player.gender + 592));
                                     yardart.itemOptions.add(new Item.ItemOption(47, 400));
                                     yardart.itemOptions.add(new Item.ItemOption(108, 10));
@@ -7879,10 +7879,10 @@ public class NpcFactory {
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.gI().sendThongBao(player, "Bạn vừa nhận được trang phục tộc Yardart");
                                 } else if (biKiep.quantity < 10000) {
-                                    Service.gI().sendThongBao(player, "Vui lòng sưu tầm đủ\n9999 bí kíp");
+                                    Service.gI().sendThongBao(player, "Vui lòng sưu tầm đủ\n999 bí kíp");
                                 }
                             } else {
-                                Service.gI().sendThongBao(player, "Vui lòng sưu tầm đủ\n9999 bí kíp");
+                                Service.gI().sendThongBao(player, "Vui lòng sưu tầm đủ\n999 bí kíp");
                                 return;
                             }
                         } else {
