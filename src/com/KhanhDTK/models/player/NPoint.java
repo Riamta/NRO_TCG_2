@@ -1843,14 +1843,10 @@ public class NPoint {
     }
 
     public long calSubTNSM(long tiemNang) {
-        if (power >= 110_000_000_000L) {
-            tiemNang /= 8000; // Giảm phạt
-        } else if (power >= 100_000_000_000L) {
-            tiemNang /= 6000; // Giảm phạt
-        } else if (power >= 90_000_000_000L) {
-            tiemNang /= 10; // Giảm nhẹ
+        if (power >= 120_000_000_000L) {
+            tiemNang /= 5; // Giảm nhẹ
         } else if (power >= 80_000_000_000L) {
-            tiemNang /= 10; // Giảm nhẹ
+            tiemNang /= 5; // Giảm nhẹ
         } else if (power >= 60_000_000_000L) {
             tiemNang /= 5;
         } else if (power >= 20_000_000_000L) {
@@ -1862,18 +1858,16 @@ public class NPoint {
     }
 
     public long calSubTNSM_DT(long tiemNang) {
-        if (power >= 110_000_000_000L) {
-            tiemNang /= 8000; // Giảm phạt
-        } else if (power >= 100_000_000_000L) {
-            tiemNang /= 6000; // Giảm phạt
-        } else if (power >= 90_000_000_000L) {
-            tiemNang /= 400; // Giảm nhẹ
-        } else if (power >= 100_000_000_000L) {
-            tiemNang /= 100; // Giảm nhẹ
-        } else if (power <= 60_000_000_000L) {
-            tiemNang *= 10;
-        } else {
-            tiemNang *= 3;
+        if (power >= 120_000_000_000L) {
+            tiemNang /= 5; // Giảm nhẹ
+        } else if (power >= 80_000_000_000L) {
+            tiemNang /= 5; // Giảm nhẹ
+        } else if (power >= 60_000_000_000L) {
+            tiemNang /= 5;
+        } else if (power >= 20_000_000_000L) {
+            tiemNang *= 2;
+        } else if (power >= 10_000_000_000L) {
+            tiemNang *= 3; // Tăng 100%
         }
         return tiemNang;
     }
