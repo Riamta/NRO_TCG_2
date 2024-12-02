@@ -100,7 +100,7 @@ public class Player {
     public boolean trangthai = false;
     public long timeUseSkill;
     public int capChuyenSinh = 0;
-    public int[] BktDauLaDaiLuc = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public int[] BktDauLaDaiLuc = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public int Bkt_Exp_Tu_Ma = 0;
     public int Bkt_Ma_Hoa = 0;
     public long BktLasttimeMaHoa;
@@ -110,7 +110,7 @@ public class Player {
     public int Captutien = 0;
     public long Exptutien = 0;
     public int Bkt_Ma_cot;
-    public int[] Bkttutien = new int[]{0, 0, 0};
+    public int[] Bkttutien = new int[] { 0, 0, 0 };
     public double dametong = 0;
     public String Hppl = "\n";
     public boolean resetdame = false;
@@ -142,7 +142,7 @@ public class Player {
     public MySession session;
     public boolean beforeDispose;
     public Gift gift;
-//    public List<ThanhTich> Archivement = new ArrayList<>();
+    // public List<ThanhTich> Archivement = new ArrayList<>();
     public boolean isPet;
     public boolean isNewPet;
     public int TimeOnline = 0;
@@ -172,7 +172,7 @@ public class Player {
     public byte type = 0;
     public int ResetSkill = 0;
     public int mapIdBeforeLogout;
-//   public boolean tickxanh = false;
+    // public boolean tickxanh = false;
     public List<Zone> mapBlackBall;
     public List<Zone> mapMaBu;
     public long limitgold = 0;
@@ -253,7 +253,7 @@ public class Player {
     public boolean receivedWoodChest;
     public int goldChallenge;
     public boolean bdkb_isJoinBdkb;
-//    public CauCa cauca;
+    // public CauCa cauca;
     public int data_task;
     public List<Integer> idEffChar = new ArrayList<>();
 
@@ -270,7 +270,7 @@ public class Player {
         rewardBlackBall = new RewardBlackBall(this);
         effectFlagBag = new EffectFlagBag();
         fightMabu = new FightMabu(this);
-        //----------------------------------------------------------------------
+        // ----------------------------------------------------------------------
         iDMark = new IDMark();
         combineNew = new CombineNew();
         playerTask = new TaskPlayer();
@@ -281,7 +281,7 @@ public class Player {
         effectSkin = new EffectSkin(this);
         skillSpecial = new SkillSpecial(this);
         gift = new Gift(this);
-//        cauca = new CauCa(this);
+        // cauca = new CauCa(this);
     }
 
     public void CreatePet(String NamePet) {
@@ -290,12 +290,12 @@ public class Player {
         this.TrieuHoiThucAn = 100;
         this.TrieuHoiLevel = 0;
         this.TrieuHoiExpThanThu = 0;
-        this.TrieuHoiCapBac = 0; //Util.nextInt(0, Util.nextInt(3, 10));
+        this.TrieuHoiCapBac = 0; // Util.nextInt(0, Util.nextInt(3, 10));
         this.TrieuHoiDame = Util.GioiHannext(10000, 10000 + ((this.TrieuHoiCapBac + 1) * 10000));
         this.TrieuHoiHP = Util.GioiHannext(100000, 100000 + ((this.TrieuHoiCapBac + 1) * 50000));
     }
 
-    //--------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
     public boolean isDie() {
         if (this.nPoint != null) {
             return this.nPoint.hp <= 0;
@@ -303,7 +303,7 @@ public class Player {
         return true;
     }
 
-    //--------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
     public void setSession(MySession session) {
         this.session = session;
     }
@@ -365,12 +365,14 @@ public class Player {
                                 }
                                 Service.gI().sendThongBao(this,
                                         "Bạn đã thăng cảnh giới thất bại và bị mất Exp tu tiên, cảnh giới bạn vẫn ở: "
-                                        + this.BktTuviTutien(Util.BKT(this.Bkttutien[1])));
+                                                + this.BktTuviTutien(Util.BKT(this.Bkttutien[1])));
                                 this.setDie(this);
                             }
                         }
-                        if (this.istrain && !MapService.gI().isMapTrainOff(this, this.zone.map.mapId) && this.timeoff >= 30) {
-                            ChangeMapService.gI().changeMapBySpaceShip(this, MapService.gI().getMapTrainOff(this), -1, 250);
+                        if (this.istrain && !MapService.gI().isMapTrainOff(this, this.zone.map.mapId)
+                                && this.timeoff >= 30) {
+                            ChangeMapService.gI().changeMapBySpaceShip(this, MapService.gI().getMapTrainOff(this), -1,
+                                    250);
                             congExpOff();
                             this.timeoff = 0;
                         }
@@ -405,7 +407,7 @@ public class Player {
                         if (itemTime != null) {
                             itemTime.update();
                             if (this.itemTime.isdkhi = false) {
-                                //                    Service.gI().setNotMonkey(this);
+                                // Service.gI().setNotMonkey(this);
                                 Service.gI().Send_Caitrang(this);
                                 Service.gI().point(this);
                                 PlayerService.gI().sendInfoHpMp(this);
@@ -430,16 +432,17 @@ public class Player {
                             lastTimeTitle1 = 0;
                             isTitleUse = false;
                         }
-//                        if (!isdem && (hour >= 0 || hour < 24)) {
-//                            SummonDragon.gI().activeNight(this);
-//                            isdem = true;
-////                            Service.getInstance().sendThongBao(this, "|7| Bóng tối bao phủ, hắc ám chuỗi dậy!");
-//                        } else if (isdem && (hour >= 0 && hour < 24)) {
-//                             SummonDragon.gI().activeNight(this);
-////                            SummonDragon.gI().activeDay(this);
-//                            isdem = false;
-//                           
-//                        }
+                        // if (!isdem && (hour >= 0 || hour < 24)) {
+                        // SummonDragon.gI().activeNight(this);
+                        // isdem = true;
+                        //// Service.getInstance().sendThongBao(this, "|7| Bóng tối bao phủ, hắc ám
+                        // chuỗi dậy!");
+                        // } else if (isdem && (hour >= 0 && hour < 24)) {
+                        // SummonDragon.gI().activeNight(this);
+                        //// SummonDragon.gI().activeDay(this);
+                        // isdem = false;
+                        //
+                        // }
                         BlackBallWar.gI().update(this);
                         MapMaBu.gI().update(this);
                         send_text_time_nhan_bua_mien_phi();
@@ -449,11 +452,13 @@ public class Player {
                             this.iDMark.setGoToGas(false);
                         }
 
-                        if (this != null && this.iDMark != null && !isBoss && this.iDMark.isGotoFuture() && Util.canDoWithTime(this.iDMark.getLastTimeGoToFuture(), 6000)) {
+                        if (this != null && this.iDMark != null && !isBoss && this.iDMark.isGotoFuture()
+                                && Util.canDoWithTime(this.iDMark.getLastTimeGoToFuture(), 6000)) {
                             ChangeMapService.gI().changeMapBySpaceShip(this, 102, -1, Util.nextInt(60, 200));
                             this.iDMark.setGotoFuture(false);
                         }
-                        if (this.iDMark != null && this.iDMark.isGoToBDKB() && Util.canDoWithTime(this.iDMark.getLastTimeGoToBDKB(), 6000)) {
+                        if (this.iDMark != null && this.iDMark.isGoToBDKB()
+                                && Util.canDoWithTime(this.iDMark.getLastTimeGoToBDKB(), 6000)) {
                             ChangeMapService.gI().changeMapBySpaceShip(this, 135, -1, 35);
                             this.iDMark.setGoToBDKB(true);
                         }
@@ -479,7 +484,8 @@ public class Player {
                             newpet.dispose();
                             newpet = null;
                         }
-                        if (this.isPl() && isWin && this.zone.map.mapId == 51 && Util.canDoWithTime(lastTimeWin, 2000)) {
+                        if (this.isPl() && isWin && this.zone.map.mapId == 51
+                                && Util.canDoWithTime(lastTimeWin, 2000)) {
                             ChangeMapService.gI().changeMapBySpaceShip(this, 52, 0, -1);
                             isWin = false;
                         }
@@ -493,12 +499,14 @@ public class Player {
             }
         }
     }
+
     public long lastTimeSendTextTime;
 
     public void send_text_time_nhan_bua_mien_phi() {
         if (Util.canDoWithTime(lastTimeSendTextTime, 6000000)) {
             if (this.luotNhanBuaMienPhi == 1) {
-                ItemTimeService.gI().sendTextTime(this, TEXT_NHAN_BUA_MIEN_PHI, "Nhận ngẫu nhiên bùa 1h mỗi ngày tại Bà Hạt Mít ở vách núi", 30);
+                ItemTimeService.gI().sendTextTime(this, TEXT_NHAN_BUA_MIEN_PHI,
+                        "Nhận ngẫu nhiên bùa 1h mỗi ngày tại Bà Hạt Mít ở vách núi", 30);
             }
             lastTimeSendTextTime = System.currentTimeMillis();
         }
@@ -550,7 +558,8 @@ public class Player {
         }
 
     }
-    //--------------------------------------------------------------------------
+
+    // --------------------------------------------------------------------------
     /*
      * {380, 381, 382}: ht lưỡng long nhất thể xayda trái đất
      * {383, 384, 385}: ht porata xayda trái đất
@@ -560,19 +569,33 @@ public class Player {
      * {867, 878, 869}: ht c2 xayda
      */
     private static final short[][] idOutfitFusion = {
-        {380, 381, 382}, //luong long
-        {383, 384, 385},// porata 
-        {391, 392, 393}, //hop the chung namec
-        {870, 871, 872},//trai dat c2
-        {873, 874, 875}, //namec c2
-        {867, 868, 869}, //xayda c2
-        {1755, 1756, 1757}, // td 3
-        {1650, 1651, 1652}, // nm 3
-        {1734, 1735, 1736},// xd 3
-        {2048, 2049, 2050}, // td 4
-        {2051, 2052, 2053}, // nm 4
-        {2054, 2055, 2056},// xd 4
+            { 380, 381, 382 }, // luong long
+            { 383, 384, 385 }, // porata
+            { 391, 392, 393 }, // hop the chung namec
+            { 870, 871, 872 }, // trai dat c2
+            { 873, 874, 875 }, // namec c2
+            { 867, 868, 869 }, // xayda c2
+            { 870, 871, 872 }, // td 3
+            { 1650, 1651, 1652 }, // nm 3
+            { 867, 868, 869 }, // xd 3
+            { 2048, 2049, 2050 }, // td 4
+            { 2051, 2052, 2053 }, // nm 4
+            { 2054, 2055, 2056 },// xd 4
     };
+    // private static final short[][] idOutfitFusion = {
+    //         { 380, 381, 382 }, // luong long
+    //         { 383, 384, 385 }, // porata
+    //         { 391, 392, 393 }, // hop the chung namec
+    //         { 870, 871, 872 }, // trai dat c2
+    //         { 873, 874, 875 }, // namec c2
+    //         { 867, 868, 869 }, // xayda c2
+    //         { 1755, 1756, 1757 }, // td 3
+    //         { 1650, 1651, 1652 }, // nm 3
+    //         { 1734, 1735, 1736 }, // xd 3
+    //         { 2048, 2049, 2050 }, // td 4
+    //         { 2051, 2052, 2053 }, // nm 4
+    //         { 2054, 2055, 2056 },// xd 4
+    // };
 
     public byte getEffFront() {
         if (this.inventory.itemsBody.isEmpty() || this.inventory.itemsBody.size() < 10) {
@@ -628,22 +651,31 @@ public class Player {
                 break;
             }
         }
-        if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
+        if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null
+                && optionLevelNhan != null
                 && levelAo >= 8 && levelQuan >= 8 && levelGang >= 8 && levelGiay >= 8 && levelNhan >= 8) {
             return 8;
-        } //        else if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
-        //                && levelAo >= 7 && levelQuan >= 7 && levelGang >= 7 && levelGiay >= 7 && levelNhan >= 7) {
-        //            return 7;
-        //        } else if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
-        //                && levelAo >= 6 && levelQuan >= 6 && levelGang >= 6 && levelGiay >= 6 && levelNhan >= 6) {
-        //            return 6;
-        //        } else if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
-        //                && levelAo >= 5 && levelQuan >= 5 && levelGang >= 5 && levelGiay >= 5 && levelNhan >= 5) {
-        //            return 5;
-        //        } else if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
-        //                && levelAo >= 4 && levelQuan >= 4 && levelGang >= 4 && levelGiay >= 4 && levelNhan >= 4) {
-        //            return 4;
-        //        }
+        } // else if (optionLevelAo != null && optionLevelQuan != null && optionLevelGang
+          // != null && optionLevelGiay != null && optionLevelNhan != null
+          // && levelAo >= 7 && levelQuan >= 7 && levelGang >= 7 && levelGiay >= 7 &&
+          // levelNhan >= 7) {
+          // return 7;
+          // } else if (optionLevelAo != null && optionLevelQuan != null &&
+          // optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
+          // && levelAo >= 6 && levelQuan >= 6 && levelGang >= 6 && levelGiay >= 6 &&
+          // levelNhan >= 6) {
+          // return 6;
+          // } else if (optionLevelAo != null && optionLevelQuan != null &&
+          // optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
+          // && levelAo >= 5 && levelQuan >= 5 && levelGang >= 5 && levelGiay >= 5 &&
+          // levelNhan >= 5) {
+          // return 5;
+          // } else if (optionLevelAo != null && optionLevelQuan != null &&
+          // optionLevelGang != null && optionLevelGiay != null && optionLevelNhan != null
+          // && levelAo >= 4 && levelQuan >= 4 && levelGang >= 4 && levelGiay >= 4 &&
+          // levelNhan >= 4) {
+          // return 4;
+          // }
         else {
             return -1;
         }
@@ -676,23 +708,28 @@ public class Player {
                         switch (this.isbienhinh) {
                             case 1:
                                 ItemTimeService.gI().removeItemTime(this, 20958);
-                                ItemTimeService.gI().sendItemTime(this, 20959, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20959,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1806;
                             case 2:
                                 ItemTimeService.gI().removeItemTime(this, 20959);
-                                ItemTimeService.gI().sendItemTime(this, 20960, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20960,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1809;
                             case 3:
                                 ItemTimeService.gI().removeItemTime(this, 20960);
-                                ItemTimeService.gI().sendItemTime(this, 20961, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20961,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1812;
                             case 4:
                                 ItemTimeService.gI().removeItemTime(this, 20961);
-                                ItemTimeService.gI().sendItemTime(this, 20962, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20962,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1815;
                             case 5:
                                 ItemTimeService.gI().removeItemTime(this, 20962);
-                                ItemTimeService.gI().sendItemTime(this, 20963, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20963,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1818;
                             default:
                         }
@@ -700,23 +737,28 @@ public class Player {
                         switch (this.isbienhinh) {
                             case 1:
                                 ItemTimeService.gI().removeItemTime(this, 20964);
-                                ItemTimeService.gI().sendItemTime(this, 20965, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20965,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1823;
                             case 2:
                                 ItemTimeService.gI().removeItemTime(this, 20965);
-                                ItemTimeService.gI().sendItemTime(this, 20966, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20966,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1826;
                             case 3:
                                 ItemTimeService.gI().removeItemTime(this, 20966);
-                                ItemTimeService.gI().sendItemTime(this, 20967, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20967,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1829;
                             case 4:
                                 ItemTimeService.gI().removeItemTime(this, 20967);
-                                ItemTimeService.gI().sendItemTime(this, 20968, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20968,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1832;
                             case 5:
                                 ItemTimeService.gI().removeItemTime(this, 20968);
-                                ItemTimeService.gI().sendItemTime(this, 20969, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20969,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1835;
 
                             default:
@@ -726,23 +768,28 @@ public class Player {
                         switch (this.isbienhinh) {
                             case 1:
                                 ItemTimeService.gI().removeItemTime(this, 20952);
-                                ItemTimeService.gI().sendItemTime(this, 20953, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20953,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1843;
                             case 2:
                                 ItemTimeService.gI().removeItemTime(this, 20953);
-                                ItemTimeService.gI().sendItemTime(this, 20954, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20954,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1846;
                             case 3:
                                 ItemTimeService.gI().removeItemTime(this, 20954);
-                                ItemTimeService.gI().sendItemTime(this, 20955, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20955,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1849;
                             case 4:
                                 ItemTimeService.gI().removeItemTime(this, 20955);
-                                ItemTimeService.gI().sendItemTime(this, 20956, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20956,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1852;
                             case 5:
                                 ItemTimeService.gI().removeItemTime(this, 20956);
-                                ItemTimeService.gI().sendItemTime(this, 20957, this.effectSkill.timeTranformation / 1000);
+                                ItemTimeService.gI().sendItemTime(this, 20957,
+                                        this.effectSkill.timeTranformation / 1000);
                                 return 1855;
                             default:
                         }
@@ -817,12 +864,12 @@ public class Player {
             return 181;
         } else if (effectSkill != null && effectSkill.isMaPhongBa) {
             return 1989;
-//        } else if (effectSkill.isBang) {
-//            return 1252;
-//        } else if (effectSkill.isDa) {
-//            return 455;
-//        } else if (effectSkill.isCarot) {
-//            return 407;
+            // } else if (effectSkill.isBang) {
+            // return 1252;
+            // } else if (effectSkill.isDa) {
+            // return 455;
+            // } else if (effectSkill.isCarot) {
+            // return 407;
         } else if (fusion != null && fusion.typeFusion != ConstPlayer.NON_FUSION) {
             if (fusion.typeFusion == ConstPlayer.LUONG_LONG_NHAT_THE) {
                 return idOutfitFusion[this.gender == ConstPlayer.NAMEC ? 2 : 0][1];
@@ -884,12 +931,12 @@ public class Player {
             return 1990;
         } else if (effectSkill != null && effectSkill.isSocola) {
             return 414;
-//        } else if (effectSkill.isBang) {
-//            return 1253;
-//        } else if (effectSkill.isDa) {
-//            return 456;
-//        } else if (effectSkill.isCarot) {
-//            return 408;
+            // } else if (effectSkill.isBang) {
+            // return 1253;
+            // } else if (effectSkill.isDa) {
+            // return 456;
+            // } else if (effectSkill.isCarot) {
+            // return 408;
         } else if (fusion != null && fusion.typeFusion != ConstPlayer.NON_FUSION) {
             if (fusion.typeFusion == ConstPlayer.LUONG_LONG_NHAT_THE) {
                 return idOutfitFusion[this.gender == ConstPlayer.NAMEC ? 2 : 0][2];
@@ -950,10 +997,10 @@ public class Player {
         if (item.template.id == 1459) {
             return 38;
         }
-         if (item.template.id == 1065) {
+        if (item.template.id == 1065) {
             return 6;
         }
-          if (item.template.id == 1064) {
+        if (item.template.id == 1064) {
             return 68;
         }
         if (item.template.id == 1340) {
@@ -1083,7 +1130,8 @@ public class Player {
             case 4:
                 return "Tăng " + ((TrieuHoiLevel + 1) * 30) + " HP, KI, SD, Giáp cho Chủ nhân";
             case 3:
-                return "Tăng " + ((TrieuHoiLevel + 1) * 20) + " HP, KI\n" + ((TrieuHoiLevel + 1) * 10) + " SD cho Chủ nhân";
+                return "Tăng " + ((TrieuHoiLevel + 1) * 20) + " HP, KI\n" + ((TrieuHoiLevel + 1) * 10)
+                        + " SD cho Chủ nhân";
             case 2:
                 return "Tăng " + ((TrieuHoiLevel + 1) * 10) + " Sức đánh cho Chủ nhân";
             case 1:
@@ -1095,7 +1143,7 @@ public class Player {
         }
     }
 
-    //--------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
     public int injured(Player plAtt, int damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
             if (plAtt != null) {
@@ -1104,7 +1152,8 @@ public class Player {
                     case Skill.MASENKO:
                     case Skill.ANTOMIC:
                         if (this.nPoint.voHieuChuong > 0) {
-                            com.KhanhDTK.services.PlayerService.gI().hoiPhuc(this, 0, damage * this.nPoint.voHieuChuong / 100);
+                            com.KhanhDTK.services.PlayerService.gI().hoiPhuc(this, 0,
+                                    damage * this.nPoint.voHieuChuong / 100);
                             return 0;
                         }
                 }
@@ -1143,40 +1192,41 @@ public class Player {
     }
 
     public void setDie(Player plAtt) {
-        //xóa phù
+        // xóa phù
         if (this.effectSkin.xHPKI > 1) {
             this.effectSkin.xHPKI = 1;
             Service.gI().point(this);
         }
-        //xóa tụ skill đặc biệt
+        // xóa tụ skill đặc biệt
         this.playerSkill.prepareQCKK = false;
         this.playerSkill.prepareLaze = false;
         this.playerSkill.prepareTuSat = false;
-        //xóa hiệu ứng skill
+        // xóa hiệu ứng skill
         this.effectSkill.removeSkillEffectWhenDie();
         //
         nPoint.setHp(0);
         nPoint.setMp(0);
-        //xóa trứng
+        // xóa trứng
         if (this.mobMe != null) {
             this.mobMe.mobMeDie();
         }
         Service.gI().charDie(this);
-        //add kẻ thù
-        if (!this.isPet && !this.isNewPet && !this.isBoss && plAtt != null && !plAtt.isPet && !plAtt.isNewPet && !plAtt.isBot && !plAtt.isBoss) {
+        // add kẻ thù
+        if (!this.isPet && !this.isNewPet && !this.isBoss && plAtt != null && !plAtt.isPet && !plAtt.isNewPet
+                && !plAtt.isBot && !plAtt.isBoss) {
             if (!plAtt.itemTime.isUseAnDanh) {
                 FriendAndEnemyService.gI().addEnemy(this, plAtt);
             }
         }
-        //kết thúc pk
+        // kết thúc pk
         if (this.pvp != null) {
             this.pvp.lose(this, TYPE_LOSE_PVP.DEAD);
         }
-//        PVPServcice.gI().finishPVP(this, PVP.TYPE_DIE);
+        // PVPServcice.gI().finishPVP(this, PVP.TYPE_DIE);
         BlackBallWar.gI().dropBlackBall(this);
     }
 
-    //--------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
     public void setClanMember() {
         if (this.clanMember != null) {
             this.clanMember.powerPoint = this.nPoint.power;
@@ -1193,7 +1243,8 @@ public class Player {
     public void congExpOff() {
         long exp = this.nPoint.getexp() * this.timeoff;
         Service.gI().addSMTN(this, (byte) 2, exp, false);
-        NpcService.gI().createTutorial(this, 536, "Bạn tăng được " + exp + " sức mạnh trong thời gian " + this.timeoff + " phút tập luyện Offline");
+        NpcService.gI().createTutorial(this, 536,
+                "Bạn tăng được " + exp + " sức mạnh trong thời gian " + this.timeoff + " phút tập luyện Offline");
 
     }
 
@@ -2458,6 +2509,7 @@ public class Player {
         }
         return "0";
     }
+
     public Mob mobTarget;
 
     public long lastTimeTargetMob;
@@ -2472,7 +2524,8 @@ public class Player {
         if (isBot) {
             move = (byte) (move * (byte) 2);
         }
-        PlayerService.gI().playerMove(this, this.location.x + (dir == 1 ? move : -move), y + (Util.isTrue(3, 10) ? -50 : 0));
+        PlayerService.gI().playerMove(this, this.location.x + (dir == 1 ? move : -move),
+                y + (Util.isTrue(3, 10) ? -50 : 0));
     }
 
     public Mob getMobAttack() {
@@ -2511,7 +2564,7 @@ public class Player {
 
     public void attack() {
         if (this.isBot) {
-            //this.mobTarget = this.getMobAttack();
+            // this.mobTarget = this.getMobAttack();
             if (Util.canDoWithTime(lastTimeAttack, 100) && this.mobTarget != null) {
 
                 this.lastTimeAttack = System.currentTimeMillis();
@@ -2521,8 +2574,9 @@ public class Player {
                         return;
                     }
 
-                    this.playerSkill.skillSelect = this.playerSkill.skills.get(Util.nextInt(0, this.playerSkill.skills.size() - 1));
-                    //System.out.println(m.name);
+                    this.playerSkill.skillSelect = this.playerSkill.skills
+                            .get(Util.nextInt(0, this.playerSkill.skills.size() - 1));
+                    // System.out.println(m.name);
                     if (Util.nextInt(100) < 70) {
                         this.playerSkill.skillSelect = this.playerSkill.skills.get(0);
                     }
