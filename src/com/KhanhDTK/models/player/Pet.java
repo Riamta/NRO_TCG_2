@@ -227,7 +227,7 @@ public class Pet extends Player {
             this.status = FUSION;
             ChangeMapService.gI().exitMap(this);
             fusionEffect(master.fusion.typeFusion);
-            //Service.getInstance().Send_Caitrang(master);
+            Service.getInstance().Send_Caitrang(master);
             master.nPoint.calPoint();
             master.nPoint.setFullHpMp();
             Service.getInstance().point(master);
