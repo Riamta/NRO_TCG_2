@@ -561,7 +561,7 @@ public class Mob {
             if (player == null) {
                 return new ArrayList<>();
             }
-            if (zone.map.mapId == 155 && Util.isTrue(1, 100)) {
+            if (zone.map.mapId == 155 && Util.isTrue(3, 100)) {
                 Item mts = ItemService.gI().createNewItem((short) (1066 + Util.nextInt(5)), 1);
                 InventoryServiceNew.gI().addItemBag(player, mts);
                 InventoryServiceNew.gI().sendItemBags(player);

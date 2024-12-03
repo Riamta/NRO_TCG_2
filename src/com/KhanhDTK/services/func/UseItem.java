@@ -1557,7 +1557,7 @@ public class UseItem {
     private void opencaitrang(Player pl, Item item) {
         if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 1) {
             int id = Util.nextInt(0, 100);
-            int[] rdct = new int[] { 1340, 1341, 1342 };
+            int[] rdct = new int[] { 1339, 1340, 1341, 1342, 1343 };
             int[] rdop = new int[] { 5, 14, 94, 108, 97, 106, 107 };
             int randomct = new Random().nextInt(rdct.length);
             int randomop = new Random().nextInt(rdop.length);
@@ -2307,7 +2307,7 @@ public class UseItem {
             if (index != 0 || zoneChose.map.mapId == 21
                     || zoneChose.map.mapId == 22
                     || zoneChose.map.mapId == 23) {
-                if(pl.mapBeforeCapsule_2 != pl.mapBeforeCapsule){
+                if (pl.mapBeforeCapsule_2 != pl.mapBeforeCapsule) {
                     pl.mapBeforeCapsule_2 = pl.mapBeforeCapsule;
                 }
                 pl.mapBeforeCapsule = pl.zone;

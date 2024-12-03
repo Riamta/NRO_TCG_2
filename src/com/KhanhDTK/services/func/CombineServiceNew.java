@@ -1141,7 +1141,7 @@ public class CombineServiceNew {
                         this.whis.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu Công thức Vip", "Đóng");
                         return;
                     }
-                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 999).count() < 1) {
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 99).count() < 1) {
                         this.whis.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu Mảnh đồ thiên sứ", "Đóng");
                         return;
                     }
@@ -3167,7 +3167,7 @@ public class CombineServiceNew {
             Service.getInstance().sendThongBao(player, "Thiếu Công thức Vip");
             return;
         }
-        if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 999).count() != 1) {
+        if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 99).count() != 1) {
             Service.getInstance().sendThongBao(player, "Thiếu Mảnh thiên sứ");
             return;
         }
@@ -3220,7 +3220,7 @@ public class CombineServiceNew {
                 if (daMM != null) {
                     Item itemDaMayM = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isDaMayMan()).findFirst().get();
                 }
-                Item itemManh = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 999).findFirst().get();
+                Item itemManh = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 99).findFirst().get();
 
                 tilemacdinh = Util.nextInt(0, 50);
                 if (tilemacdinh == 49) {
@@ -3306,7 +3306,7 @@ public class CombineServiceNew {
                 InventoryServiceNew.gI().addItemBag(player, itemTS);
                 sendEffectSuccessCombine(player);
                 if (mTS != null) {
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, mTS, 999);
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, mTS, 99);
                 }
                 if (CtVip != null) {
                     InventoryServiceNew.gI().subQuantityItemsBag(player, CtVip, 1);
@@ -3325,7 +3325,7 @@ public class CombineServiceNew {
             } else {
                 sendEffectFailCombine(player);
                 if (mTS != null) {
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, mTS, 99);
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, mTS, 39);
                 }
                 if (CtVip != null) {
                     InventoryServiceNew.gI().subQuantityItemsBag(player, CtVip, 1);
@@ -4711,7 +4711,7 @@ public class CombineServiceNew {
                 return "VChọn Kiếm Z\nChọn Quặng Z, số lượng\n99 cái\nSau đó chọn 'Rèn Kiếm'\n Ngẫu nhiên Kiếm Z cấp 1 đến cấp 16";
             case CHE_TAO_TRANG_BI_TS:
                 return "Cần 1 công thức vip\n"
-                        + "999 Mảnh trang bị tương ứng\n"
+                        + "99 Mảnh trang bị tương ứng\n"
                         + "1 đá nâng cấp (tùy chọn)\n"
                         + "1 đá may mắn (tùy chọn)\n";
             case GIAM_DINH_SACH:
