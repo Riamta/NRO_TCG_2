@@ -728,8 +728,39 @@ public class UseItem {
     }
 
     private void Openhopct(Player pl, Item item) {
+        // if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 0) {
+        // boolean vinhvien = Manager.TotalCaiTrang >= 500;
+        // int[] rdct = new int[] { 1290, 1291, 1281, 1302, 1282, 1296, 1297, 1298,
+        // 1295, 1301, 1300, 1307, 1306, 1308,
+        // 1309, 1310 };
+        // int[] rdop = new int[] { 5, 14, 94, 108, 97 };
+        // int randomct = new Random().nextInt(rdct.length);
+        // int randomop = new Random().nextInt(rdop.length);
+        // Item ct = ItemService.gI().createNewItem((short) rdct[randomct]);
+        // Item vt = ItemService.gI().createNewItem((short) Util.nextInt(16, 16));
+        // if (!vinhvien) {
+        // ct.itemOptions.add(new Item.ItemOption(50, Util.nextInt(20, 27)));
+        // ct.itemOptions.add(new Item.ItemOption(77, Util.nextInt(20, 27)));
+        // ct.itemOptions.add(new Item.ItemOption(103, Util.nextInt(20, 27)));
+        // ct.itemOptions.add(new Item.ItemOption(93, Util.nextInt(1, 5)));
+        // Manager.TotalCaiTrang += 1;
+        // } else {
+        // ct.itemOptions.add(new Item.ItemOption(50, Util.nextInt(25, 27)));
+        // ct.itemOptions.add(new Item.ItemOption(77, Util.nextInt(25, 30)));
+        // ct.itemOptions.add(new Item.ItemOption(103, Util.nextInt(25, 30)));
+        // Manager.TotalCaiTrang = 0;
+        // }
+        // InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+        // InventoryServiceNew.gI().addItemBag(pl, ct);
+        // InventoryServiceNew.gI().addItemBag(pl, vt);
+        // InventoryServiceNew.gI().sendItemBags(pl);
+        // Service.getInstance().sendThongBao(pl, "Bạn đã nhận được " + ct.template.name
+        // + " và " + vt.template.name);
+        // } else {
+        // Service.getInstance().sendThongBao(pl, "Bạn phải có ít nhất 1 ô trống trong
+        // hành trang.");
+        // }
         if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 0) {
-            boolean vinhvien = Manager.TotalCaiTrang >= 500;
             int[] rdct = new int[] { 1290, 1291, 1281, 1302, 1282, 1296, 1297, 1298, 1295, 1301, 1300, 1307, 1306, 1308,
                     1309, 1310 };
             int[] rdop = new int[] { 5, 14, 94, 108, 97 };
@@ -737,7 +768,7 @@ public class UseItem {
             int randomop = new Random().nextInt(rdop.length);
             Item ct = ItemService.gI().createNewItem((short) rdct[randomct]);
             Item vt = ItemService.gI().createNewItem((short) Util.nextInt(16, 16));
-            if (!vinhvien) {
+            if (Util.nextInt(1, 100) <= 95) {
                 ct.itemOptions.add(new Item.ItemOption(50, Util.nextInt(20, 27)));
                 ct.itemOptions.add(new Item.ItemOption(77, Util.nextInt(20, 27)));
                 ct.itemOptions.add(new Item.ItemOption(103, Util.nextInt(20, 27)));
