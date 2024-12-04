@@ -3593,18 +3593,32 @@ public class CombineServiceNew {
         if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
             if (!player.combineNew.itemsCombine.isEmpty()) {
                 Item item = player.combineNew.itemsCombine.get(0);
-                if (item != null && item.isNotNullItem() && (item.template.id > 14 && item.template.id <= 20) && item.quantity >= 7             ) {
-                    Item nr = ItemService.gI().createNewItem((short) (item.template.id - 1));
-                    sendEffectSuccessCombine(player);
-                    InventoryServiceNew.gI().addItemBag(player, nr);
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, item, 7);
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    reOpenItemCombine(player);
-//                    sendEffectCombineDB(player, item.template.iconID);
+                if (item != null && item.isNotNullItem() && (item.template.id > 14 && item.template.id <= 20)) {
+                    // Tính số lần có thể combine
+                    int maxCombine = item.quantity / 7; // Số lần có thể combine
+                    int emptySlots = InventoryServiceNew.gI().getCountEmptyBag(player); // Số ô trống trong túi
+                    // Đảm bảo không vượt quá số ô trống
+                    int combineTimes = Math.min(maxCombine, emptySlots);
+                    if (combineTimes > 1) {
+                        for (int i = 0; i < combineTimes; i++) {
+                            // Tạo vật phẩm mới
+                            Item nr = ItemService.gI().createNewItem((short) (item.template.id - 1));
+                            sendEffectSuccessCombine(player);
+                            
+                            // Thêm vào túi
+                            InventoryServiceNew.gI().addItemBag(player, nr);
+                            InventoryServiceNew.gI().subQuantityItemsBag(player, item, 7); // Giảm số lượng item
+                        }
+                        // Cập nhật túi sau khi xử lý
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        reOpenItemCombine(player);
+                    }
+                    //                    sendEffectCombineDB(player, item.template.iconID);
                 }
             }
         }
     }
+    
     private void nhapkeo(Player player) {
         if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
             if (!player.combineNew.itemsCombine.isEmpty()) {
