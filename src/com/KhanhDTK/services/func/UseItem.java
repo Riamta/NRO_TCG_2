@@ -768,7 +768,7 @@ public class UseItem {
             int randomop = new Random().nextInt(rdop.length);
             Item ct = ItemService.gI().createNewItem((short) rdct[randomct]);
             Item vt = ItemService.gI().createNewItem((short) Util.nextInt(16, 16));
-            if (Util.nextInt(1, 100) <= 95) {
+            if (Util.nextInt(1, 100) <= 90) {
                 ct.itemOptions.add(new Item.ItemOption(50, Util.nextInt(20, 27)));
                 ct.itemOptions.add(new Item.ItemOption(77, Util.nextInt(20, 27)));
                 ct.itemOptions.add(new Item.ItemOption(103, Util.nextInt(20, 27)));

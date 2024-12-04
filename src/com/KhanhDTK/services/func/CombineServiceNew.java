@@ -1445,7 +1445,7 @@ public class CombineServiceNew {
             case PHAN_RA_DO_THAN_LINH:
                 if (player.combineNew.itemsCombine.size() == 0) {
                     this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                            "Con hãy đưa ta đồ thần linh để phân rã", "Đóng");
+                            "Con hãy đưa ta đồ thần linh hoặc huỷ diệt để phân rã", "Đóng");
                     return;
                 }
                 if (player.combineNew.itemsCombine.size() == 1) {
@@ -1453,9 +1453,14 @@ public class CombineServiceNew {
                     int couponAdd = 0;
                     Item item = player.combineNew.itemsCombine.get(0);
                     if (item.isNotNullItem()) {
+                        // Kiểm tra item thuộc đồ thần linh
                         if (item.template.id >= 555 && item.template.id <= 567) {
                             couponAdd = itemdov2.stream().anyMatch(t -> t == item.template.id) ? 2
                                     : item.template.id == 561 ? 3 : 1;
+                        }
+                        // Kiểm tra item thuộc khoảng 650-662
+                        else if (item.template.id >= 650 && item.template.id <= 662) {
+                            couponAdd = 5;
                         }
                     }
                     if (couponAdd == 0) {
