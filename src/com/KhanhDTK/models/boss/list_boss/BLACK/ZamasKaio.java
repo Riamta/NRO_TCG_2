@@ -10,11 +10,10 @@ import com.KhanhDTK.utils.Util;
 
 import java.util.Random;
 
-
 public class ZamasKaio extends Boss {
 
     public ZamasKaio() throws Exception {
-       super(BossID.ZAMASZIN, BossesData.ZAMAS);
+        super(BossID.ZAMASZIN, BossesData.ZAMAS);
     }
 
     @Override
@@ -22,16 +21,22 @@ public class ZamasKaio extends Boss {
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
         if (Util.isTrue(2, 50)) {
-                Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
-            
+            Service.gI().dropItemMap(this.zone,
+                    Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
+
         } else {
-            Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x,
+                    zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+        }
+        // đá ngũ sắc
+        if (Util.isTrue(10, 100)) {
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 674, 1, this.location.x, this.location.y, plKill.id));
         }
     }
 
-     @Override
+    @Override
     public void joinMap() {
-        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+        super.joinMap(); // To change body of generated methods, choose Tools | Templates.
         st = System.currentTimeMillis();
     }
 
@@ -39,13 +44,13 @@ public class ZamasKaio extends Boss {
 
     @Override
     public void active() {
-        super.active(); //To change body of generated methods, choose Tools | Templates.
+        super.active(); // To change body of generated methods, choose Tools | Templates.
         if (Util.canDoWithTime(st, 900000)) {
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }
-   
- @Override
+
+    @Override
     public int injured(Player plAtt, int damage, boolean piercing, boolean isMobAttack) {
         if (!this.isDie()) {
             if (!piercing && Util.isTrue(this.nPoint.tlNeDon, 1000)) {
@@ -57,7 +62,7 @@ public class ZamasKaio extends Boss {
                 if (damage > nPoint.hpMax) {
                     EffectSkillService.gI().breakShield(this);
                 }
-                damage = damage/2;
+                damage = damage / 2;
             }
             this.nPoint.subHP(damage);
             if (isDie()) {
@@ -69,49 +74,27 @@ public class ZamasKaio extends Boss {
             return 0;
         }
     }
-//    @Override
-//    public void moveTo(int x, int y) {
-//        if(this.currentLevel == 1){
-//            return;
-//        }
-//        super.moveTo(x, y);
-//    }
-//
-//    @Override
-//    public void reward(Player plKill) {
-//        if(this.currentLevel == 1){
-//            return;
-//        }
-//        super.reward(plKill);
-//    }
-//
-//    @Override
-//    protected void notifyJoinMap() {
-//        if(this.currentLevel == 1){
-//            return;
-//        }
-//        super.notifyJoinMap();
-//    }
+    // @Override
+    // public void moveTo(int x, int y) {
+    // if(this.currentLevel == 1){
+    // return;
+    // }
+    // super.moveTo(x, y);
+    // }
+    //
+    // @Override
+    // public void reward(Player plKill) {
+    // if(this.currentLevel == 1){
+    // return;
+    // }
+    // super.reward(plKill);
+    // }
+    //
+    // @Override
+    // protected void notifyJoinMap() {
+    // if(this.currentLevel == 1){
+    // return;
+    // }
+    // super.notifyJoinMap();
+    // }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

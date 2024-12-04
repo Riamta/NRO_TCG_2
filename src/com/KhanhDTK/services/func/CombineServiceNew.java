@@ -2615,35 +2615,49 @@ public class CombineServiceNew {
 
     private void phanradothanlinh(Player player) {
         if (player.combineNew.itemsCombine.size() == 1) {
+            // Trừ vàng của người chơi
+            if (player.inventory.gold < 50000000) {
+                Service.gI().sendThongBaoOK(player, "Bạn không đủ 50 triệu vàng!");
+                return;
+            }
             player.inventory.gold -= 50000000;
+    
             List<Integer> itemdov2 = new ArrayList<>(Arrays.asList(562, 564, 566));
             Item item = player.combineNew.itemsCombine.get(0);
-            int couponAdd = itemdov2.stream().anyMatch(t -> t == item.template.id) ? 2
-                    : item.template.id == 561 ? 3 : 1;
-            sendEffectSuccessCombine(player);
-            Item dangusac = ItemService.gI().createNewItem((short) 674);
-            Item dangusac1 = ItemService.gI().createNewItem((short) 674);
-            Item dangusac2 = ItemService.gI().createNewItem((short) 674);
-            InventoryServiceNew.gI().addItemBag(player, dangusac);
-            InventoryServiceNew.gI().sendItemBags(player);
-            if (item.template.id == 561) {
-                InventoryServiceNew.gI().addItemBag(player, dangusac);
-                InventoryServiceNew.gI().addItemBag(player, dangusac1);
-                InventoryServiceNew.gI().addItemBag(player, dangusac2);
-                InventoryServiceNew.gI().sendItemBags(player);
-            } else if (item.template.id == 562 || item.template.id == 564 || item.template.id == 566) {
-                InventoryServiceNew.gI().addItemBag(player, dangusac);
-                InventoryServiceNew.gI().addItemBag(player, dangusac1);
-                InventoryServiceNew.gI().sendItemBags(player);
+            int couponAdd = 0;
+    
+            // Xác định số lượng Đá Ngũ Sắc được nhận
+            if (item.template.id >= 555 && item.template.id <= 567) {
+                couponAdd = itemdov2.stream().anyMatch(t -> t == item.template.id) ? 2
+                            : item.template.id == 561 ? 3 : 1;
+            } else if (item.template.id >= 650 && item.template.id <= 662) {
+                couponAdd = 5; // Các item từ 650 đến 662 nhận 5 Đá Ngũ Sắc
+            } else {
+                Service.gI().sendThongBaoOK(player, "Vật phẩm này không thể phân rã!");
+                return;
             }
-            Service.gI().sendThongBaoOK(player, "Bạn Nhận Được Đá Ngũ Sắc");
-            InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1);
-            player.combineNew.itemsCombine.clear();
-            InventoryServiceNew.gI().sendItemBags(player);
-            Service.gI().sendMoney(player);
-            reOpenItemCombine(player);
+    
+            // Hiển thị hiệu ứng thành công
+            sendEffectSuccessCombine(player);
+    
+            // Tạo và thêm Đá Ngũ Sắc vào túi
+            for (int i = 0; i < couponAdd; i++) {
+                Item dangusac = ItemService.gI().createNewItem((short) 674); // ID Đá Ngũ Sắc
+                InventoryServiceNew.gI().addItemBag(player, dangusac);
+            }
+    
+            // Cập nhật thông tin cho người chơi
+            Service.gI().sendThongBaoOK(player, "Bạn nhận được " + couponAdd + " Đá Ngũ Sắc");
+            InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1); // Giảm số lượng vật phẩm phân rã
+            player.combineNew.itemsCombine.clear(); // Xóa danh sách vật phẩm kết hợp
+            InventoryServiceNew.gI().sendItemBags(player); // Cập nhật túi
+            Service.gI().sendMoney(player); // Cập nhật vàng
+            reOpenItemCombine(player); // Mở lại giao diện kết hợp
+        } else {
+            Service.gI().sendThongBaoOK(player, "Chỉ có thể phân rã 1 vật phẩm mỗi lần!");
         }
     }
+    
 
     public void openDTS(Player player) {
         // check sl đồ tl, đồ hd

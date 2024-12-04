@@ -30,6 +30,10 @@ public class Black extends Boss {
         } else {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone,Util.nextInt(17,20), 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
+        // đá ngũ sắc
+        if(Util.isTrue(10, 100)){
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 674, 1, this.location.x, this.location.y, plKill.id));
+        }
     }
 
     @Override

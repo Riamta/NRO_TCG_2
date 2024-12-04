@@ -524,6 +524,10 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                     Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
 
         }
+        // đá ngũ sắc
+        if (Util.isTrue(10, 100)) {
+            Service.gI().dropItemMap(this.zone, new ItemMap(zone, 674, 1, this.location.x, this.location.y, plKill.id));
+        }
     }
 
     public void rewardBossForest(Player plKill) {
