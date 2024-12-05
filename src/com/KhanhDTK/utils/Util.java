@@ -241,14 +241,13 @@ public class Util {
 
     public static Item petviprandom(int tempId) {
         Item gapvip = ItemService.gI().createNewItem((short) tempId);
-        if (Util.isTrue(90, 100)) {
-            gapvip.itemOptions.add(new Item.ItemOption(50, Util.nextInt(5, 10)));
-            gapvip.itemOptions.add(new Item.ItemOption(103, Util.nextInt(5, 10)));
-            gapvip.itemOptions.add(new Item.ItemOption(77, Util.nextInt(5, 10)));
-            if (Util.isTrue(95, 100)) {
-                gapvip.itemOptions.add(new Item.ItemOption(93, Util.nextInt(3, 7)));
-            }
+        gapvip.itemOptions.add(new Item.ItemOption(50, Util.nextInt(5, 10)));
+        gapvip.itemOptions.add(new Item.ItemOption(103, Util.nextInt(5, 10)));
+        gapvip.itemOptions.add(new Item.ItemOption(77, Util.nextInt(5, 10)));
+        if (Util.isTrue(95, 100)) {
+            gapvip.itemOptions.add(new Item.ItemOption(93, Util.nextInt(3, 7)));
         }
+
         return gapvip;
     }
 
@@ -771,14 +770,16 @@ public class Util {
                 break;
         }
     }
+
     public static int randomMapBossBroly() {
-        int[] listMap = new int[]{6, 10, 11, 12, 13, 19, 20, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38};
+        int[] listMap = new int[] { 6, 10, 11, 12, 13, 19, 20, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 };
         int mapId = Util.nextInt(listMap.length);
         while (!MapService.gI().getZone(mapId).getBosses().isEmpty()) {
             mapId = Util.nextInt(listMap.length);
         }
         return listMap[mapId];
     }
+
     public static String phanthuong(int i) {
         switch (i) {
             case 1:
