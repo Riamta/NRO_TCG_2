@@ -106,9 +106,9 @@ public class DrLyChee extends Boss {
                 parammp = Util.nextInt(24, 28);
                 paramsd = Util.nextInt(24, 28);
             } else {
-                paramhp = Util.nextInt(31, 35);
-                parammp = Util.nextInt(31, 35);
-                paramsd = Util.nextInt(31, 35);
+                paramhp = Util.nextInt(31, 40);
+                parammp = Util.nextInt(31, 40);
+                paramsd = Util.nextInt(31, 40);
                 paramgiap = Util.nextInt(24, 28);
             }
             it.options.add(new Item.ItemOption(77, paramhp));

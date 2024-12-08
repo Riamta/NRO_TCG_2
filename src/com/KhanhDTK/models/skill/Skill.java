@@ -4,7 +4,7 @@ import com.KhanhDTK.models.Template.SkillTemplate;
 
 
 
-public class Skill {
+public class    Skill {
     
     public static final int RANGE_ATTACK_CHIEU_DAM = 100;
     public static final int RANGE_ATTACK_CHIEU_CHUONG = 300;

@@ -85,7 +85,7 @@ public class GasService {
         if (level >= 1 && level <= 100) {
             if (player.clan != null && player.clan.khiGas == null) 
             {
-                if (player.clan.SoLanDiKhiGas < 3)
+                if (player.clan.SoLanDiKhiGas < 50)
                 {
                     Gas gas = null;
                     for (Gas gasz : Gas.KHI_GAS) {
