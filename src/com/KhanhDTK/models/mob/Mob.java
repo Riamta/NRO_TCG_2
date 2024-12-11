@@ -576,7 +576,8 @@ public class Mob {
                 }
             }
             if (Util.isTrue(60, 100)) {
-                if ((player.setClothes.godClothes || player.setClothes.IsSetHuyDiet()) && MapService.gI().isMapCold(player.zone.map)) {
+                if ((player.setClothes.godClothes || player.setClothes.IsSetHuyDiet())
+                        && MapService.gI().isMapCold(player.zone.map)) {
                     ArrietyDrop.DropItemReWard(player,
                             ArrietyDrop.list_thuc_an[Util.nextInt(0, (ArrietyDrop.list_thuc_an.length - 1))], 1,
                             this.location.x, this.location.y);
@@ -634,12 +635,15 @@ public class Mob {
             if (Util.isTrue(50, 100)) { // vàng từ quái tất cả map
                 int gold = Util.nextInt(100000, 1000000);
                 list.add(new ItemMap(zone, 76, gold, x, player.location.y, player.id));
-            } else if (Util.isTrue(1, 300)) { // ngoc xanh
-                list.add(new ItemMap(zone, 457, 1, x, player.location.y, player.id));
-            } else if (Util.isTrue(5, 100)) { // thoi vang
+            } else if (Util.isTrue(100, 100)) { // ngoc xanh
+                list.add(new ItemMap(zone, 457, 10, x, player.location.y, player.id));
+            } else if (Util.isTrue(100, 100)) { // thoi vang
                 list.add(new ItemMap(zone, 77, Util.nextInt(1, 20), x, player.location.y, player.id));
-            } else if (Util.isTrue(5, 100)) { // thoi vang
+            } else if (Util.isTrue(100, 100)) { // thoi vang
                 list.add(new ItemMap(zone, 861, Util.nextInt(1, 10), x, player.location.y, player.id));
+            }
+            if (Util.isTrue(100, 100)) {
+                list.add(new ItemMap(zone, 674861, Util.nextInt(1, 1), x, player.location.y, player.id));
             }
         }
 
