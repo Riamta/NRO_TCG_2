@@ -89,8 +89,8 @@ public class Mob {
     }
 
     public static void initMopbKhiGas(Mob mob, int level) {
-        mob.point.maxHp = 20000000 * level;
-        mob.point.dame = 10000 * level;
+        mob.point.maxHp = 200000 * level;
+        mob.point.dame = 1000 * level;
     }
 
     public static void hoiSinhMob(Mob mob) {
