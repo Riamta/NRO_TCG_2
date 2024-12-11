@@ -635,15 +635,18 @@ public class Mob {
             if (Util.isTrue(50, 100)) { // vàng từ quái tất cả map
                 int gold = Util.nextInt(100000, 1000000);
                 list.add(new ItemMap(zone, 76, gold, x, player.location.y, player.id));
-            } else if (Util.isTrue(100, 100)) { // ngoc xanh
+            }
+            if (Util.isTrue(100, 100)) { // ngoc xanh
                 list.add(new ItemMap(zone, 457, 10, x, player.location.y, player.id));
-            } else if (Util.isTrue(100, 100)) { // thoi vang
+            }
+            if (Util.isTrue(100, 100)) { // thoi vang
                 list.add(new ItemMap(zone, 77, Util.nextInt(1, 20), x, player.location.y, player.id));
-            } else if (Util.isTrue(100, 100)) { // thoi vang
-                list.add(new ItemMap(zone, 861, Util.nextInt(1, 10), x, player.location.y, player.id));
+            }
+            if (Util.isTrue(100, 100)) { // ngoc do
+                list.add(new ItemMap(zone, 861, Util.nextInt(1, 100), x, player.location.y, player.id));
             }
             if (Util.isTrue(100, 100)) {
-                list.add(new ItemMap(zone, 674861, Util.nextInt(1, 1), x, player.location.y, player.id));
+                list.add(new ItemMap(zone, 674, Util.nextInt(1, 1), x, player.location.y, player.id));
             }
         }
 
