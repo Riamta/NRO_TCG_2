@@ -1695,7 +1695,7 @@ public class UseItem {
                 it.itemOptions.add(new ItemOption(14, Util.nextInt(10, 20)));
                 it.itemOptions.add(new ItemOption(174, 2024));
             }
-            if (Util.isTrue(95, 100)) {
+            if (Util.isTrue(5, 100)) {
                 it.itemOptions.add(new ItemOption(93, Util.nextInt(1, 5)));
             }
 
