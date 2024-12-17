@@ -561,14 +561,14 @@ public class Mob {
             if (player == null) {
                 return new ArrayList<>();
             }
-            if (zone.map.mapId == 155 && Util.isTrue(7, 100)) {
+            if (zone.map.mapId == 155 && Util.isTrue(100, 100)) {
                 Item mts = ItemService.gI().createNewItem((short) (1066 + Util.nextInt(5)), 1);
                 InventoryServiceNew.gI().addItemBag(player, mts);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được x1" + mts.template.name);
             }
             if (zone.map.mapId == 187) {
-                if (Util.isTrue(50, 100)) {
+                if (Util.isTrue(100, 100)) {
                     Item mts = ItemService.gI().createNewItem((short) Util.nextInt(1545, 1559));
                     InventoryServiceNew.gI().addItemBag(player, mts);
                     InventoryServiceNew.gI().sendItemBags(player);
@@ -579,7 +579,7 @@ public class Mob {
                 if ((player.setClothes.godClothes || player.setClothes.IsSetHuyDiet())
                         && MapService.gI().isMapCold(player.zone.map)) {
                     ArrietyDrop.DropItemReWard(player,
-                            ArrietyDrop.list_thuc_an[Util.nextInt(0, (ArrietyDrop.list_thuc_an.length - 1))], 1,
+                            ArrietyDrop.list_thuc_an[Util.nextInt(0, (ArrietyDrop.list_thuc_an.length - 1))], 30,
                             this.location.x, this.location.y);
                 }
             }
